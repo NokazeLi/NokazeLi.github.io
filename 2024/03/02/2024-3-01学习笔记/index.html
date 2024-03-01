@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>2024-3-01学习笔记 | 野風のブログ</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="今天是基本类型的强制转换、String类型和基本类型之间的转换、还有运算符的算数运算符部分的内容。  基本数据类型强制转换 是自动类型转换的逆过程，将容量大的数据类型转换为容量小的数据类型，需要加上强制转换符（xx），但是可能会造成精度降低或溢出，应注意。 例： int n1 &#x3D; (1.9);System.out.println(n1); &#x2F;&#x2F;输出1，精度损失 int n2 &#x3D; 2000;byte">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2024-3-01学习笔记">
+<meta property="og:url" content="http://example.com/2024/03/02/2024-3-01%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="野風のブログ">
+<meta property="og:description" content="今天是基本类型的强制转换、String类型和基本类型之间的转换、还有运算符的算数运算符部分的内容。  基本数据类型强制转换 是自动类型转换的逆过程，将容量大的数据类型转换为容量小的数据类型，需要加上强制转换符（xx），但是可能会造成精度降低或溢出，应注意。 例： int n1 &#x3D; (1.9);System.out.println(n1); &#x2F;&#x2F;输出1，精度损失 int n2 &#x3D; 2000;byte">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-03-01T16:53:54.000Z">
+<meta property="article:modified_time" content="2024-03-01T17:45:26.655Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="IT学习">
+<meta property="article:tag" content="Java编程">
+<meta property="article:tag" content="JavaSE">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="野風のブログ" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">野風のブログ</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-2024-3-01学习笔记" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/03/02/2024-3-01%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="article-date">
+  <time class="dt-published" datetime="2024-03-01T16:53:54.000Z" itemprop="datePublished">2024-03-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      2024-3-01学习笔记
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>今天是基本类型的强制转换、String类型和基本类型之间的转换、还有运算符的算数运算符部分的内容。</p>
+<hr>
+<h2 id="基本数据类型强制转换"><a href="#基本数据类型强制转换" class="headerlink" title="基本数据类型强制转换"></a>基本数据类型强制转换</h2><hr>
+<p>是自动类型转换的逆过程，将容量大的数据类型转换为容量小的数据类型，需要加上强制转换符（xx），但是可能会造成精度降低或溢出，应注意。</p>
+<p>例：</p>
+<p><code>int n1 = (1.9);</code><br><code>System.out.println(n1); //输出1，精度损失</code></p>
+<p><code>int n2 = 2000;</code><br><code>byte b1 = (byte)n2;</code><br><code>System.out.println(b1);  //输出-48，数据溢出了，并不是输出byte的上限</code></p>
+<h3 id="强制类型转换细节"><a href="#强制类型转换细节" class="headerlink" title="强制类型转换细节"></a>强制类型转换细节</h3><ol>
+<li><p>当精度大的数据转换成精度小的数据，就是强制转换</p>
+</li>
+<li><p>强转符号只针对于最近的操作数有效，往往会使用小括号提升优先级<br>例：<br><code>int x = (int)10 * 3 + 5 * 1.5;  //只会让10强转为int，整个运算结果还是double类型，会编译报错</code></p>
+</li>
+</ol>
+<p><code>int y =  (int)(10 * 3 + 5 * 1.5);</code><br><code>System.out.println(b1); //double运算结果44.0强转为int，精度损失，输出44</code></p>
+<ol start="3">
+<li>char类型可以保存int的常量值，但是不能保存int的变量值，需要强转。<br>例：<br><code>char c1 = 100;  //输出d</code><br><code>int m = 100;</code><br><code>char c2 = m; //int类无法自动转换成char，编译报错</code><br><code>char c3 = (int)n; //正常输出d</code></li>
+</ol>
+<hr>
+<h2 id="基本数据类型和String类型的转换"><a href="#基本数据类型和String类型的转换" class="headerlink" title="基本数据类型和String类型的转换"></a>基本数据类型和String类型的转换</h2><hr>
+<ol>
+<li><p>将基本数据类型转换为String，<code>+ &quot;&quot;</code>即可，<em>相当于基本数据类型和空字符串拼接（我自己说的不确定有没有理解错）</em><br>例：<br><code>String str1 = 1 + &quot;&quot;; //以类型为String的str1接收&quot;1&quot;</code></p>
+</li>
+<li><p>将String类型转换成基本数据类型，通过基本类型包装类调用parseXX方法。<strong>包装类型会在面向对象部分详细讲</strong><br>例：<br><code>int i = Integer.parseInt(&quot;123&quot;); //将&quot;123&quot;转换为int类型的123，用i接收</code></p>
+</li>
+<li><p>把String转换成char，这话的意思是把字符串的第一个字符存储到char中，因为String是字符串有多个字符<br>例：<br><code>char c = (&quot;123&quot;.charAt(0)); //String的charAt方法</code></p>
+</li>
+</ol>
+<h3 id="基本数据类型和String类型的转换细节"><a href="#基本数据类型和String类型的转换细节" class="headerlink" title="基本数据类型和String类型的转换细节"></a>基本数据类型和String类型的转换细节</h3><ol>
+<li><p>将String类型转换成基本数据类型时，要确保String类型能够转换成有效数据。<br>比如”Hello”转换成基本类型，用int接收的话就会抛出异常。</p>
+</li>
+<li><p>如果格式不正确，会抛出异常造成程序终止。（编译不会报错，而是运行时出异常）</p>
+</li>
+</ol>
+<hr>
+<h2 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h2><hr>
+<p>一种用以表示数据的运算、赋值和比较等的特殊符号。有算数运算符、赋值运算符、关系运算符[比较运算符]、逻辑运算符、位运算符（需要二进制基础）和三元运算符。</p>
+<h3 id="算数运算符————对数值类型的变量进行运算"><a href="#算数运算符————对数值类型的变量进行运算" class="headerlink" title="算数运算符————对数值类型的变量进行运算"></a>算数运算符————对数值类型的变量进行运算</h3><p>着重说明\、%、++</p>
+<h4 id="的应用"><a href="#的应用" class="headerlink" title="\的应用"></a>\的应用</h4><p><code>System.out.println(10 \ 4); //在Java中因为是两个int型之间的运算，所以运算结果也是int型，相比于数学运算结果的浮点数2.5丢失了精度，所以输出2。</code></p>
+<p><code>System.out.println(10.0 \ 4); //10,0是double，结果是double，2.5</code></p>
+<p><code>double d = 10 \ 4; //因为在java中10\4是2，而因为是double类型变成2.0</code><br>&#96;System.out.println(d); &#x2F;&#x2F;所以输出2.0</p>
+<h4 id=""><a href="#" class="headerlink" title="++"></a>++</h4><p>如果独立使用的话i++和++i相同</p>
+<p><code>int i = 10;</code><br><code>i++; //本质是i = i + 1;</code><br><code>System.out.println(i); //输出11</code><br><code>++i;</code><br><code>System.out.println(i); //输出12</code></p>
+<p>但当作为表达式使用时，++i是先自增后赋值，i++是先赋值后自增<br>例：<br><code>int j = 8;</code><br><code>int k = ++j; //等价j = j + 1; k = j; 所以k = 9 j = 9</code><br><code>int h = j++; //等价 h = j; j = j + 1;因为保留了上面的数值 所以h = 9，j = 10</code></p>
+<p>一些练习；<br><code>int i = 1; //1赋值给i</code><br><code>i = i++; //(1)temp = i;(2)i = i + 1;(3)i = temp; </code> <strong>这里是重点，涉及自动临时变量的问题,temp就是临时变量</strong><br><code>System.out.println(i); //所以会输出1</code></p>
+<p><code>int i = 1; //1赋值给i</code><br><code>i = ++i；//(1)i = i + 1;(2)temp = i;(3)i = temp;</code><strong>同样使用临时变量temp</strong><br><code>System.out.println(i); //所以会输出2</code></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2024/03/02/2024-3-01%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="clt8y6eea000a7gwj1w41hks8" data-title="2024-3-01学习笔记" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IT%E5%AD%A6%E4%B9%A0/" rel="tag">IT学习</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaSE/" rel="tag">JavaSE</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java%E7%BC%96%E7%A8%8B/" rel="tag">Java编程</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2024/03/01/2024-2-29%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">2024-2-29学习笔记</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Dos/" rel="tag">Dos</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IT%E5%AD%A6%E4%B9%A0/" rel="tag">IT学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaSE/" rel="tag">JavaSE</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java%E7%BC%96%E7%A8%8B/" rel="tag">Java编程</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Dos/" style="font-size: 10px;">Dos</a> <a href="/tags/IT%E5%AD%A6%E4%B9%A0/" style="font-size: 20px;">IT学习</a> <a href="/tags/JavaSE/" style="font-size: 20px;">JavaSE</a> <a href="/tags/Java%E7%BC%96%E7%A8%8B/" style="font-size: 20px;">Java编程</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/03/">March 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/02/">February 2024</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2024/03/02/2024-3-01%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">2024-3-01学习笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2024/03/01/2024-2-29%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">2024-2-29学习笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2024/02/29/2024-2-28%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">2024-2-28学习笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2024/02/28/2024-2-27%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">2024-2-27学习笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2024/02/27/2024-2-26%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">2024-2-26学习笔记</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2024 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
