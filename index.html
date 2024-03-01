@@ -69,6 +69,112 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-2024-2-29学习笔记" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/03/01/2024-2-29%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="article-date">
+  <time class="dt-published" datetime="2024-03-01T03:33:54.000Z" itemprop="datePublished">2024-03-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2024/03/01/2024-2-29%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">2024-2-29学习笔记</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>28号学习了基础类型中的数值类，今天学习了剩下的。</p>
+<hr>
+<h2 id="字符类型-char"><a href="#字符类型-char" class="headerlink" title="字符类型 char"></a>字符类型 char</h2><hr>
+<p>char可以存储<strong>单个</strong>字符</p>
+<p>做个字符用String类存储</p>
+<p>char有两个字节可以存储单个汉字</p>
+<h3 id="字符类型细节"><a href="#字符类型细节" class="headerlink" title="字符类型细节"></a>字符类型细节</h3><ol>
+<li><p>字符常量用单引号括起来，不可以用双引号 <strong>双引号括起来的是字符串</strong></p>
+</li>
+<li><p>char可以储存转义字符</p>
+</li>
+<li><p>在Java中char的本质是一个整数，输出的是Unicode码对应的字符</p>
+</li>
+<li><p>给char类型赋一个数值，会输出对应的Unicode码代表的字符<br>  例：<br>char c1 &#x3D;97；<br>System.out.println(c1);  &#x2F;&#x2F;输出a</p>
+<p>也可以反向输出，但是要用强转类型</p>
+<p>char c2 &#x3D;’a’;<br>System.out.println(c1);  &#x2F;&#x2F;输出97</p>
+</li>
+<li><p>因为char的本质是一个整数，所以可以参与计算<br>例：<br>System.out.println(‘a’ + 10);  &#x2F;&#x2F;输出97</p>
+</li>
+</ol>
+<p><strong>具体数值代表的字符可以查询ASCII表</strong></p>
+<h3 id="字符类型的本质"><a href="#字符类型的本质" class="headerlink" title="字符类型的本质"></a>字符类型的本质</h3><ol>
+<li><p>字符类型存储到计算机中，需要把字符对应的码值找出来<br>比如：<br>存储：’a’ &#x3D;&#x3D;&gt; 码值97 &#x3D;&#x3D;&gt; 二进制 &#x3D;&#x3D;&gt; 存储<br>读取: 二进制 &#x3D;&#x3D;&gt; 97 &#x3D;&#x3D;&gt; ‘a’ &#x3D;&#x3D;&gt; 显示</p>
+</li>
+<li><p>字符和码值的顺序是通过字符编码表规定的</p>
+</li>
+</ol>
+<h4 id="常用的字符编码"><a href="#常用的字符编码" class="headerlink" title="常用的字符编码"></a>常用的字符编码</h4><p>ASCII表；1个字节表示，一共有128个字符（实际一个字节至多可以表示256个字符）ASCII是上世纪六十年代美国指定的一套字符编码，对英语字符与二进制位之间的关系做了统一规定，共规定了128个字符的编码，值占用了1个字节的后七位，最前面一位统一规定为0<br>缺点：只能表示英文字母</p>
+<p>Unicode：Unicode编码表，固定大小的编码，字母和汉字统一占用2个字符。Unicode是一种将世界上所有符号都纳入其中的编码，每一个符号都给予了一个独一无二的编码，使用Unicode编码不存在乱码问题.<br>缺点:单个英文字母和汉字都占用2个字节，比较浪费存储空间。<br><strong>Unicode编码的0-127与ASCII相同，所以Unicode兼容ASCII</strong></p>
+<p>UTF-8：大小可变的编码，字母使用1个字节而汉字使用3个字节，所以UTF-8能存储比gbk更多的汉字.UTF-8是互联网上使用最广的一种Unicode的实现方式。是一种变长的编码方式，它可以使用1-6字节表示一个符号，会根据不同的符号而变化字节长度。</p>
+<p>gbk:可以表示汉字而且范围广，字母使用1个字节汉字使用2个字节存储</p>
+<p>gb2312:可以表示汉字，表示的汉字较少 gb2312 &lt; gbk</p>
+<p>big5:繁体中文</p>
+<hr>
+<h2 id="布尔型"><a href="#布尔型" class="headerlink" title="布尔型"></a>布尔型</h2><hr>
+<ol>
+<li><p>boolean只允许取值true和false，不能是null。</p>
+</li>
+<li><p>boolean只占1个字符。</p>
+</li>
+<li><p>在Java里不可以用0和非0代替false和true。</p>
+</li>
+</ol>
+<hr>
+<h2 id="基本数据类型自动转换"><a href="#基本数据类型自动转换" class="headerlink" title="基本数据类型自动转换"></a>基本数据类型自动转换</h2><hr>
+<p>当Java程序在进行赋值或者运算时，精度小的类型自动转换为精度大的数据类型，这就是自动类型转换</p>
+<p>数据类型按精度（容量）大小排序 <strong>很重要，需要背过</strong></p>
+<p>char → int → long → float → double</p>
+<p>byte → short → int → long → float → double</p>
+<h3 id="自动数据类型转换细节"><a href="#自动数据类型转换细节" class="headerlink" title="自动数据类型转换细节"></a>自动数据类型转换细节</h3><ol>
+<li><p>有多种类型的数据混合运算时，系统首先自动将所有数据类型转换成容量最大的那种数据类型，然后再进行运算。</p>
+</li>
+<li><p>当我们把精度（容量）大的数据类型赋值给精度（容量）小的数据类型会报错，反之则自动进行类型转换</p>
+</li>
+<li><p>byte和short不会与char之间自动相互转换。</p>
+</li>
+</ol>
+<p><strong>当把一个数值赋值给byte类时，先判断该数是否在byte范围内，若是则没问题。（这里不符合整数常量默认int类型规则）</strong><br>例：<br>byte b1 &#x3D; 10; &#x2F;&#x2F;正常编译不报错</p>
+<p>int n1 &#x3D; 10;<br>byte b1 &#x3D; n2; &#x2F;&#x2F;报错，因为要将int类数值存储进精度较小的byte中</p>
+<ol start="4">
+<li><p>byte、short、char三者可以运算，在运算时首先转换为int类型。<br>例；<br>byte b2 &#x3D; 1;<br>byte b3 &#x3D; 2;<br>short s1 &#x3D; 1;<br>byte b4 &#x3D; b2 + s1; &#x2F;&#x2F;如细节4所述，先转换成int再运算，byte接收int数据不会自动转换，编译报错</p>
+<p>byte b4 &#x3D; b2 + b3; &#x2F;&#x2F;两个同为byte类运算，也需要先自动转换为int类，所以用byte接收也会编译报错</p>
+</li>
+<li><p>boolean类不参与自动转换</p>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2024/03/01/2024-2-29%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="clt85qw6s0008f4wj8i57asgc" data-title="2024-2-29学习笔记" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IT%E5%AD%A6%E4%B9%A0/" rel="tag">IT学习</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaSE/" rel="tag">JavaSE</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java%E7%BC%96%E7%A8%8B/" rel="tag">Java编程</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-2024-2-28学习笔记" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2024/02/29/2024-2-28%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="article-date">
@@ -145,7 +251,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2024/02/29/2024-2-28%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="clt663q7k000jzswj1ey0bq5k" data-title="2024-2-28学习笔记" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2024/02/29/2024-2-28%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="clt85qw6r0007f4wjepbq1l6v" data-title="2024-2-28学习笔记" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -219,7 +325,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2024/02/28/2024-2-27%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="clt663q740003zswj2e6rdjbs" data-title="2024-2-27学习笔记" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2024/02/28/2024-2-27%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="clt85qw6q0006f4wj7q8o7kil" data-title="2024-2-27学习笔记" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -292,7 +398,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2024/02/27/2024-2-26%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="clt663q7l000kzswjfd17daep" data-title="2024-2-26学习笔记" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2024/02/27/2024-2-26%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="clt85qw6m0003f4wjcmhn5j92" data-title="2024-2-26学习笔记" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -336,7 +442,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2024/02/19/2024-2-19%EF%BC%881%EF%BC%89/" data-id="clt663q700001zswj4ysq6qq9" data-title="2024-2-19（1）" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2024/02/19/2024-2-19%EF%BC%881%EF%BC%89/" data-id="clt85qw6i0001f4wj60xr6dy0" data-title="2024-2-19（1）" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -389,7 +495,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2024/02/19/hello-world/" data-id="clt663q7o000mzswj0ts3528r" data-title="Hello World" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2024/02/19/hello-world/" data-id="clt85qw770012f4wj12ic4tf5" data-title="Hello World" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -433,7 +539,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/02/">February 2024</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/03/">March 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/02/">February 2024</a></li></ul>
     </div>
   </div>
 
@@ -444,6 +550,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2024/03/01/2024-2-29%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">2024-2-29学习笔记</a>
+          </li>
         
           <li>
             <a href="/2024/02/29/2024-2-28%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">2024-2-28学习笔记</a>
@@ -459,10 +569,6 @@
         
           <li>
             <a href="/2024/02/19/2024-2-19%EF%BC%881%EF%BC%89/">2024-2-19（1）</a>
-          </li>
-        
-          <li>
-            <a href="/2024/02/19/hello-world/">Hello World</a>
           </li>
         
       </ul>
