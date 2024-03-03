@@ -69,6 +69,136 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-2024-3-03学习笔记" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/03/04/2024-3-03%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="article-date">
+  <time class="dt-published" datetime="2024-03-03T18:33:07.000Z" itemprop="datePublished">2024-03-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2024/03/04/2024-3-03%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">2024-3-03学习笔记</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>今天最主要的内容是2,8,10,16进制数的换算</p>
+<hr>
+<h2 id="标识符命名规则与规范"><a href="#标识符命名规则与规范" class="headerlink" title="标识符命名规则与规范"></a>标识符命名规则与规范</h2><hr>
+<ol>
+<li><p>Java对各种变量、方法和类的命名时使用的字符序列称为标识符</p>
+</li>
+<li><p>凡是自己可以起名字的地方都叫标识符</p>
+</li>
+</ol>
+<h3 id="命名规则（若违反则编译报错）"><a href="#命名规则（若违反则编译报错）" class="headerlink" title="命名规则（若违反则编译报错）"></a>命名规则（若违反则编译报错）</h3><ol>
+<li><p>由26个英文字母大小写，0-9、$和_组成。</p>
+</li>
+<li><p>数字不能作为开头</p>
+</li>
+<li><p>不可以使用关键字和保留字，但是可以包含关键字和保留字。</p>
+</li>
+<li><p>Java中严格区分大小写，长度无限制。</p>
+</li>
+<li><p>不能包含空格</p>
+</li>
+</ol>
+<h3 id="命名规范（若违背不会编译报错，但是应当遵守）"><a href="#命名规范（若违背不会编译报错，但是应当遵守）" class="headerlink" title="命名规范（若违背不会编译报错，但是应当遵守）"></a>命名规范（若违背不会编译报错，但是应当遵守）</h3><ol>
+<li><p>包名：多单词组成时所有字母都小写,例 aaa.bbb.ccc</p>
+</li>
+<li><p>类名、接口名：由多个字母组成时所有单词的首字母都大写，例：AaaBbbCbb</p>
+</li>
+<li><p>变量名、方法名：由多单词组成时，第一个单词首字母小写，从第二个单词开始首字母大写，例：aaaBbbCcc</p>
+</li>
+<li><p>常量名；所有字母都大写，多单词时每个单词之间用_连接，例：AAA_BBB_CCC</p>
+</li>
+</ol>
+<p>保留字：现在的Java版本中尚未使用，但是以后版本可能会作为关键字使用。</p>
+<hr>
+<h2 id="键盘输入语句"><a href="#键盘输入语句" class="headerlink" title="键盘输入语句"></a>键盘输入语句</h2><hr>
+<p>在编程中，需要接收用户输入的数据时，可以用键盘输入语句。</p>
+<p>需要一个扫描器（对象）就是Scanner</p>
+<h3 id="步骤："><a href="#步骤：" class="headerlink" title="步骤："></a>步骤：</h3><ol>
+<li><p>导入该类所在的包 <code>java.util.*</code>,要使用相应的类，必须先导入这个类所在的包。</p>
+</li>
+<li><p>创建该类对象（声明变量）———— new一个Scanner类的对象。</p>
+</li>
+<li><p>调用里面的功能</p>
+</li>
+</ol>
+<p>例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">//导包</span><br><span class="line">import java.util.Scanner;</span><br><span class="line"></span><br><span class="line">public class Input&#123;</span><br><span class="line">    public static void main(String[] args)&#123;</span><br><span class="line">        //创建该类对象</span><br><span class="line">        Scanner s1 = new Scanner(System.in);</span><br><span class="line">        //调用功能（可以查JDK文档）</span><br><span class="line">        //用name变量接收name信息</span><br><span class="line">        System.out.println(&quot;Your name?&quot;);</span><br><span class="line">        String name = s1.next();</span><br><span class="line">        //用age变量接收age信息</span><br><span class="line">        System.out.println(&quot;Your age?&quot;);</span><br><span class="line">        int age = s1.nextInt();</span><br><span class="line">        //输出信息</span><br><span class="line">        System.out.println(&quot;Your name is  &quot; + name + &quot; and your age is &quot; + age);	</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>进制</p>
+<hr>
+<p>对于整数有四种表达方式：</p>
+<ol>
+<li><p>二进制：0，1，满2进1，以0B或者0b开头。例：0b1010</p>
+</li>
+<li><p>十进制：0-9，满10进1。例：1010</p>
+</li>
+<li><p>八进制：0-7，满8进1，以数字0开头。例：01010</p>
+</li>
+<li><p>十六进制：0-9及1（10）-F（15），满16进1，以0X或0x开头，A-F不区分大小写。例：0x10101</p>
+</li>
+</ol>
+<h3 id="进制转换（基本功）-特别重要"><a href="#进制转换（基本功）-特别重要" class="headerlink" title="进制转换（基本功） 特别重要"></a>进制转换（基本功） 特别重要</h3><h4 id="第一组："><a href="#第一组：" class="headerlink" title="第一组："></a>第一组：</h4><ol>
+<li><p>2转10<br>规则：从最低位开始，将每个位上的数提出来 ，乘以2的（位数-1）次方，并求和。</p>
+</li>
+<li><p>8转10<br>规则：从最低位开始，将每个位上的数提出来，乘以8的（位数-1）次方，并求和。</p>
+</li>
+<li><p>16转10<br>规则：从最低位开始，将每个位上的数提出来，乘以16 的（位数-1）次方，并求和。</p>
+</li>
+</ol>
+<h4 id="第二组："><a href="#第二组：" class="headerlink" title="第二组："></a>第二组：</h4><ol>
+<li><p>10转2<br>规则：将该数不断的除以2，直到商除不尽为止，然后将每步得到的余数倒过来就是对应的二进制。（2转10的逆过程）</p>
+</li>
+<li><p>10转8<br>规则：将该数不断的除以8，直到商除不尽为止，然后将每步得到的余数倒过来就是对应的二进制。（8转10的逆过程）</p>
+</li>
+<li><p>10转16<br>规则：将该数不断的除以16，直到商除不尽为止，然后将每步得到的余数倒过来就是对应的二进制。（16转10的逆过程）</p>
+</li>
+</ol>
+<p>例：<br>十进制数34转2进制 &#x3D;&gt;  0b00100010 （因为一个字节有8位，不够的需要0填位）<br><img src="/images/02.png"></p>
+<h4 id="第三组："><a href="#第三组：" class="headerlink" title="第三组："></a>第三组：</h4><ol>
+<li><p>2转8<br>规则：从低位开始，将二进制数每三位一组，转成对应的八进制数即可。</p>
+</li>
+<li><p>2转16<br>规则：从低位开始，将二进制数每四位一组，转成对应的八进制数即可。</p>
+</li>
+</ol>
+<h4 id="第四组："><a href="#第四组：" class="headerlink" title="第四组："></a>第四组：</h4><ol>
+<li><p>8转2<br>规则：将八进制数每一位，转成对应的一个三位的二进制数即可。（2转8的逆过程）</p>
+</li>
+<li><p>16转2<br>规则：将八进制数每一位，转成对应的一个四位的二进制数即可。（2转16的逆过程）</p>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2024/03/04/2024-3-03%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="cltbvze1o000dngwjc6xy9rwh" data-title="2024-3-03学习笔记" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IT%E5%AD%A6%E4%B9%A0/" rel="tag">IT学习</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaSE/" rel="tag">JavaSE</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java%E7%BC%96%E7%A8%8B/" rel="tag">Java编程</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%BF%9B%E5%88%B6%E6%95%B0%E6%8D%A2%E7%AE%97/" rel="tag">进制数换算</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-2024-3-02学习笔记" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2024/03/03/2024-3-02%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="article-date">
@@ -178,7 +308,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2024/03/03/2024-3-02%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="cltb43s7k000b24wjhmg5bx4f" data-title="2024-3-02学习笔记" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2024/03/03/2024-3-02%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="cltbvze1n000bngwjadny4vgg" data-title="2024-3-02学习笔记" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -265,7 +395,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2024/03/02/2024-3-01%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="cltb43s7h000a24wjaiyqbowd" data-title="2024-3-01学习笔记" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2024/03/02/2024-3-01%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="cltbvze1m000angwjaeyxd8ox" data-title="2024-3-01学习笔记" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -376,7 +506,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2024/03/01/2024-2-29%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="cltb43s7a000824wjei8o41od" data-title="2024-2-29学习笔记" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2024/03/01/2024-2-29%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="cltbvze1k0007ngwj1lwm1bcc" data-title="2024-2-29学习笔记" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -466,7 +596,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2024/02/29/2024-2-28%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="cltb43s77000724wj9pynekpz" data-title="2024-2-28学习笔记" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2024/02/29/2024-2-28%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="cltbvze1l0008ngwj1seldbzu" data-title="2024-2-28学习笔记" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -540,7 +670,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2024/02/28/2024-2-27%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="cltb43s74000624wj0or0brd1" data-title="2024-2-27学习笔记" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2024/02/28/2024-2-27%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="cltbvze1j0006ngwj64vnawso" data-title="2024-2-27学习笔记" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -613,7 +743,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2024/02/27/2024-2-26%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="cltb43s6r000324wj4g0s4deu" data-title="2024-2-26学习笔记" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2024/02/27/2024-2-26%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="cltbvze1f0003ngwj5cr50wf8" data-title="2024-2-26学习笔记" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -657,7 +787,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2024/02/19/2024-2-19%EF%BC%881%EF%BC%89/" data-id="cltb43s6g000124wja9yu81ej" data-title="2024-2-19（1）" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2024/02/19/2024-2-19%EF%BC%881%EF%BC%89/" data-id="cltbvze1a0001ngwjb16w79nu" data-title="2024-2-19（1）" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -684,7 +814,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Dos/" rel="tag">Dos</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IT%E5%AD%A6%E4%B9%A0/" rel="tag">IT学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaSE/" rel="tag">JavaSE</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java%E7%BC%96%E7%A8%8B/" rel="tag">Java编程</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Dos/" rel="tag">Dos</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IT%E5%AD%A6%E4%B9%A0/" rel="tag">IT学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaSE/" rel="tag">JavaSE</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java%E7%BC%96%E7%A8%8B/" rel="tag">Java编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BF%9B%E5%88%B6%E6%95%B0%E6%8D%A2%E7%AE%97/" rel="tag">进制数换算</a></li></ul>
     </div>
   </div>
 
@@ -694,7 +824,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Dos/" style="font-size: 10px;">Dos</a> <a href="/tags/IT%E5%AD%A6%E4%B9%A0/" style="font-size: 20px;">IT学习</a> <a href="/tags/JavaSE/" style="font-size: 20px;">JavaSE</a> <a href="/tags/Java%E7%BC%96%E7%A8%8B/" style="font-size: 20px;">Java编程</a>
+      <a href="/tags/Dos/" style="font-size: 10px;">Dos</a> <a href="/tags/IT%E5%AD%A6%E4%B9%A0/" style="font-size: 20px;">IT学习</a> <a href="/tags/JavaSE/" style="font-size: 20px;">JavaSE</a> <a href="/tags/Java%E7%BC%96%E7%A8%8B/" style="font-size: 20px;">Java编程</a> <a href="/tags/%E8%BF%9B%E5%88%B6%E6%95%B0%E6%8D%A2%E7%AE%97/" style="font-size: 10px;">进制数换算</a>
     </div>
   </div>
 
@@ -716,6 +846,10 @@
       <ul>
         
           <li>
+            <a href="/2024/03/04/2024-3-03%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">2024-3-03学习笔记</a>
+          </li>
+        
+          <li>
             <a href="/2024/03/03/2024-3-02%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">2024-3-02学习笔记</a>
           </li>
         
@@ -729,10 +863,6 @@
         
           <li>
             <a href="/2024/02/29/2024-2-28%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">2024-2-28学习笔记</a>
-          </li>
-        
-          <li>
-            <a href="/2024/02/28/2024-2-27%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">2024-2-27学习笔记</a>
           </li>
         
       </ul>
