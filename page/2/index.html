@@ -69,6 +69,80 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-2024-2-27学习笔记" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/02/28/2024-2-27%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="article-date">
+  <time class="dt-published" datetime="2024-02-27T18:16:57.000Z" itemprop="datePublished">2024-02-28</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2024/02/28/2024-2-27%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">2024-2-27学习笔记</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>今天主要是一些Dos相关的代码和注释之类的问题</p>
+<hr>
+<h2 id="常用转义符"><a href="#常用转义符" class="headerlink" title="常用转义符"></a>常用转义符</h2><hr>
+<p><code>\t</code>制表符，用于实现对其功能，视觉效果字符中间加空格</p>
+<p><code>\n</code>换行符，顾名思义换行</p>
+<p><code>\\</code>为了实际输出一个\</p>
+<p><code>\&quot;</code>为了实际输出一个双引号”</p>
+<p><code>\r</code>输出一个回车，实际作用光标回到本行首位，后续的字符会覆盖前面已有的 <strong>实际应用还不熟悉</strong></p>
+<hr>
+<h2 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h2><hr>
+<p>1.单行注释<code>//</code></p>
+<p>2.多行注释<code>/**/</code></p>
+<p>3文本注释：可以通过javadoc输出的各种，如<code>@author</code> <code>@version</code>详情可以看书。</p>
+<hr>
+<h2 id="Java代码规范-（部分）"><a href="#Java代码规范-（部分）" class="headerlink" title="Java代码规范 （部分）"></a>Java代码规范 （部分）</h2><hr>
+<p>1.类和方法的注释要以Javadoc的方式来写（即文档注释）</p>
+<p>2.非Javadoc的注释往往是给代码维护者看的，应着重说明为什么这样写、如何修改、有什么注意事项等</p>
+<p>3.要移动代码的话，先整体选中然后按tab右移或者shift+tab左移</p>
+<p>4.运算符和等号的左右两边各加一个空格</p>
+<p>5.源文件使用UTF-8代码</p>
+<p>6.行宽不要超过80个字符</p>
+<p>7.代码风格有两种次行风格与行尾风格<br>  行尾风格特点:大括号左端在行尾 <strong>推荐</strong><br>  次行风格特点:大括号左端另起一行 <strong>这种用的人少，但也是可以的</strong> </p>
+<hr>
+<h2 id="Java-Dos原理"><a href="#Java-Dos原理" class="headerlink" title="Java_Dos原理"></a>Java_Dos原理</h2><hr>
+<h3 id="Dos-Disk-Operation-System-磁盘操作系统"><a href="#Dos-Disk-Operation-System-磁盘操作系统" class="headerlink" title="Dos(Disk Operation System)磁盘操作系统"></a>Dos(Disk Operation System)磁盘操作系统</h3><p>1.接收指令<br>2.解析指令<br>3.执行指令</p>
+<p>在变成领域文件夹也被称为目录</p>
+<p>相对路径:从当前目录开始定位而形成的路径</p>
+<p>绝对路径:从顶级目录（如C盘D盘等）开始定位而形成的路径</p>
+<h3 id="一些常用命令"><a href="#一些常用命令" class="headerlink" title="一些常用命令"></a>一些常用命令</h3><p><code>dir</code>查看当前目录的内容列表，也可后续加[路径]查看</p>
+<p><code>cd</code>切换盘符，例如<code>cd /D c:</code>当前路径由D盘切换至C盘<br><code>cd ..</code>切换至上一级目录<br><code>cd \</code>直接切换至根目录</p>
+<p><code>cls</code>清屏</p>
+<p><code>exit</code>退出Dos</p>
+<h3 id="额外带一点"><a href="#额外带一点" class="headerlink" title="额外带一点"></a>额外带一点</h3><p>在Dos中输入几个字母，点tab可以实现命令补全</p>
+<hr>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2024/02/28/2024-2-27%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="cltrmhymx0003n4wj9lly598v" data-title="2024-2-27学习笔记" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Dos/" rel="tag">Dos</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IT%E5%AD%A6%E4%B9%A0/" rel="tag">IT学习</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaSE/" rel="tag">JavaSE</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java%E7%BC%96%E7%A8%8B/" rel="tag">Java编程</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-2024-2-26学习笔记" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2024/02/27/2024-2-26%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="article-date">
@@ -128,7 +202,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2024/02/27/2024-2-26%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="cltn4rj870003sswjdjxfbt23" data-title="2024-2-26学习笔记" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2024/02/27/2024-2-26%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="cltrmhyn30006n4wj8ljm4akc" data-title="2024-2-26学习笔记" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -172,7 +246,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2024/02/19/2024-2-19%EF%BC%881%EF%BC%89/" data-id="cltn4rj820001sswj4jd200sg" data-title="2024-2-19（1）" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2024/02/19/2024-2-19%EF%BC%881%EF%BC%89/" data-id="cltrmhyms0001n4wj9604agwd" data-title="2024-2-19（1）" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -204,7 +278,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Dos/" rel="tag">Dos</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IT%E5%AD%A6%E4%B9%A0/" rel="tag">IT学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaSE/" rel="tag">JavaSE</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java%E7%BC%96%E7%A8%8B/" rel="tag">Java编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/do-while%E5%BE%AA%E7%8E%AF/" rel="tag">do..while循环</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/for%E5%BE%AA%E7%8E%AF/" rel="tag">for循环</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/if-else/" rel="tag">if-else</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/switch/" rel="tag">switch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/while%E5%BE%AA%E7%8E%AF/" rel="tag">while循环</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/" rel="tag">位运算</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A8%8B%E5%BA%8F%E6%8E%A7%E5%88%B6%E7%BB%93%E6%9E%84/" rel="tag">程序控制结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A9%BA%E5%BF%83%E9%87%91%E5%AD%97%E5%A1%94%E9%97%AE%E9%A2%98/" rel="tag">空心金字塔问题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BF%9B%E5%88%B6%E6%95%B0%E6%8D%A2%E7%AE%97/" rel="tag">进制数换算</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Dos/" rel="tag">Dos</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IT%E5%AD%A6%E4%B9%A0/" rel="tag">IT学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaSE/" rel="tag">JavaSE</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java%E7%BC%96%E7%A8%8B/" rel="tag">Java编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/continue%E8%AF%AD%E5%8F%A5/" rel="tag">continue语句</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/do-while%E5%BE%AA%E7%8E%AF/" rel="tag">do..while循环</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/for%E5%BE%AA%E7%8E%AF/" rel="tag">for循环</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/if-else/" rel="tag">if-else</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/return%E8%AF%AD%E5%8F%A5/" rel="tag">return语句</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/switch/" rel="tag">switch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/while%E5%BE%AA%E7%8E%AF/" rel="tag">while循环</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/" rel="tag">位运算</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E7%BB%84%E7%9A%84%E5%BA%94%E7%94%A8/" rel="tag">数组的应用</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A8%8B%E5%BA%8F%E6%8E%A7%E5%88%B6%E7%BB%93%E6%9E%84/" rel="tag">程序控制结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A9%BA%E5%BF%83%E9%87%91%E5%AD%97%E5%A1%94%E9%97%AE%E9%A2%98/" rel="tag">空心金字塔问题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BF%9B%E5%88%B6%E6%95%B0%E6%8D%A2%E7%AE%97/" rel="tag">进制数换算</a></li></ul>
     </div>
   </div>
 
@@ -214,7 +288,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Dos/" style="font-size: 10px;">Dos</a> <a href="/tags/IT%E5%AD%A6%E4%B9%A0/" style="font-size: 20px;">IT学习</a> <a href="/tags/JavaSE/" style="font-size: 20px;">JavaSE</a> <a href="/tags/Java%E7%BC%96%E7%A8%8B/" style="font-size: 20px;">Java编程</a> <a href="/tags/do-while%E5%BE%AA%E7%8E%AF/" style="font-size: 15px;">do..while循环</a> <a href="/tags/for%E5%BE%AA%E7%8E%AF/" style="font-size: 15px;">for循环</a> <a href="/tags/if-else/" style="font-size: 10px;">if-else</a> <a href="/tags/switch/" style="font-size: 10px;">switch</a> <a href="/tags/while%E5%BE%AA%E7%8E%AF/" style="font-size: 15px;">while循环</a> <a href="/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/" style="font-size: 10px;">位运算</a> <a href="/tags/%E7%A8%8B%E5%BA%8F%E6%8E%A7%E5%88%B6%E7%BB%93%E6%9E%84/" style="font-size: 15px;">程序控制结构</a> <a href="/tags/%E7%A9%BA%E5%BF%83%E9%87%91%E5%AD%97%E5%A1%94%E9%97%AE%E9%A2%98/" style="font-size: 10px;">空心金字塔问题</a> <a href="/tags/%E8%BF%9B%E5%88%B6%E6%95%B0%E6%8D%A2%E7%AE%97/" style="font-size: 10px;">进制数换算</a>
+      <a href="/tags/Dos/" style="font-size: 10px;">Dos</a> <a href="/tags/IT%E5%AD%A6%E4%B9%A0/" style="font-size: 20px;">IT学习</a> <a href="/tags/JavaSE/" style="font-size: 20px;">JavaSE</a> <a href="/tags/Java%E7%BC%96%E7%A8%8B/" style="font-size: 20px;">Java编程</a> <a href="/tags/continue%E8%AF%AD%E5%8F%A5/" style="font-size: 10px;">continue语句</a> <a href="/tags/do-while%E5%BE%AA%E7%8E%AF/" style="font-size: 15px;">do..while循环</a> <a href="/tags/for%E5%BE%AA%E7%8E%AF/" style="font-size: 15px;">for循环</a> <a href="/tags/if-else/" style="font-size: 10px;">if-else</a> <a href="/tags/return%E8%AF%AD%E5%8F%A5/" style="font-size: 10px;">return语句</a> <a href="/tags/switch/" style="font-size: 10px;">switch</a> <a href="/tags/while%E5%BE%AA%E7%8E%AF/" style="font-size: 15px;">while循环</a> <a href="/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/" style="font-size: 10px;">位运算</a> <a href="/tags/%E6%95%B0%E7%BB%84%E7%9A%84%E5%BA%94%E7%94%A8/" style="font-size: 10px;">数组的应用</a> <a href="/tags/%E7%A8%8B%E5%BA%8F%E6%8E%A7%E5%88%B6%E7%BB%93%E6%9E%84/" style="font-size: 15px;">程序控制结构</a> <a href="/tags/%E7%A9%BA%E5%BF%83%E9%87%91%E5%AD%97%E5%A1%94%E9%97%AE%E9%A2%98/" style="font-size: 10px;">空心金字塔问题</a> <a href="/tags/%E8%BF%9B%E5%88%B6%E6%95%B0%E6%8D%A2%E7%AE%97/" style="font-size: 10px;">进制数换算</a>
     </div>
   </div>
 
@@ -236,6 +310,10 @@
       <ul>
         
           <li>
+            <a href="/2024/03/15/2024-3-14%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">2024-3-14学习笔记</a>
+          </li>
+        
+          <li>
             <a href="/2024/03/12/2024-3-11%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">2024-3-11学习笔记</a>
           </li>
         
@@ -249,10 +327,6 @@
         
           <li>
             <a href="/2024/03/05/2024-3-04%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">2024-3-04学习笔记</a>
-          </li>
-        
-          <li>
-            <a href="/2024/03/04/2024-3-03%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">2024-3-03学习笔记</a>
           </li>
         
       </ul>
