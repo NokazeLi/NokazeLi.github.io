@@ -69,6 +69,97 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-2024-3-15学习笔记" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/03/16/2024-3-15%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="article-date">
+  <time class="dt-published" datetime="2024-03-16T05:43:29.000Z" itemprop="datePublished">2024-03-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2024/03/16/2024-3-15%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">2024-3-15学习笔记</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>额外的排序方法，还有二分查找后续算法的时候再学习。</p>
+<hr>
+<h2 id="数组缩减"><a href="#数组缩减" class="headerlink" title="数组缩减"></a>数组缩减</h2><hr>
+<p>例：<br>需求有一个数组{1,2,3,4,5}<br>询问是否缩减数组（Y&#x2F;N）；<br>如果Y则去掉最后一个元素，N则退出程序<br>如果数组只有一个元素，则退出程序</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">//用scanner接收Y和N</span><br><span class="line">//用while(true)死循环+if break语句处理多次缩减和退出程序</span><br><span class="line"></span><br><span class="line">//原数组</span><br><span class="line">int[] arr1 = &#123;1,2,3,4,5&#125;;</span><br><span class="line">//创建Scanner</span><br><span class="line">Scanner myScanner = new Scanner(System.in);</span><br><span class="line">//用while循环实现多次缩减</span><br><span class="line">while(true)&#123;</span><br><span class="line">    //展示当前数组的所有元素</span><br><span class="line">    for(int i = 0;i &lt; arr1.length;i++)&#123;</span><br><span class="line">        System.out.print(arr1[i] + &quot; &quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    System.out.println(&quot;&quot;);</span><br><span class="line">    //询问是否缩减并接收键盘输入</span><br><span class="line">    System.out.println(&quot;Would you like to reduce this array?&quot;);</span><br><span class="line">    char ifReduce = myScanner.next().charAt(0);</span><br><span class="line">    //输入N则结束</span><br><span class="line">    if(ifReduce == &#x27;N&#x27;)&#123;</span><br><span class="line">        break;</span><br><span class="line">    &#125;</span><br><span class="line">    //当array只有一个元素时，不能缩减，结束</span><br><span class="line">    if(arr1.length == 1)&#123;</span><br><span class="line">        System.out.println(&quot;There is on a int in the array!&quot;);</span><br><span class="line">        break;</span><br><span class="line">    &#125;</span><br><span class="line">    //去掉最后一个元素</span><br><span class="line">    //先创建一个新数组长度比原数组少1</span><br><span class="line">    int[] arr2 = new int[arr1.length - 1];</span><br><span class="line">    //把除了最后一位的所有元素加入新数组</span><br><span class="line">    for(int i = 0;i &lt; arr2.length;i++)&#123;</span><br><span class="line">        arr2[i] = arr1[i];</span><br><span class="line">    &#125;</span><br><span class="line">    //地址引用</span><br><span class="line">    aar1 = arr2;</span><br><span class="line">&#125;</span><br><span class="line">//提示程序结束</span><br><span class="line">System.out.println(&quot;Program is over&quot;);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h2><hr>
+<p>排序时将多个数据依指定的顺序进行排列的过程。</p>
+<p>分为：</p>
+<ol>
+<li><p>内部排序<br>指将需要处理的所有数据都加载到内部储存器中进行排序。（包括交换式排序法、选择式排序法和插式排序法）</p>
+</li>
+<li><p>外部排序<br>数据量过大无法全部加载到内存中时，需要借助外部存储进行排序。（包括合并排序法和直接合并排序法）</p>
+</li>
+</ol>
+<p><strong>这里只学习一个冒泡排序(Bubble Sorting)，后续的会在算法部分学习。</strong></p>
+<p>{24，69，80，57，13}<br>分析冒泡排序：</p>
+<p>第一轮排序：目标把最大的数放在最后<br>第一次比较 24比69 ，前小后大不变位置。<br>第二次比较69：80 前小后大不变位置。<br>第三次比较 80：57，80较大，所以80，57换位  {24，69，57，80，13}<br>第四次比较 80：13，80较大，换位 {24，69，57，13，80} 第一轮排序结束</p>
+<p>第二轮排序：目标把次大的，放在length-2的位置<br>第一次比较24：69，前小后大不变位置。<br>第二次比较69：57，换位 {24,57,69,13,80}<br>第三次比较69：13，换位{24,57,13,69,80}<br>69 和80没有再比较的意义，所以不进行第四轮比较</p>
+<p>第三轮排序：目标把第三大的数，放在length-3的位置<br>第一次比较24：57，不变<br>第二次比较57：13，交换{24,13,57,69,80}<br>后面都是比较过的了 本轮排序结束。</p>
+<p>最后一轮排序：确定最后两个数的位置。<br>第一次比较24：13,交换{13,24,57,69,80}<br>后面都是排序过的数，无需比较</p>
+<p>特点总结：</p>
+<ol>
+<li>有n个元素的array，则进行n-1轮排序。(外层循环)</li>
+<li>每轮排序可以确定一个元素的位置。</li>
+<li>当进行比较时，若前元素大于后元素则交换位置。</li>
+<li>每轮的比较次数，逐渐减少(arr1.length - 1 - i)(内层循环)</li>
+</ol>
+<p>代码实现：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">int[] arr1 = &#123;24,69,80,57,13&#125;;</span><br><span class="line">int temp = 0;</span><br><span class="line">//共进行4轮排序</span><br><span class="line">for(int = 0;i &lt; arr1.length - 1;i++)&#123;</span><br><span class="line">    //每轮排序进行比较的次数逐渐减少</span><br><span class="line">    for(int j = 0;j &lt; arr1.length - 1 - i;j++)&#123;</span><br><span class="line">        //前后元素比较，若前元素大则换位</span><br><span class="line">        if(arr1[j] &gt; arr[j + 1])&#123;</span><br><span class="line">            temp = arr1[j];</span><br><span class="line">            arr1[j] = arr1[j + 1];</span><br><span class="line">            arr1[j + 1] = temp;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h2><hr>
+<p>查找共分为两种</p>
+<ol>
+<li><p>顺序查找<br>遍历完，挨个比较，用if判断</p>
+</li>
+<li><p>二分查找(这个也是到算法再学习)<br>二分查找的数组，必须是有序排列的。<br>先取中间的值判断，若要查找的值则向左再找中间值做比较，反之则向右找中间值机型比较。</p>
+</li>
+</ol>
+<p>顺序查找需求，输入一个数字，判断是否在array中，若在，则提示下标，若否则提示不在并继续输入数字。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">int[] arr1 = &#123;1,5,2,6,4,3&#125;;</span><br><span class="line">Scanner myScanner = new Scanner(System.in);</span><br><span class="line">//用while循环实现多次询问，因为涉及多层循环所以要加标签，确保break代码正确作用</span><br><span class="line">askCircle:</span><br><span class="line">while(true)&#123;</span><br><span class="line">    //输入一个数字并接收</span><br><span class="line">    System.out.println(&quot;Please import a number&quot;);</span><br><span class="line">    int num = myScanner.nextInt();</span><br><span class="line">    //遍历数组</span><br><span class="line">    for(int i = 0;i &lt; arr1.length;i++)&#123;</span><br><span class="line">        if(num == arr1[i])&#123;</span><br><span class="line">            int index = i;</span><br><span class="line">            Sytem.out.println(num + &quot; is in the array and index is &quot; + index);</span><br><span class="line">            break askCircle;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    //如果找不到</span><br><span class="line">    //说是也可以用if(index == -1)来作为没找到的条件，但是这个例子我觉得没有必要</span><br><span class="line">    System.out.println(num + &quot; can&#x27;t be found&quot;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="多维数组————二维数组"><a href="#多维数组————二维数组" class="headerlink" title="多维数组————二维数组"></a>多维数组————二维数组</h2><hr>
+<p>二维数组的每一个元素，都是一个一维数组；换言之，当一个一维数组的每一个元素都是一维数组时，它就是一个二维数组。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">//新建一个二位数组</span><br><span class="line">int[][] arr1 =&#123;&#123;0,0,0,0,0,0&#125;,&#123;0,0,1,0,0,0&#125;,&#123;0,2,0,3,0,0&#125;,&#123;0,0,0,0,0,0&#125;&#125;;</span><br><span class="line">//遍历二维数组的方法</span><br><span class="line">for(int i = 0;i &lt; arr1.length;i++)&#123;</span><br><span class="line">    for(int j = 0;j &lt; arr1[i].length;j++)&#123;</span><br><span class="line">        System.out.print(arr1[i][j] + &quot; &quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    System.out.println(&quot;&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="动态初始化1："><a href="#动态初始化1：" class="headerlink" title="动态初始化1："></a>动态初始化1：</h3><p><code>int[][] a = new int[2][3];</code> 名字为a的二维数组，由两个一维数组组成，每个一维数组又由三个int组成。</p>
+<h3 id="二维数组的内存分布"><a href="#二维数组的内存分布" class="headerlink" title="二维数组的内存分布"></a>二维数组的内存分布</h3><p><img src="/images/08.png" alt="二维数组的内存分布示意图"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2024/03/16/2024-3-15%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="clttrvfsb000n38wjchm55cx8" data-title="2024-3-15学习笔记" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IT%E5%AD%A6%E4%B9%A0/" rel="tag">IT学习</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaSE/" rel="tag">JavaSE</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java%E7%BC%96%E7%A8%8B/" rel="tag">Java编程</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84/" rel="tag">二维数组</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F/" rel="tag">冒泡排序</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E7%BB%84%E7%9A%84%E5%BA%94%E7%94%A8/" rel="tag">数组的应用</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%A1%BA%E5%BA%8F%E6%9F%A5%E6%89%BE/" rel="tag">顺序查找</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-2024-3-14学习笔记" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2024/03/15/2024-3-14%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="article-date">
@@ -152,7 +243,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2024/03/15/2024-3-14%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="cltrmhynt001kn4wj6oq831rq" data-title="2024-3-14学习笔记" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2024/03/15/2024-3-14%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="clttrvfsw002y38wj1gq92f9c" data-title="2024-3-14学习笔记" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -226,7 +317,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2024/03/12/2024-3-11%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="cltrmhynr001hn4wj8wgp4vgt" data-title="2024-3-11学习笔记" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2024/03/12/2024-3-11%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="clttrvfs9000l38wjcqod5uak" data-title="2024-3-11学习笔记" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -310,7 +401,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2024/03/11/2024-3-10%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="cltrmhynr001gn4wj66sy00i8" data-title="2024-3-10学习笔记" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2024/03/11/2024-3-10%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="clttrvfs7000i38wj6ji027kw" data-title="2024-3-10学习笔记" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -392,7 +483,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2024/03/08/2024-3-07%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="cltrmhynq001fn4wj3wbjcxwr" data-title="2024-3-07学习笔记" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2024/03/08/2024-3-07%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="clttrvfs5000g38wje5se4zj2" data-title="2024-3-07学习笔记" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -505,7 +596,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2024/03/05/2024-3-04%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="cltrmhyno001dn4wj0q3n16fn" data-title="2024-3-04学习笔记" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2024/03/05/2024-3-04%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="clttrvfs0000d38wj1mkbexdw" data-title="2024-3-04学习笔记" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -635,7 +726,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2024/03/04/2024-3-03%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="cltrmhynn001cn4wjh6784bmd" data-title="2024-3-03学习笔记" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2024/03/04/2024-3-03%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="clttrvfrz000b38wj81vi6xk1" data-title="2024-3-03学习笔记" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -758,7 +849,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2024/03/03/2024-3-02%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="cltrmhyn9000bn4wjcbhsblyo" data-title="2024-3-02学习笔记" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2024/03/03/2024-3-02%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="clttrvfs1000e38wjhemz9ero" data-title="2024-3-02学习笔记" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -845,7 +936,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2024/03/02/2024-3-01%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="cltrmhyn8000an4wjc5163upe" data-title="2024-3-01学习笔记" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2024/03/02/2024-3-01%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="clttrvfry000a38wj7oiua8nr" data-title="2024-3-01学习笔记" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -956,97 +1047,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2024/03/01/2024-2-29%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="cltrmhyn60008n4wj0wwa3gjz" data-title="2024-2-29学习笔记" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IT%E5%AD%A6%E4%B9%A0/" rel="tag">IT学习</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaSE/" rel="tag">JavaSE</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java%E7%BC%96%E7%A8%8B/" rel="tag">Java编程</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-2024-2-28学习笔记" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2024/02/29/2024-2-28%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="article-date">
-  <time class="dt-published" datetime="2024-02-28T18:31:35.000Z" itemprop="datePublished">2024-02-29</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2024/02/29/2024-2-28%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">2024-2-28学习笔记</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>今天主要学习了变量的部分知识</p>
-<hr>
-<h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><hr>
-<h3 id="为什么需要变量"><a href="#为什么需要变量" class="headerlink" title="为什么需要变量"></a>为什么需要变量</h3><p>因为一个程序就是一个世界，要用不同的变量代表这个世界中不同的数据</p>
-<h3 id="简单说明一下程序运行时，电脑和内存的状态"><a href="#简单说明一下程序运行时，电脑和内存的状态" class="headerlink" title="简单说明一下程序运行时，电脑和内存的状态"></a>简单说明一下程序运行时，电脑和内存的状态</h3><p><code>int a = 1;</code>  &#x2F;&#x2F;先在内存中开辟一个储存空间，储存的数值是1类型是int，名字是a作为地址，相当于房间的门牌号<br><code>a = 3;</code>  &#x2F;&#x2F;找到a地址，并由a指向储存数值的空间，将空间内储存的类型为int数值为1的值，改为3<br><code>System.out.println(a);</code>  &#x2F;&#x2F;经由a指向找到储存空间并输出数值3<br>上例主要为了说明修改变量的数值，并不会开辟新的存储空间，而是改变旧空间中的数值。</p>
-<h3 id="变量使用的基本步骤"><a href="#变量使用的基本步骤" class="headerlink" title="变量使用的基本步骤"></a>变量使用的基本步骤</h3><p>1.声明变量<br><code>int a;</code><br>2.赋值<br><code>a = 60;</code><br>3.调用</p>
-<p>当然也可以声明+赋值一步到位<code>int a = 60;</code></p>
-<h3 id="变量使用的注意事项"><a href="#变量使用的注意事项" class="headerlink" title="变量使用的注意事项"></a>变量使用的注意事项</h3><p>1.变量表示内存中的一个存储空间（不同的变量，类型不同，占用的空间大小也不同）</p>
-<p>2.该区域有自己的名称[变量名]和类型[数据类型]</p>
-<p>3.变量必须先声明后使用</p>
-<p>4.该区域数据可以在同一类型的范围内不断变化（强类型特性）</p>
-<p>5.变量在同一作用域内不可以重名</p>
-<p>6.变量有三个要素，类型、名称、值</p>
-<hr>
-<h2 id="程序中加号的使用"><a href="#程序中加号的使用" class="headerlink" title="程序中加号的使用"></a>程序中加号的使用</h2><hr>
-<p>1.左右两边都是数值类型时，则作加法运算</p>
-<p>2.左右两边有一方是字符串时，则做拼接运算</p>
-<hr>
-<h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><hr>
-<h3 id="整数型"><a href="#整数型" class="headerlink" title="整数型"></a>整数型</h3><p>每一种数据都定义了明确的数据类型（故Java是强类型语言），在内存中分类了不同大小的内存空间</p>
-<p>基本数据类型分为数值型、字符型、布尔型</p>
-<p>数值型又分为整数类和浮点类</p>
-<p>整数类：byte[1字节]、short[2字节]、int[4字节]、long[8字节]</p>
-<p>浮点类：float[4字节]（单精度）、double[8字节]（双精度）</p>
-<p>字符型:char[2字节] &#x2F;&#x2F;用于存放单个字符，比如’a’</p>
-<p>布尔型:boolean[1字节]&#x2F;&#x2F;存放true、false</p>
-<h4 id="整数型-细节"><a href="#整数型-细节" class="headerlink" title="整数型 细节"></a>整数型 细节</h4><p>1.Java个整数类型有固定的范围和字段长度，不受OS（Operation System）[操作系统]<br>  以保证Java程序的可移植性</p>
-<p>2.Java的整型常量默认为int型，声明long型常量后需加L或者l</p>
-<p>3.Java程序中变量常声明为int型，除非不足以表示大数才使用long</p>
-<p>4.bit（位）；计算机中的最小储存单位<br>  byte（字节）；计算机中的基本存储单元<br>  1byte &#x3D; 8bit</p>
-<h3 id="浮点型"><a href="#浮点型" class="headerlink" title="浮点型"></a>浮点型</h3><p>1.与整数类相似，Java浮点类型也有固定的范围和字段长度，不受OS影响</p>
-<p>2.Java浮点型常量默认为double型，声明float型需要在后面加F或者f</p>
-<p>3.浮点型常有两种表示形式<br>   十进制数的形式，如 5.12，512.0f，.512(必须有小数点)<br>   科学计数法形式如5.12e2[5.12*10的2次方]，5.12E-2[5.12&#x2F;10的2次方]</p>
-<p>4.通常情况下，应该使用double型，因为精确度更高。即保存尾数更多</p>
-<p>5.浮点数陷阱<br>  <code>double a = 2.7;</code><br>  <code>double b = 8.1 / 3</code><br>  上述两个数值并不相等，所以切记不要直接对运算过后结果位小数的值做相等判断</p>
-<p>  比如</p>
-<p>  <code>if(a == b)&#123;</code><br>  <code>System.out.println(&quot;相等&quot;);</code><br>  <code>&#125;</code></p>
-<p>  比较好的方法是</p>
-<p>  <code>if(Math.abs(a - b) &lt; 0.00001)&#125;&#123;</code><br>  <code>System.out.println(&quot;相等&quot;);</code><br>  <code>&#125;</code></p>
-<p>  <code>Math.abs()</code>是绝对值</p>
-<hr>
-<h2 id="Java-API（Application-Programming-Interface）即应用程序编程接口"><a href="#Java-API（Application-Programming-Interface）即应用程序编程接口" class="headerlink" title="Java API（Application Programming Interface）即应用程序编程接口"></a>Java API（Application Programming Interface）即应用程序编程接口</h2><hr>
-<p>Java类的组织形式（和使用API文档相关）</p>
-<hr>
-<h2 id="API文档的使用方法"><a href="#API文档的使用方法" class="headerlink" title="API文档的使用方法"></a>API文档的使用方法</h2><hr>
-<p>JDK由很多的包组成</p>
-<p>每个包又有很多的接口、类、枚举和异常组成。</p>
-<p>每个类下面又有字段、构造器（构造方法）和成员方法</p>
-<h3 id="比如要找ArrayList"><a href="#比如要找ArrayList" class="headerlink" title="比如要找ArrayList"></a>比如要找ArrayList</h3><p>1.当知道目标类在哪个包的时候，比如ArrayList在java.util包中，直接找到java.util包然后找到ArrayList类，然后找具体方法找如何使用S。</p>
-<p>2.不知道包的时候 ，点开API文档，点索引输入类名，然后选中类点显示。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2024/02/29/2024-2-28%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="cltrmhyn40007n4wjc5ybdntf" data-title="2024-2-28学习笔记" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2024/03/01/2024-2-29%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="clttrvfrw000738wj6h0z0r5u" data-title="2024-2-29学习笔记" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -1078,7 +1079,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Dos/" rel="tag">Dos</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IT%E5%AD%A6%E4%B9%A0/" rel="tag">IT学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaSE/" rel="tag">JavaSE</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java%E7%BC%96%E7%A8%8B/" rel="tag">Java编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/continue%E8%AF%AD%E5%8F%A5/" rel="tag">continue语句</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/do-while%E5%BE%AA%E7%8E%AF/" rel="tag">do..while循环</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/for%E5%BE%AA%E7%8E%AF/" rel="tag">for循环</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/if-else/" rel="tag">if-else</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/return%E8%AF%AD%E5%8F%A5/" rel="tag">return语句</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/switch/" rel="tag">switch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/while%E5%BE%AA%E7%8E%AF/" rel="tag">while循环</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/" rel="tag">位运算</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E7%BB%84%E7%9A%84%E5%BA%94%E7%94%A8/" rel="tag">数组的应用</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A8%8B%E5%BA%8F%E6%8E%A7%E5%88%B6%E7%BB%93%E6%9E%84/" rel="tag">程序控制结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A9%BA%E5%BF%83%E9%87%91%E5%AD%97%E5%A1%94%E9%97%AE%E9%A2%98/" rel="tag">空心金字塔问题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BF%9B%E5%88%B6%E6%95%B0%E6%8D%A2%E7%AE%97/" rel="tag">进制数换算</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Dos/" rel="tag">Dos</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IT%E5%AD%A6%E4%B9%A0/" rel="tag">IT学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaSE/" rel="tag">JavaSE</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java%E7%BC%96%E7%A8%8B/" rel="tag">Java编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/continue%E8%AF%AD%E5%8F%A5/" rel="tag">continue语句</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/do-while%E5%BE%AA%E7%8E%AF/" rel="tag">do..while循环</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/for%E5%BE%AA%E7%8E%AF/" rel="tag">for循环</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/if-else/" rel="tag">if-else</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/return%E8%AF%AD%E5%8F%A5/" rel="tag">return语句</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/switch/" rel="tag">switch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/while%E5%BE%AA%E7%8E%AF/" rel="tag">while循环</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84/" rel="tag">二维数组</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/" rel="tag">位运算</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F/" rel="tag">冒泡排序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E7%BB%84%E7%9A%84%E5%BA%94%E7%94%A8/" rel="tag">数组的应用</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A8%8B%E5%BA%8F%E6%8E%A7%E5%88%B6%E7%BB%93%E6%9E%84/" rel="tag">程序控制结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A9%BA%E5%BF%83%E9%87%91%E5%AD%97%E5%A1%94%E9%97%AE%E9%A2%98/" rel="tag">空心金字塔问题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BF%9B%E5%88%B6%E6%95%B0%E6%8D%A2%E7%AE%97/" rel="tag">进制数换算</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A1%BA%E5%BA%8F%E6%9F%A5%E6%89%BE/" rel="tag">顺序查找</a></li></ul>
     </div>
   </div>
 
@@ -1088,7 +1089,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Dos/" style="font-size: 10px;">Dos</a> <a href="/tags/IT%E5%AD%A6%E4%B9%A0/" style="font-size: 20px;">IT学习</a> <a href="/tags/JavaSE/" style="font-size: 20px;">JavaSE</a> <a href="/tags/Java%E7%BC%96%E7%A8%8B/" style="font-size: 20px;">Java编程</a> <a href="/tags/continue%E8%AF%AD%E5%8F%A5/" style="font-size: 10px;">continue语句</a> <a href="/tags/do-while%E5%BE%AA%E7%8E%AF/" style="font-size: 15px;">do..while循环</a> <a href="/tags/for%E5%BE%AA%E7%8E%AF/" style="font-size: 15px;">for循环</a> <a href="/tags/if-else/" style="font-size: 10px;">if-else</a> <a href="/tags/return%E8%AF%AD%E5%8F%A5/" style="font-size: 10px;">return语句</a> <a href="/tags/switch/" style="font-size: 10px;">switch</a> <a href="/tags/while%E5%BE%AA%E7%8E%AF/" style="font-size: 15px;">while循环</a> <a href="/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/" style="font-size: 10px;">位运算</a> <a href="/tags/%E6%95%B0%E7%BB%84%E7%9A%84%E5%BA%94%E7%94%A8/" style="font-size: 10px;">数组的应用</a> <a href="/tags/%E7%A8%8B%E5%BA%8F%E6%8E%A7%E5%88%B6%E7%BB%93%E6%9E%84/" style="font-size: 15px;">程序控制结构</a> <a href="/tags/%E7%A9%BA%E5%BF%83%E9%87%91%E5%AD%97%E5%A1%94%E9%97%AE%E9%A2%98/" style="font-size: 10px;">空心金字塔问题</a> <a href="/tags/%E8%BF%9B%E5%88%B6%E6%95%B0%E6%8D%A2%E7%AE%97/" style="font-size: 10px;">进制数换算</a>
+      <a href="/tags/Dos/" style="font-size: 10px;">Dos</a> <a href="/tags/IT%E5%AD%A6%E4%B9%A0/" style="font-size: 20px;">IT学习</a> <a href="/tags/JavaSE/" style="font-size: 20px;">JavaSE</a> <a href="/tags/Java%E7%BC%96%E7%A8%8B/" style="font-size: 20px;">Java编程</a> <a href="/tags/continue%E8%AF%AD%E5%8F%A5/" style="font-size: 10px;">continue语句</a> <a href="/tags/do-while%E5%BE%AA%E7%8E%AF/" style="font-size: 15px;">do..while循环</a> <a href="/tags/for%E5%BE%AA%E7%8E%AF/" style="font-size: 15px;">for循环</a> <a href="/tags/if-else/" style="font-size: 10px;">if-else</a> <a href="/tags/return%E8%AF%AD%E5%8F%A5/" style="font-size: 10px;">return语句</a> <a href="/tags/switch/" style="font-size: 10px;">switch</a> <a href="/tags/while%E5%BE%AA%E7%8E%AF/" style="font-size: 15px;">while循环</a> <a href="/tags/%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84/" style="font-size: 10px;">二维数组</a> <a href="/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/" style="font-size: 10px;">位运算</a> <a href="/tags/%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F/" style="font-size: 10px;">冒泡排序</a> <a href="/tags/%E6%95%B0%E7%BB%84%E7%9A%84%E5%BA%94%E7%94%A8/" style="font-size: 15px;">数组的应用</a> <a href="/tags/%E7%A8%8B%E5%BA%8F%E6%8E%A7%E5%88%B6%E7%BB%93%E6%9E%84/" style="font-size: 15px;">程序控制结构</a> <a href="/tags/%E7%A9%BA%E5%BF%83%E9%87%91%E5%AD%97%E5%A1%94%E9%97%AE%E9%A2%98/" style="font-size: 10px;">空心金字塔问题</a> <a href="/tags/%E8%BF%9B%E5%88%B6%E6%95%B0%E6%8D%A2%E7%AE%97/" style="font-size: 10px;">进制数换算</a> <a href="/tags/%E9%A1%BA%E5%BA%8F%E6%9F%A5%E6%89%BE/" style="font-size: 10px;">顺序查找</a>
     </div>
   </div>
 
@@ -1110,6 +1111,10 @@
       <ul>
         
           <li>
+            <a href="/2024/03/16/2024-3-15%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">2024-3-15学习笔记</a>
+          </li>
+        
+          <li>
             <a href="/2024/03/15/2024-3-14%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">2024-3-14学习笔记</a>
           </li>
         
@@ -1123,10 +1128,6 @@
         
           <li>
             <a href="/2024/03/08/2024-3-07%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">2024-3-07学习笔记</a>
-          </li>
-        
-          <li>
-            <a href="/2024/03/05/2024-3-04%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">2024-3-04学习笔记</a>
           </li>
         
       </ul>
