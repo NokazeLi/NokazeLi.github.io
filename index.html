@@ -69,6 +69,100 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-2024-3-30学习笔记" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/03/30/2024-3-30%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="article-date">
+  <time class="dt-published" datetime="2024-03-30T09:10:09.000Z" itemprop="datePublished">2024-03-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2024/03/30/2024-3-30%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">2024-3-30学习笔记</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="方法递归调用"><a href="#方法递归调用" class="headerlink" title="方法递归调用"></a>方法递归调用</h2><hr>
+<p>递归就是方法调用其本身，每次调用时传入不同的变量。递归有助于编程者解决复杂的问题使代码变简洁。</p>
+<h3 id="递归能解决的问题："><a href="#递归能解决的问题：" class="headerlink" title="递归能解决的问题："></a>递归能解决的问题：</h3><ol>
+<li><p>各种数学问题，如：八皇后问题、汉诺塔问题、阶乘问题、迷宫问题、球和篮子问题等。</p>
+</li>
+<li><p>各种算法中也使用递归，比如快排、归并排序、二分查找、分治算法等。</p>
+</li>
+</ol>
+<p><img src="/images/11.png" alt="递归调用的内存示意图"></p>
+<h3 id="递归规则："><a href="#递归规则：" class="headerlink" title="递归规则："></a>递归规则：</h3><ol>
+<li><p>执行一个方法时，就闯进一个新的受保护的独立空间(栈空间)。</p>
+</li>
+<li><p>方法的局部变量是独立的不会互相受影响。</p>
+</li>
+<li><p>如果方法中使用的引用类型(比如数组)，就会共享该引用类型的数据。</p>
+</li>
+<li><p>递归必须向对出递归的条件逼近，否则回无限递归(StackOverFlowError)。</p>
+</li>
+<li><p>当一个方法执行完毕，或者遇到return就会返回，遵循谁调用就把结果返回给谁的规律，方法执行完毕返回时，该方法就结束了。</p>
+</li>
+</ol>
+<h3 id="小球走迷宫问题"><a href="#小球走迷宫问题" class="headerlink" title="小球走迷宫问题"></a>小球走迷宫问题</h3><p><img src="/images/12.png" alt="迷宫"></p>
+<h4 id="创建迷宫"><a href="#创建迷宫" class="headerlink" title="创建迷宫"></a>创建迷宫</h4><ol>
+<li><p>用二维数组int[][] puzzlle &#x3D; new int[8][7];表示。</p>
+</li>
+<li><p>先规定puzzle数组的元素值:0可以走1表示障碍物。</p>
+</li>
+<li><p>第一行、最后一行、第一列、最后一列元素设置为1(迷宫四周围墙)。</p>
+</li>
+</ol>
+<h4 id="使用递归回溯的思想解决小球走迷宫的问题"><a href="#使用递归回溯的思想解决小球走迷宫的问题" class="headerlink" title="使用递归回溯的思想解决小球走迷宫的问题"></a>使用递归回溯的思想解决小球走迷宫的问题</h4><ol>
+<li><p>用wayFineder方法来找路径。 </p>
+</li>
+<li><p>如果找到通路返回ture，不通则返回false。</p>
+</li>
+<li><p>形参int[][]是迷宫，i和j是小球的初始坐标。</p>
+</li>
+<li><p>先规定数值的含义，0和1已经设置完毕，用2表示已经探明的通路，用3表示已经探明的死路。</p>
+</li>
+<li><p>结束递归的条件：终点位置的值为2。</p>
+</li>
+<li><p>指定探路策略(有多种)，这里下 → 右 → 上 → 左，优先级由高到低排列。</p>
+</li>
+</ol>
+<h4 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">//创建迷宫</span><br><span class="line">int[][] puzzle = new int[8][7];</span><br><span class="line">//四周墙壁</span><br><span class="line">for(int i = 0;i &lt; puzzle[0].length;i++)&#123;</span><br><span class="line">    puzzle[0][i] = 1;</span><br><span class="line">    puzzle[7][i] = 1;</span><br><span class="line">&#125;</span><br><span class="line">for(int i = 0;i &lt; puzzle.length;i++)&#123;</span><br><span class="line">    puzzle[i][0] = 1;</span><br><span class="line">    puzzle[i][6] = 1;</span><br><span class="line">&#125;</span><br><span class="line">//四周以外的墙</span><br><span class="line">puzzle[3][1] = 1;</span><br><span class="line">puzzle[3][2] = 1;</span><br><span class="line"></span><br><span class="line">//调用wayFinder方法</span><br><span class="line">Tools myTools = new Tools();</span><br><span class="line">myTools.wayFinder(puzzle,1,1);</span><br><span class="line"></span><br><span class="line">class Tools&#123;</span><br><span class="line">    //探路方法</span><br><span class="line">    public Boolean wayFinder(int[][] puzzle, int i,int j)&#123;</span><br><span class="line">        if(puzzle[6][5] == 2)&#123;//迷宫的终点，即递归结束条件</span><br><span class="line">            return true;</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            if(puzzle[i][j] == 0)&#123;//未探明的通路</span><br><span class="line">                puzzle[i][j] == 2;</span><br><span class="line">                //以下右上左的优先级四面探路</span><br><span class="line">                if(wayFinder(puzzle,i + 1,j))&#123;</span><br><span class="line">                    return true;</span><br><span class="line">                &#125;else if(wayFinder(puzzle,i,j + 1))&#123;</span><br><span class="line">                    return true;</span><br><span class="line">                &#125;else if(wayFinder(puzzle,i - 1,j))&#123;</span><br><span class="line">                    return true;</span><br><span class="line">                &#125;else if(wayFinder(puzzle,i,j - 1))&#123;</span><br><span class="line">                    return true;</span><br><span class="line">                &#125;else&#123;</span><br><span class="line">                    //四面都走不通的，判定为死路赋值3</span><br><span class="line">                    puzzle[i][j] = 3;</span><br><span class="line">                    return false;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;else&#123;//puzzle[i][j] == 1，2，3，不走已经探明过的路</span><br><span class="line">                return false;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="汉诺塔问题"><a href="#汉诺塔问题" class="headerlink" title="汉诺塔问题"></a>汉诺塔问题</h3><h4 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h4><ol>
+<li><p>方法有四个形参，a(起点),b(中转),c(终点),num(层数)。</p>
+</li>
+<li><p>递归终点，如果塔只有一层的话，a → c结束。</p>
+</li>
+<li><p>当有多层的时候，将上面的num-1层视为一个整体。<br> 则搬运流程应为a → b，a → c，b → c</p>
+</li>
+</ol>
+<h4 id="代码实现-1"><a href="#代码实现-1" class="headerlink" title="代码实现"></a>代码实现</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">//调用move方法</span><br><span class="line">Tools myTools = new Tools();</span><br><span class="line">myTools.move(3,&#x27;A&#x27;,&#x27;B&#x27;,&#x27;C&#x27;);</span><br><span class="line"></span><br><span class="line">class Tools&#123;</span><br><span class="line">    public void move(int num,char a,char b,char c)&#123;</span><br><span class="line">        //递归终点</span><br><span class="line">        if(num == 1)&#123;</span><br><span class="line">            System.out.println(a + &quot;-&gt;&quot; + c);</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            //分析3的搬运步骤</span><br><span class="line">            move(num - 1,a,c,b);</span><br><span class="line">            System.out.println(a + &quot;-&gt;&quot; + c);</span><br><span class="line">            move(num - 1,b,a,c);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2024/03/30/2024-3-30%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="cludvnjwx0000mcwj47h815ki" data-title="2024-3-30学习笔记" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IT%E5%AD%A6%E4%B9%A0/" rel="tag">IT学习</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaSE/" rel="tag">JavaSE</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java%E7%BC%96%E7%A8%8B/" rel="tag">Java编程</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%B1%89%E8%AF%BA%E5%A1%94%E9%97%AE%E9%A2%98/" rel="tag">汉诺塔问题</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%BF%B7%E5%AE%AB%E9%97%AE%E9%A2%98/" rel="tag">迷宫问题</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%80%92%E5%BD%92/" rel="tag">递归</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-2024-3-24学习笔记" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2024/03/25/2024-3-24%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="article-date">
@@ -1009,93 +1103,6 @@
 
 
   
-    <article id="post-2024-3-01学习笔记" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2024/03/02/2024-3-01%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="article-date">
-  <time class="dt-published" datetime="2024-03-01T16:53:54.000Z" itemprop="datePublished">2024-03-02</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2024/03/02/2024-3-01%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">2024-3-01学习笔记</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>今天是基本类型的强制转换、String类型和基本类型之间的转换、还有运算符的算数运算符部分的内容。</p>
-<hr>
-<h2 id="基本数据类型强制转换"><a href="#基本数据类型强制转换" class="headerlink" title="基本数据类型强制转换"></a>基本数据类型强制转换</h2><hr>
-<p>是自动类型转换的逆过程，将容量大的数据类型转换为容量小的数据类型，需要加上强制转换符（xx），但是可能会造成精度降低或溢出，应注意。</p>
-<p>例：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">int n1 = (1.9);</span><br><span class="line">System.out.println(n1); //输出1，精度损失</span><br><span class="line"></span><br><span class="line">int n2 = 2000;</span><br><span class="line">byte b1 = (byte)n2;</span><br><span class="line">System.out.println(b1);  //输出-48，数据溢出了，并不是输出byte的上限</span><br></pre></td></tr></table></figure>
-
-<h3 id="强制类型转换细节"><a href="#强制类型转换细节" class="headerlink" title="强制类型转换细节"></a>强制类型转换细节</h3><ol>
-<li><p>当精度大的数据转换成精度小的数据，就是强制转换</p>
-</li>
-<li><p>强转符号只针对于最近的操作数有效，往往会使用小括号提升优先级<br>例：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">int x = (int)10 * 3 + 5 * 1.5;  //只会让10强转为int，整个运算结果还是double类型，会编译报错</span><br><span class="line"></span><br><span class="line">int y =  (int)(10 * 3 + 5 * 1.5);</span><br><span class="line">System.out.println(b1); //double运算结果44.0强转为int，精度损失，输出44</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>char类型可以保存int的常量值，但是不能保存int的变量值，需要强转。<br>例：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">char c1 = 100;  //输出d</span><br><span class="line">int m = 100;</span><br><span class="line">char c2 = m; //int类无法自动转换成char，编译报错</span><br><span class="line">char c3 = (int)n; //正常输出d</span><br></pre></td></tr></table></figure></li>
-</ol>
-<hr>
-<h2 id="基本数据类型和String类型的转换"><a href="#基本数据类型和String类型的转换" class="headerlink" title="基本数据类型和String类型的转换"></a>基本数据类型和String类型的转换</h2><hr>
-<ol>
-<li><p>将基本数据类型转换为String，<code>+ &quot;&quot;</code>即可，<em>相当于基本数据类型和空字符串拼接（我自己说的不确定有没有理解错）</em><br>例：<br><code>String str1 = 1 + &quot;&quot;; //以类型为String的str1接收&quot;1&quot;</code></p>
-</li>
-<li><p>将String类型转换成基本数据类型，通过基本类型包装类调用parseXX方法。<strong>包装类型会在面向对象部分详细讲</strong><br>例：<br><code>int i = Integer.parseInt(&quot;123&quot;); //将&quot;123&quot;转换为int类型的123，用i接收</code></p>
-</li>
-<li><p>把String转换成char，这话的意思是把字符串的第一个字符存储到char中，因为String是字符串有多个字符<br>例：<br><code>char c = (&quot;123&quot;.charAt(0)); //String的charAt方法</code></p>
-</li>
-</ol>
-<h3 id="基本数据类型和String类型的转换细节"><a href="#基本数据类型和String类型的转换细节" class="headerlink" title="基本数据类型和String类型的转换细节"></a>基本数据类型和String类型的转换细节</h3><ol>
-<li><p>将String类型转换成基本数据类型时，要确保String类型能够转换成有效数据。<br>比如”Hello”转换成基本类型，用int接收的话就会抛出异常。</p>
-</li>
-<li><p>如果格式不正确，会抛出异常造成程序终止。（编译不会报错，而是运行时出异常）</p>
-</li>
-</ol>
-<hr>
-<h2 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h2><hr>
-<p>一种用以表示数据的运算、赋值和比较等的特殊符号。有算数运算符、赋值运算符、关系运算符[比较运算符]、逻辑运算符、位运算符（需要二进制基础）和三元运算符。</p>
-<h3 id="算数运算符————对数值类型的变量进行运算"><a href="#算数运算符————对数值类型的变量进行运算" class="headerlink" title="算数运算符————对数值类型的变量进行运算"></a>算数运算符————对数值类型的变量进行运算</h3><p>着重说明\、%、++</p>
-<h4 id="的应用"><a href="#的应用" class="headerlink" title="\的应用"></a>\的应用</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">System.out.println(10 \ 4); //在Java中因为是两个int型之间的运算，所以运算结果也是int型，</span><br><span class="line">                            //相比于数学运算结果的浮点数2.5丢失了精度，所以输出2。</span><br><span class="line"></span><br><span class="line">System.out.println(10.0 \ 4); //10,0是double，结果是double，2.5</span><br><span class="line"></span><br><span class="line">double d = 10 \ 4; //因为在java中10\4是2，而因为是double类型变成2.0</span><br><span class="line">System.out.println(d); //所以输出2.0</span><br></pre></td></tr></table></figure>
-
-<h4 id=""><a href="#" class="headerlink" title="++"></a>++</h4><p>如果独立使用的话i++和++i相同</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">int i = 10;</span><br><span class="line">i++; //本质是i = i + 1;</span><br><span class="line">System.out.println(i); //输出11</span><br><span class="line">++i;</span><br><span class="line">System.out.println(i); //输出12</span><br></pre></td></tr></table></figure>
-
-<p>但当作为表达式使用时，++i是先自增后赋值，i++是先赋值后自增<br>例：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">int j = 8;</span><br><span class="line">int k = ++j; //等价j = j + 1; k = j; 所以k = 9 j = 9</span><br><span class="line">int h = j++; //等价 h = j; j = j + 1;因为保留了上面的数值 所以h = 9，j = 10</span><br></pre></td></tr></table></figure>
-
-<p>一些练习；</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">int i = 1; //1赋值给i</span><br><span class="line">i = i++; //(1)temp = i;(2)i = i + 1;(3)i = temp;  **这里是重点，涉及自动临时变量的问题,temp就是临时变量**</span><br><span class="line">System.out.println(i); //所以会输出1</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">int i = 1; //1赋值给i</span><br><span class="line">i = ++i；//(1)i = i + 1;(2)temp = i;(3)i = temp; **同样使用临时变量temp**</span><br><span class="line">System.out.println(i); //所以会输出2</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2024/03/02/2024-3-01%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="clu71kyzk000e64wj68dtcbtx" data-title="2024-3-01学习笔记" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IT%E5%AD%A6%E4%B9%A0/" rel="tag">IT学习</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaSE/" rel="tag">JavaSE</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java%E7%BC%96%E7%A8%8B/" rel="tag">Java编程</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
 
 
   <nav id="page-nav">
@@ -1114,7 +1121,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Dos/" rel="tag">Dos</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IT%E5%AD%A6%E4%B9%A0/" rel="tag">IT学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaSE/" rel="tag">JavaSE</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java%E7%BC%96%E7%A8%8B/" rel="tag">Java编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/continue%E8%AF%AD%E5%8F%A5/" rel="tag">continue语句</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/do-while%E5%BE%AA%E7%8E%AF/" rel="tag">do..while循环</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/for%E5%BE%AA%E7%8E%AF/" rel="tag">for循环</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/if-else/" rel="tag">if-else</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/return%E8%AF%AD%E5%8F%A5/" rel="tag">return语句</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/switch/" rel="tag">switch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/while%E5%BE%AA%E7%8E%AF/" rel="tag">while循环</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84/" rel="tag">二维数组</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/" rel="tag">位运算</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F/" rel="tag">冒泡排序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%88%90%E5%91%98%E6%96%B9%E6%B3%95/" rel="tag">成员方法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E7%BB%84%E7%9A%84%E5%BA%94%E7%94%A8/" rel="tag">数组的应用</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A8%8B%E5%BA%8F%E6%8E%A7%E5%88%B6%E7%BB%93%E6%9E%84/" rel="tag">程序控制结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A9%BA%E5%BF%83%E9%87%91%E5%AD%97%E5%A1%94%E9%97%AE%E9%A2%98/" rel="tag">空心金字塔问题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BF%9B%E5%88%B6%E6%95%B0%E6%8D%A2%E7%AE%97/" rel="tag">进制数换算</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-OOP/" rel="tag">面向对象(OOP)</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A1%BA%E5%BA%8F%E6%9F%A5%E6%89%BE/" rel="tag">顺序查找</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Dos/" rel="tag">Dos</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IT%E5%AD%A6%E4%B9%A0/" rel="tag">IT学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaSE/" rel="tag">JavaSE</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java%E7%BC%96%E7%A8%8B/" rel="tag">Java编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/continue%E8%AF%AD%E5%8F%A5/" rel="tag">continue语句</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/do-while%E5%BE%AA%E7%8E%AF/" rel="tag">do..while循环</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/for%E5%BE%AA%E7%8E%AF/" rel="tag">for循环</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/if-else/" rel="tag">if-else</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/return%E8%AF%AD%E5%8F%A5/" rel="tag">return语句</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/switch/" rel="tag">switch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/while%E5%BE%AA%E7%8E%AF/" rel="tag">while循环</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84/" rel="tag">二维数组</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/" rel="tag">位运算</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F/" rel="tag">冒泡排序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%88%90%E5%91%98%E6%96%B9%E6%B3%95/" rel="tag">成员方法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E7%BB%84%E7%9A%84%E5%BA%94%E7%94%A8/" rel="tag">数组的应用</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B1%89%E8%AF%BA%E5%A1%94%E9%97%AE%E9%A2%98/" rel="tag">汉诺塔问题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A8%8B%E5%BA%8F%E6%8E%A7%E5%88%B6%E7%BB%93%E6%9E%84/" rel="tag">程序控制结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A9%BA%E5%BF%83%E9%87%91%E5%AD%97%E5%A1%94%E9%97%AE%E9%A2%98/" rel="tag">空心金字塔问题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BF%9B%E5%88%B6%E6%95%B0%E6%8D%A2%E7%AE%97/" rel="tag">进制数换算</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BF%B7%E5%AE%AB%E9%97%AE%E9%A2%98/" rel="tag">迷宫问题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%80%92%E5%BD%92/" rel="tag">递归</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-OOP/" rel="tag">面向对象(OOP)</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A1%BA%E5%BA%8F%E6%9F%A5%E6%89%BE/" rel="tag">顺序查找</a></li></ul>
     </div>
   </div>
 
@@ -1124,7 +1131,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Dos/" style="font-size: 10px;">Dos</a> <a href="/tags/IT%E5%AD%A6%E4%B9%A0/" style="font-size: 20px;">IT学习</a> <a href="/tags/JavaSE/" style="font-size: 20px;">JavaSE</a> <a href="/tags/Java%E7%BC%96%E7%A8%8B/" style="font-size: 20px;">Java编程</a> <a href="/tags/continue%E8%AF%AD%E5%8F%A5/" style="font-size: 10px;">continue语句</a> <a href="/tags/do-while%E5%BE%AA%E7%8E%AF/" style="font-size: 15px;">do..while循环</a> <a href="/tags/for%E5%BE%AA%E7%8E%AF/" style="font-size: 15px;">for循环</a> <a href="/tags/if-else/" style="font-size: 10px;">if-else</a> <a href="/tags/return%E8%AF%AD%E5%8F%A5/" style="font-size: 10px;">return语句</a> <a href="/tags/switch/" style="font-size: 10px;">switch</a> <a href="/tags/while%E5%BE%AA%E7%8E%AF/" style="font-size: 15px;">while循环</a> <a href="/tags/%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84/" style="font-size: 15px;">二维数组</a> <a href="/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/" style="font-size: 10px;">位运算</a> <a href="/tags/%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F/" style="font-size: 10px;">冒泡排序</a> <a href="/tags/%E6%88%90%E5%91%98%E6%96%B9%E6%B3%95/" style="font-size: 10px;">成员方法</a> <a href="/tags/%E6%95%B0%E7%BB%84%E7%9A%84%E5%BA%94%E7%94%A8/" style="font-size: 15px;">数组的应用</a> <a href="/tags/%E7%A8%8B%E5%BA%8F%E6%8E%A7%E5%88%B6%E7%BB%93%E6%9E%84/" style="font-size: 15px;">程序控制结构</a> <a href="/tags/%E7%A9%BA%E5%BF%83%E9%87%91%E5%AD%97%E5%A1%94%E9%97%AE%E9%A2%98/" style="font-size: 10px;">空心金字塔问题</a> <a href="/tags/%E8%BF%9B%E5%88%B6%E6%95%B0%E6%8D%A2%E7%AE%97/" style="font-size: 10px;">进制数换算</a> <a href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-OOP/" style="font-size: 10px;">面向对象(OOP)</a> <a href="/tags/%E9%A1%BA%E5%BA%8F%E6%9F%A5%E6%89%BE/" style="font-size: 10px;">顺序查找</a>
+      <a href="/tags/Dos/" style="font-size: 10px;">Dos</a> <a href="/tags/IT%E5%AD%A6%E4%B9%A0/" style="font-size: 20px;">IT学习</a> <a href="/tags/JavaSE/" style="font-size: 20px;">JavaSE</a> <a href="/tags/Java%E7%BC%96%E7%A8%8B/" style="font-size: 20px;">Java编程</a> <a href="/tags/continue%E8%AF%AD%E5%8F%A5/" style="font-size: 10px;">continue语句</a> <a href="/tags/do-while%E5%BE%AA%E7%8E%AF/" style="font-size: 15px;">do..while循环</a> <a href="/tags/for%E5%BE%AA%E7%8E%AF/" style="font-size: 15px;">for循环</a> <a href="/tags/if-else/" style="font-size: 10px;">if-else</a> <a href="/tags/return%E8%AF%AD%E5%8F%A5/" style="font-size: 10px;">return语句</a> <a href="/tags/switch/" style="font-size: 10px;">switch</a> <a href="/tags/while%E5%BE%AA%E7%8E%AF/" style="font-size: 15px;">while循环</a> <a href="/tags/%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84/" style="font-size: 15px;">二维数组</a> <a href="/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/" style="font-size: 10px;">位运算</a> <a href="/tags/%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F/" style="font-size: 10px;">冒泡排序</a> <a href="/tags/%E6%88%90%E5%91%98%E6%96%B9%E6%B3%95/" style="font-size: 10px;">成员方法</a> <a href="/tags/%E6%95%B0%E7%BB%84%E7%9A%84%E5%BA%94%E7%94%A8/" style="font-size: 15px;">数组的应用</a> <a href="/tags/%E6%B1%89%E8%AF%BA%E5%A1%94%E9%97%AE%E9%A2%98/" style="font-size: 10px;">汉诺塔问题</a> <a href="/tags/%E7%A8%8B%E5%BA%8F%E6%8E%A7%E5%88%B6%E7%BB%93%E6%9E%84/" style="font-size: 15px;">程序控制结构</a> <a href="/tags/%E7%A9%BA%E5%BF%83%E9%87%91%E5%AD%97%E5%A1%94%E9%97%AE%E9%A2%98/" style="font-size: 10px;">空心金字塔问题</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 10px;">算法</a> <a href="/tags/%E8%BF%9B%E5%88%B6%E6%95%B0%E6%8D%A2%E7%AE%97/" style="font-size: 10px;">进制数换算</a> <a href="/tags/%E8%BF%B7%E5%AE%AB%E9%97%AE%E9%A2%98/" style="font-size: 10px;">迷宫问题</a> <a href="/tags/%E9%80%92%E5%BD%92/" style="font-size: 10px;">递归</a> <a href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-OOP/" style="font-size: 10px;">面向对象(OOP)</a> <a href="/tags/%E9%A1%BA%E5%BA%8F%E6%9F%A5%E6%89%BE/" style="font-size: 10px;">顺序查找</a>
     </div>
   </div>
 
@@ -1146,6 +1153,10 @@
       <ul>
         
           <li>
+            <a href="/2024/03/30/2024-3-30%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">2024-3-30学习笔记</a>
+          </li>
+        
+          <li>
             <a href="/2024/03/25/2024-3-24%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">2024-3-24学习笔记</a>
           </li>
         
@@ -1159,10 +1170,6 @@
         
           <li>
             <a href="/2024/03/12/2024-3-11%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">2024-3-11学习笔记</a>
-          </li>
-        
-          <li>
-            <a href="/2024/03/11/2024-3-10%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">2024-3-10学习笔记</a>
           </li>
         
       </ul>
