@@ -69,6 +69,147 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-2024-4-10学习笔记" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/04/10/2024-4-10%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="article-date">
+  <time class="dt-published" datetime="2024-04-10T10:06:22.000Z" itemprop="datePublished">2024-04-10</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2024/04/10/2024-4-10%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">2024-4-10学习笔记</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="hashcode"><a href="#hashcode" class="headerlink" title="hashcode"></a>hashcode</h2><hr>
+<h3 id="因为以下有应用，插入一些hashcode相关的内容"><a href="#因为以下有应用，插入一些hashcode相关的内容" class="headerlink" title="因为以下有应用，插入一些hashcode相关的内容"></a>因为以下有应用，插入一些hashcode相关的内容</h3><p>可以对比两个Object的hashcode，若不同则是不同的对象。<br><code>xxx.hashCode();</code></p>
+<hr>
+<h2 id="this关键字"><a href="#this关键字" class="headerlink" title="this关键字"></a>this关键字</h2><hr>
+<p>java虚拟机给每个对象分配this，代表当前对象。(this指向它们本身)</p>
+<h3 id="注意事项和细节"><a href="#注意事项和细节" class="headerlink" title="注意事项和细节"></a>注意事项和细节</h3><ol>
+<li>this关键字可以用来访问本类的属性、方法和构造器。</li>
+<li>this用于区分当前类的属性和局部变量。</li>
+<li>访问成员方法的语法：<code>this.方法名(参数列表);</code></li>
+<li>访问构造器的语法：<code>this(参数列表);</code>，注意，只能在构造器中使用，用于在构造器中调用另一个构造器，且必须放在第一条语句。</li>
+<li>this不能在类定义的外部使用，只能在类定义的方法中使用。</li>
+</ol>
+<hr>
+<h2 id="程序的健壮性"><a href="#程序的健壮性" class="headerlink" title="程序的健壮性"></a>程序的健壮性</h2><hr>
+<h3 id="由作业引出了一些影响程序健壮性的细节"><a href="#由作业引出了一些影响程序健壮性的细节" class="headerlink" title="由作业引出了一些影响程序健壮性的细节"></a>由作业引出了一些影响程序健壮性的细节</h3><p>题目：编写类A01。定义方法max，实现求某个double数组的最大值。<br>除了实现主要功能以外，还有两个问题需要考虑，若传入空数组如何处理，若传入null如何处理。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">//在功能主体外加一个if循环</span><br><span class="line">if(arr1 != null &amp;&amp; arr1.length &gt; 0)&#123;</span><br><span class="line"></span><br><span class="line">&#125;else&#123;</span><br><span class="line">    return null;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>返回类型用包装类Double的话，可以返回null，然后主程序调用的时候判断接受的是否是null就可以做成可视化输出了。</p>
+<hr>
+<h2 id="IDEA相关"><a href="#IDEA相关" class="headerlink" title="IDEA相关"></a>IDEA相关</h2><hr>
+<p>IDEA是业界公认最好的java开发工具，除了支持java开发还支持HTML,还支持HTML、CSS、PHP、MySQL、Python等。IDEA是以项目概念来管理java源码的。</p>
+<h3 id="设置及快捷键"><a href="#设置及快捷键" class="headerlink" title="设置及快捷键"></a>设置及快捷键</h3><p>Setting → Font 调节代码字体大小<br>Setting → Appearance 可以调节菜单栏字体大小<br>双击工作区选项卡，可以工作区全屏<br>导入该行代码需要的类(自动导包) setting → genneral → auto import 里面有相关设置</p>
+<h4 id="常用快捷键"><a href="#常用快捷键" class="headerlink" title="常用快捷键"></a>常用快捷键</h4><p>快捷键都可以在Setting → Key Map里修改</p>
+<ol>
+<li>删除当前行 ctrl + y</li>
+<li>赋值当前行并另起一行粘贴 ctrl + d</li>
+<li>代码补全 alt + &#x2F;</li>
+<li>自动格式化代码 ctrl + alt + L</li>
+<li>快速运行程序 ctrl+shift + f10</li>
+<li>生成构造器 alt + insert(右键generate)</li>
+<li>查看类的层级关系 ctrl + h</li>
+<li>定位一个方法 ctrl + b</li>
+<li>自动分配变量名 .var</li>
+</ol>
+<h4 id="模板-sout-var就是模板"><a href="#模板-sout-var就是模板" class="headerlink" title="模板(.sout,.var就是模板)"></a>模板(.sout,.var就是模板)</h4><p>file → setting → editor → live templates 可以查看和修改</p>
+<h3 id="包"><a href="#包" class="headerlink" title="包"></a>包</h3><h4 id="包的作用"><a href="#包的作用" class="headerlink" title="包的作用"></a>包的作用</h4><ol>
+<li>区分相同名字的类</li>
+<li>当类很多时，可以更好的管理类</li>
+<li>控制访问范围</li>
+</ol>
+<h4 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h4><p>package com.xxxx；</p>
+<p>package关键字表示打包，com.xxxx表示包名。</p>
+<p>包的本质就是创建不痛的文件夹保存文件。</p>
+<p>调用包里和开头包中的类相同名字的类时，要开头加包名<br>例：<br><code>com.xiaoming.Dog dog1 = new com.xiaoming.Dog();</code></p>
+<h4 id="命名规则"><a href="#命名规则" class="headerlink" title="命名规则"></a>命名规则</h4><p>只能包含数字、字母、下划线和小圆点，但不能以数字开头，名字不可以是关键字和保留字。</p>
+<h4 id="命名规范"><a href="#命名规范" class="headerlink" title="命名规范"></a>命名规范</h4><p>一般是小写字母+小圆点<br>com.公司名.项目名.业务模块名<br>例:<br>com.sina.crm.user &#x2F;&#x2F;用户模块<br>com.sina.crm.order &#x2F;&#x2F;订单模块<br>com.sina.crm.utils &#x2F;&#x2F;工具类</p>
+<h4 id="一些常用的包"><a href="#一些常用的包" class="headerlink" title="一些常用的包"></a>一些常用的包</h4><p>java.lang.* &#x2F;&#x2F;lang包时基本饱，默认引入，使用lang包里的类不需要额外引入<br>java.util.* &#x2F;&#x2F;util包，系统提供的工具包工具类<br>java.net.*  &#x2F;&#x2F;网络包，网络开发<br>java.awt.* &#x2F;&#x2F; 做java界面的开发,GUI</p>
+<p>虽然*可以引入对应包下的所有类，但是还是建议需要哪个类就用具体类名引入。</p>
+<h4 id="注意事项和使用细节"><a href="#注意事项和使用细节" class="headerlink" title="注意事项和使用细节"></a>注意事项和使用细节</h4><ol>
+<li>package的作用是声明当前类所在的包，需要放在类的最上面，一个类中只能有一句package。</li>
+<li>import指令位置在package下面，在类定义的前面可以有多句且没有顺序要求。</li>
+</ol>
+<h3 id="访问修饰符"><a href="#访问修饰符" class="headerlink" title="访问修饰符"></a>访问修饰符</h3><p>java共提供了四种访问修饰符，用于控制方法和属性（成员变量）的访问权限。</p>
+<ol>
+<li>公开级别:public 对外公开。</li>
+<li>受保护级别:protected，对子类和同一个包中的类公开。</li>
+<li>默认：啥都不写的，向同一个包的类公开。</li>
+<li>私有级别：private，只有类本身可以访问，不对外公开</li>
+</ol>
+<h4 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h4><ol>
+<li>修饰符可以用来修饰类中的属性、成员方法以及类。</li>
+<li>只有默认的和public才可以修饰类。</li>
+</ol>
+<hr>
+<h2 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h2><hr>
+<p>封装(encapsulation)就是把抽象出的数据(属性)和对数据的操作(方法)封装在一起,数据被保护在内部。程序的其他部分只有通过被授权的操作(方法)才能对数据进行操作。</p>
+<h3 id="封装的好处"><a href="#封装的好处" class="headerlink" title="封装的好处"></a>封装的好处</h3><ol>
+<li>隐藏实现细节</li>
+<li>可以对数据进行验证,保证安全合理</li>
+</ol>
+<h3 id="实现步骤"><a href="#实现步骤" class="headerlink" title="实现步骤"></a>实现步骤</h3><ol>
+<li>先将属性私有化 private。</li>
+<li>提供一个public的set方法用于对属性判断和赋值。</li>
+<li>提供一个public的get方法用于获取属性的值。</li>
+</ol>
+<hr>
+<h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><hr>
+<p>继承可以解决代码复用，让编程更接近人类思维。当多个类存在相同的属性和方法时，可以从这些类中抽象出父类，在父类中定义这些相同的属性和方法，所有的子类不需要重新定义这些属性和方法，只需要通过extends来声明继承父类即可。</p>
+<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">class 子类名 extends 父类名&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>子类会自动拥有父类的属性和方法<br>父类也叫超类、基类。<br>子类也叫派生类。<br>使用继承提高了代码的复用性，同时也提高了代码的扩展性和维护性。</p>
+<h3 id="注意事项和细节-1"><a href="#注意事项和细节-1" class="headerlink" title="注意事项和细节"></a>注意事项和细节</h3><ol>
+<li>private的属性和方法不能在直接访问，只能通过父类提供的public方法访问（比如get方法）。</li>
+<li>子类必须调用父类的构造器，完成父类的初始化。</li>
+<li>当创建子类对象时，不管使用子类的哪个构造器，默认情况下总会去调用父类的无参构造器，如果父类没有提供无参构造器，则必须在子类的构造器中用super去指定使用父类的哪个构造器完成对父类的初始化工作，否则编译不通过。</li>
+<li>如果希望指定去调用父类的某个构造器，则显式调用一下super(参数列表)。</li>
+<li>super在使用时，需要放在构造器第一行。(super只能在构造器里调用)</li>
+<li>super()和this()都只能放在构造器第一行，因此这两个方法不能共存在同一个构造器中。</li>
+<li>Object类是所有类的基类</li>
+<li>父类构造器的调用不限于直接父类，将一直向上追溯至Object类。</li>
+<li>子类最多技能一个父类(指直接继承)，即java是单继承机制。</li>
+<li>继承不可滥用，子类和父类之间关系必须满足is-a的逻辑关系(子类is a 父类)</li>
+</ol>
+<h3 id="继承的本质"><a href="#继承的本质" class="headerlink" title="继承的本质"></a>继承的本质</h3><p><img src="/images/14.png" alt="继承的底层逻辑图"></p>
+<h4 id="调用的返回信息"><a href="#调用的返回信息" class="headerlink" title="调用的返回信息"></a>调用的返回信息</h4><p><code>Son son = new Son();</code></p>
+<ol>
+<li>首先看子类是否有该属性。</li>
+<li>如果子类有，并且可以访问，则返回子类的信息。</li>
+<li>如果子类没有，则向父类查找有没有这个属性(如果父类有，且可以访问则返回父类信息)。</li>
+<li>如果父类没有则向更上级父类以3的逻辑向上查找，直到Object类。</li>
+</ol>
+<hr>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2024/04/10/2024-4-10%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="clutx5fdc003jagwjgh4j265m" data-title="2024-4-10学习笔记" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IDEA%E7%9B%B8%E5%85%B3/" rel="tag">IDEA相关</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IT%E5%AD%A6%E4%B9%A0/" rel="tag">IT学习</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaSE/" rel="tag">JavaSE</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java%E7%BC%96%E7%A8%8B/" rel="tag">Java编程</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hashcode/" rel="tag">hashcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/this%E5%85%B3%E9%94%AE%E5%AD%97/" rel="tag">this关键字</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%B0%81%E8%A3%85/" rel="tag">封装</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%A8%8B%E5%BA%8F%E7%9A%84%E5%81%A5%E5%A3%AE%E6%80%A7/" rel="tag">程序的健壮性</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%BB%A7%E6%89%BF/" rel="tag">继承</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-2024-4-03学习笔记" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2024/04/04/2024-4-03%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="article-date">
@@ -170,7 +311,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2024/04/04/2024-4-03%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="cluktly560024okwjb3rqg5e1" data-title="2024-4-03学习笔记" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2024/04/04/2024-4-03%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="clutx5fdf003lagwjgvmdefou" data-title="2024-4-03学习笔记" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -264,7 +405,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2024/03/30/2024-3-30%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="cluktly590028okwjgiu872v4" data-title="2024-3-30学习笔记" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2024/03/30/2024-3-30%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="clutx5fdb003iagwj0xryceoc" data-title="2024-3-30学习笔记" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -410,7 +551,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2024/03/25/2024-3-24%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="cluktly580027okwjaqjb4gir" data-title="2024-3-24学习笔记" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2024/03/25/2024-3-24%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="clutx5fbh000pagwjhz2u2lmz" data-title="2024-3-24学习笔记" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -501,7 +642,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2024/03/16/2024-3-15%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="cluktly570025okwjc4465w9s" data-title="2024-3-15学习笔记" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2024/03/16/2024-3-15%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="clutx5fbi000qagwj4vwyccnm" data-title="2024-3-15学习笔记" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -598,7 +739,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2024/03/15/2024-3-14%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="cluktly560023okwj2f2hgzbf" data-title="2024-3-14学习笔记" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2024/03/15/2024-3-14%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="clutx5fbd000nagwjgpci1lap" data-title="2024-3-14学习笔记" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -672,7 +813,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2024/03/12/2024-3-11%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="cluktly550021okwjh7i2g5e0" data-title="2024-3-11学习笔记" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2024/03/12/2024-3-11%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="clutx5fbc000lagwjddn80ufs" data-title="2024-3-11学习笔记" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -756,7 +897,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2024/03/11/2024-3-10%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="cluktly540020okwjdy0ibmvn" data-title="2024-3-10学习笔记" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2024/03/11/2024-3-10%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="clutx5fb5000iagwj8xw77gkd" data-title="2024-3-10学习笔记" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -838,7 +979,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2024/03/08/2024-3-07%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="cluktly4q000eokwjdklc1gmz" data-title="2024-3-07学习笔记" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2024/03/08/2024-3-07%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="clutx5fb2000gagwj1t59ho1l" data-title="2024-3-07学习笔记" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -951,141 +1092,11 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2024/03/05/2024-3-04%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="cluktly4t000gokwj37267rtw" data-title="2024-3-04学习笔记" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2024/03/05/2024-3-04%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="clutx5fam000eagwjarhnhrxj" data-title="2024-3-04学习笔记" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IT%E5%AD%A6%E4%B9%A0/" rel="tag">IT学习</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaSE/" rel="tag">JavaSE</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java%E7%BC%96%E7%A8%8B/" rel="tag">Java编程</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/" rel="tag">位运算</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%A8%8B%E5%BA%8F%E6%8E%A7%E5%88%B6%E7%BB%93%E6%9E%84/" rel="tag">程序控制结构</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-2024-3-03学习笔记" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2024/03/04/2024-3-03%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="article-date">
-  <time class="dt-published" datetime="2024-03-03T18:33:07.000Z" itemprop="datePublished">2024-03-04</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2024/03/04/2024-3-03%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">2024-3-03学习笔记</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>今天最主要的内容是2,8,10,16进制数的换算</p>
-<hr>
-<h2 id="标识符命名规则与规范"><a href="#标识符命名规则与规范" class="headerlink" title="标识符命名规则与规范"></a>标识符命名规则与规范</h2><hr>
-<ol>
-<li><p>Java对各种变量、方法和类的命名时使用的字符序列称为标识符</p>
-</li>
-<li><p>凡是自己可以起名字的地方都叫标识符</p>
-</li>
-</ol>
-<h3 id="命名规则（若违反则编译报错）"><a href="#命名规则（若违反则编译报错）" class="headerlink" title="命名规则（若违反则编译报错）"></a>命名规则（若违反则编译报错）</h3><ol>
-<li><p>由26个英文字母大小写，0-9、$和_组成。</p>
-</li>
-<li><p>数字不能作为开头</p>
-</li>
-<li><p>不可以使用关键字和保留字，但是可以包含关键字和保留字。</p>
-</li>
-<li><p>Java中严格区分大小写，长度无限制。</p>
-</li>
-<li><p>不能包含空格</p>
-</li>
-</ol>
-<h3 id="命名规范（若违背不会编译报错，但是应当遵守）"><a href="#命名规范（若违背不会编译报错，但是应当遵守）" class="headerlink" title="命名规范（若违背不会编译报错，但是应当遵守）"></a>命名规范（若违背不会编译报错，但是应当遵守）</h3><ol>
-<li><p>包名：多单词组成时所有字母都小写,例 aaa.bbb.ccc</p>
-</li>
-<li><p>类名、接口名：由多个字母组成时所有单词的首字母都大写，例：AaaBbbCbb</p>
-</li>
-<li><p>变量名、方法名：由多单词组成时，第一个单词首字母小写，从第二个单词开始首字母大写，例：aaaBbbCcc</p>
-</li>
-<li><p>常量名；所有字母都大写，多单词时每个单词之间用_连接，例：AAA_BBB_CCC</p>
-</li>
-</ol>
-<p>保留字：现在的Java版本中尚未使用，但是以后版本可能会作为关键字使用。</p>
-<hr>
-<h2 id="键盘输入语句"><a href="#键盘输入语句" class="headerlink" title="键盘输入语句"></a>键盘输入语句</h2><hr>
-<p>在编程中，需要接收用户输入的数据时，可以用键盘输入语句。</p>
-<p>需要一个扫描器（对象）就是Scanner</p>
-<h3 id="步骤："><a href="#步骤：" class="headerlink" title="步骤："></a>步骤：</h3><ol>
-<li><p>导入该类所在的包 <code>java.util.*</code>,要使用相应的类，必须先导入这个类所在的包。</p>
-</li>
-<li><p>创建该类对象（声明变量）———— new一个Scanner类的对象。</p>
-</li>
-<li><p>调用里面的功能</p>
-</li>
-</ol>
-<p>例：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">//导包</span><br><span class="line">import java.util.Scanner;</span><br><span class="line"></span><br><span class="line">public class Input&#123;</span><br><span class="line">    public static void main(String[] args)&#123;</span><br><span class="line">        //创建该类对象</span><br><span class="line">        Scanner s1 = new Scanner(System.in);</span><br><span class="line">        //调用功能（可以查JDK文档）</span><br><span class="line">        //用name变量接收name信息</span><br><span class="line">        System.out.println(&quot;Your name?&quot;);</span><br><span class="line">        String name = s1.next();</span><br><span class="line">        //用age变量接收age信息</span><br><span class="line">        System.out.println(&quot;Your age?&quot;);</span><br><span class="line">        int age = s1.nextInt();</span><br><span class="line">        //输出信息</span><br><span class="line">        System.out.println(&quot;Your name is  &quot; + name + &quot; and your age is &quot; + age);	</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<hr>
-<p>进制</p>
-<hr>
-<p>对于整数有四种表达方式：</p>
-<ol>
-<li><p>二进制：0，1，满2进1，以0B或者0b开头。例：0b1010</p>
-</li>
-<li><p>十进制：0-9，满10进1。例：1010</p>
-</li>
-<li><p>八进制：0-7，满8进1，以数字0开头。例：01010</p>
-</li>
-<li><p>十六进制：0-9及1（10）-F（15），满16进1，以0X或0x开头，A-F不区分大小写。例：0x10101</p>
-</li>
-</ol>
-<h3 id="进制转换（基本功）-特别重要"><a href="#进制转换（基本功）-特别重要" class="headerlink" title="进制转换（基本功） 特别重要"></a>进制转换（基本功） 特别重要</h3><h4 id="第一组："><a href="#第一组：" class="headerlink" title="第一组："></a>第一组：</h4><ol>
-<li><p>2转10<br>规则：从最低位开始，将每个位上的数提出来 ，乘以2的（位数-1）次方，并求和。</p>
-</li>
-<li><p>8转10<br>规则：从最低位开始，将每个位上的数提出来，乘以8的（位数-1）次方，并求和。</p>
-</li>
-<li><p>16转10<br>规则：从最低位开始，将每个位上的数提出来，乘以16 的（位数-1）次方，并求和。</p>
-</li>
-</ol>
-<h4 id="第二组："><a href="#第二组：" class="headerlink" title="第二组："></a>第二组：</h4><ol>
-<li><p>10转2<br>规则：将该数不断的除以2，直到商除不尽为止，然后将每步得到的余数倒过来就是对应的二进制。（2转10的逆过程）</p>
-</li>
-<li><p>10转8<br>规则：将该数不断的除以8，直到商除不尽为止，然后将每步得到的余数倒过来就是对应的二进制。（8转10的逆过程）</p>
-</li>
-<li><p>10转16<br>规则：将该数不断的除以16，直到商除不尽为止，然后将每步得到的余数倒过来就是对应的二进制。（16转10的逆过程）</p>
-</li>
-</ol>
-<p>例：<br>十进制数34转2进制 &#x3D;&gt;  0b00100010 （因为一个字节有8位，不够的需要0填位）<br><img src="/images/02.png"></p>
-<h4 id="第三组："><a href="#第三组：" class="headerlink" title="第三组："></a>第三组：</h4><ol>
-<li><p>2转8<br>规则：从低位开始，将二进制数每三位一组，转成对应的八进制数即可。</p>
-</li>
-<li><p>2转16<br>规则：从低位开始，将二进制数每四位一组，转成对应的八进制数即可。</p>
-</li>
-</ol>
-<h4 id="第四组："><a href="#第四组：" class="headerlink" title="第四组："></a>第四组：</h4><ol>
-<li><p>8转2<br>规则：将八进制数每一位，转成对应的一个三位的二进制数即可。（2转8的逆过程）</p>
-</li>
-<li><p>16转2<br>规则：将八进制数每一位，转成对应的一个四位的二进制数即可。（2转16的逆过程）</p>
-</li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2024/03/04/2024-3-03%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="cluktly4p000dokwj03hdbdoe" data-title="2024-3-03学习笔记" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IT%E5%AD%A6%E4%B9%A0/" rel="tag">IT学习</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaSE/" rel="tag">JavaSE</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java%E7%BC%96%E7%A8%8B/" rel="tag">Java编程</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%BF%9B%E5%88%B6%E6%95%B0%E6%8D%A2%E7%AE%97/" rel="tag">进制数换算</a></li></ul>
 
     </footer>
   </div>
@@ -1113,7 +1124,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Dos/" rel="tag">Dos</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IT%E5%AD%A6%E4%B9%A0/" rel="tag">IT学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaSE/" rel="tag">JavaSE</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java%E7%BC%96%E7%A8%8B/" rel="tag">Java编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/continue%E8%AF%AD%E5%8F%A5/" rel="tag">continue语句</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/do-while%E5%BE%AA%E7%8E%AF/" rel="tag">do..while循环</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/for%E5%BE%AA%E7%8E%AF/" rel="tag">for循环</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/if-else/" rel="tag">if-else</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/return%E8%AF%AD%E5%8F%A5/" rel="tag">return语句</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/switch/" rel="tag">switch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/while%E5%BE%AA%E7%8E%AF/" rel="tag">while循环</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84/" rel="tag">二维数组</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/" rel="tag">位运算</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BD%9C%E7%94%A8%E5%9F%9F/" rel="tag">作用域</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F/" rel="tag">冒泡排序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8F%AF%E5%8F%98%E5%8F%82%E6%95%B0/" rel="tag">可变参数</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%88%90%E5%91%98%E6%96%B9%E6%B3%95/" rel="tag">成员方法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E7%BB%84%E7%9A%84%E5%BA%94%E7%94%A8/" rel="tag">数组的应用</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%B9%E6%B3%95%E9%87%8D%E8%BD%BD/" rel="tag">方法重载</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9E%84%E9%80%A0%E5%99%A8/" rel="tag">构造器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B1%89%E8%AF%BA%E5%A1%94%E9%97%AE%E9%A2%98/" rel="tag">汉诺塔问题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A8%8B%E5%BA%8F%E6%8E%A7%E5%88%B6%E7%BB%93%E6%9E%84/" rel="tag">程序控制结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A9%BA%E5%BF%83%E9%87%91%E5%AD%97%E5%A1%94%E9%97%AE%E9%A2%98/" rel="tag">空心金字塔问题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BF%9B%E5%88%B6%E6%95%B0%E6%8D%A2%E7%AE%97/" rel="tag">进制数换算</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BF%B7%E5%AE%AB%E9%97%AE%E9%A2%98/" rel="tag">迷宫问题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%80%92%E5%BD%92/" rel="tag">递归</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-OOP/" rel="tag">面向对象(OOP)</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A1%BA%E5%BA%8F%E6%9F%A5%E6%89%BE/" rel="tag">顺序查找</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Dos/" rel="tag">Dos</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDEA%E7%9B%B8%E5%85%B3/" rel="tag">IDEA相关</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IT%E5%AD%A6%E4%B9%A0/" rel="tag">IT学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaSE/" rel="tag">JavaSE</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java%E7%BC%96%E7%A8%8B/" rel="tag">Java编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/continue%E8%AF%AD%E5%8F%A5/" rel="tag">continue语句</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/do-while%E5%BE%AA%E7%8E%AF/" rel="tag">do..while循环</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/for%E5%BE%AA%E7%8E%AF/" rel="tag">for循环</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hashcode/" rel="tag">hashcode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/if-else/" rel="tag">if-else</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/return%E8%AF%AD%E5%8F%A5/" rel="tag">return语句</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/switch/" rel="tag">switch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/this%E5%85%B3%E9%94%AE%E5%AD%97/" rel="tag">this关键字</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/while%E5%BE%AA%E7%8E%AF/" rel="tag">while循环</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84/" rel="tag">二维数组</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/" rel="tag">位运算</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BD%9C%E7%94%A8%E5%9F%9F/" rel="tag">作用域</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F/" rel="tag">冒泡排序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8F%AF%E5%8F%98%E5%8F%82%E6%95%B0/" rel="tag">可变参数</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%81%E8%A3%85/" rel="tag">封装</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%88%90%E5%91%98%E6%96%B9%E6%B3%95/" rel="tag">成员方法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E7%BB%84%E7%9A%84%E5%BA%94%E7%94%A8/" rel="tag">数组的应用</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%B9%E6%B3%95%E9%87%8D%E8%BD%BD/" rel="tag">方法重载</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9E%84%E9%80%A0%E5%99%A8/" rel="tag">构造器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B1%89%E8%AF%BA%E5%A1%94%E9%97%AE%E9%A2%98/" rel="tag">汉诺塔问题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A8%8B%E5%BA%8F%E6%8E%A7%E5%88%B6%E7%BB%93%E6%9E%84/" rel="tag">程序控制结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A8%8B%E5%BA%8F%E7%9A%84%E5%81%A5%E5%A3%AE%E6%80%A7/" rel="tag">程序的健壮性</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A9%BA%E5%BF%83%E9%87%91%E5%AD%97%E5%A1%94%E9%97%AE%E9%A2%98/" rel="tag">空心金字塔问题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%A7%E6%89%BF/" rel="tag">继承</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BF%9B%E5%88%B6%E6%95%B0%E6%8D%A2%E7%AE%97/" rel="tag">进制数换算</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BF%B7%E5%AE%AB%E9%97%AE%E9%A2%98/" rel="tag">迷宫问题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%80%92%E5%BD%92/" rel="tag">递归</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-OOP/" rel="tag">面向对象(OOP)</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A1%BA%E5%BA%8F%E6%9F%A5%E6%89%BE/" rel="tag">顺序查找</a></li></ul>
     </div>
   </div>
 
@@ -1123,7 +1134,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Dos/" style="font-size: 10px;">Dos</a> <a href="/tags/IT%E5%AD%A6%E4%B9%A0/" style="font-size: 20px;">IT学习</a> <a href="/tags/JavaSE/" style="font-size: 20px;">JavaSE</a> <a href="/tags/Java%E7%BC%96%E7%A8%8B/" style="font-size: 20px;">Java编程</a> <a href="/tags/continue%E8%AF%AD%E5%8F%A5/" style="font-size: 10px;">continue语句</a> <a href="/tags/do-while%E5%BE%AA%E7%8E%AF/" style="font-size: 15px;">do..while循环</a> <a href="/tags/for%E5%BE%AA%E7%8E%AF/" style="font-size: 15px;">for循环</a> <a href="/tags/if-else/" style="font-size: 10px;">if-else</a> <a href="/tags/return%E8%AF%AD%E5%8F%A5/" style="font-size: 10px;">return语句</a> <a href="/tags/switch/" style="font-size: 10px;">switch</a> <a href="/tags/while%E5%BE%AA%E7%8E%AF/" style="font-size: 15px;">while循环</a> <a href="/tags/%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84/" style="font-size: 15px;">二维数组</a> <a href="/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/" style="font-size: 10px;">位运算</a> <a href="/tags/%E4%BD%9C%E7%94%A8%E5%9F%9F/" style="font-size: 10px;">作用域</a> <a href="/tags/%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F/" style="font-size: 10px;">冒泡排序</a> <a href="/tags/%E5%8F%AF%E5%8F%98%E5%8F%82%E6%95%B0/" style="font-size: 10px;">可变参数</a> <a href="/tags/%E6%88%90%E5%91%98%E6%96%B9%E6%B3%95/" style="font-size: 10px;">成员方法</a> <a href="/tags/%E6%95%B0%E7%BB%84%E7%9A%84%E5%BA%94%E7%94%A8/" style="font-size: 15px;">数组的应用</a> <a href="/tags/%E6%96%B9%E6%B3%95%E9%87%8D%E8%BD%BD/" style="font-size: 10px;">方法重载</a> <a href="/tags/%E6%9E%84%E9%80%A0%E5%99%A8/" style="font-size: 10px;">构造器</a> <a href="/tags/%E6%B1%89%E8%AF%BA%E5%A1%94%E9%97%AE%E9%A2%98/" style="font-size: 10px;">汉诺塔问题</a> <a href="/tags/%E7%A8%8B%E5%BA%8F%E6%8E%A7%E5%88%B6%E7%BB%93%E6%9E%84/" style="font-size: 15px;">程序控制结构</a> <a href="/tags/%E7%A9%BA%E5%BF%83%E9%87%91%E5%AD%97%E5%A1%94%E9%97%AE%E9%A2%98/" style="font-size: 10px;">空心金字塔问题</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 10px;">算法</a> <a href="/tags/%E8%BF%9B%E5%88%B6%E6%95%B0%E6%8D%A2%E7%AE%97/" style="font-size: 10px;">进制数换算</a> <a href="/tags/%E8%BF%B7%E5%AE%AB%E9%97%AE%E9%A2%98/" style="font-size: 10px;">迷宫问题</a> <a href="/tags/%E9%80%92%E5%BD%92/" style="font-size: 10px;">递归</a> <a href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-OOP/" style="font-size: 10px;">面向对象(OOP)</a> <a href="/tags/%E9%A1%BA%E5%BA%8F%E6%9F%A5%E6%89%BE/" style="font-size: 10px;">顺序查找</a>
+      <a href="/tags/Dos/" style="font-size: 10px;">Dos</a> <a href="/tags/IDEA%E7%9B%B8%E5%85%B3/" style="font-size: 10px;">IDEA相关</a> <a href="/tags/IT%E5%AD%A6%E4%B9%A0/" style="font-size: 20px;">IT学习</a> <a href="/tags/JavaSE/" style="font-size: 20px;">JavaSE</a> <a href="/tags/Java%E7%BC%96%E7%A8%8B/" style="font-size: 20px;">Java编程</a> <a href="/tags/continue%E8%AF%AD%E5%8F%A5/" style="font-size: 10px;">continue语句</a> <a href="/tags/do-while%E5%BE%AA%E7%8E%AF/" style="font-size: 15px;">do..while循环</a> <a href="/tags/for%E5%BE%AA%E7%8E%AF/" style="font-size: 15px;">for循环</a> <a href="/tags/hashcode/" style="font-size: 10px;">hashcode</a> <a href="/tags/if-else/" style="font-size: 10px;">if-else</a> <a href="/tags/return%E8%AF%AD%E5%8F%A5/" style="font-size: 10px;">return语句</a> <a href="/tags/switch/" style="font-size: 10px;">switch</a> <a href="/tags/this%E5%85%B3%E9%94%AE%E5%AD%97/" style="font-size: 10px;">this关键字</a> <a href="/tags/while%E5%BE%AA%E7%8E%AF/" style="font-size: 15px;">while循环</a> <a href="/tags/%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84/" style="font-size: 15px;">二维数组</a> <a href="/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/" style="font-size: 10px;">位运算</a> <a href="/tags/%E4%BD%9C%E7%94%A8%E5%9F%9F/" style="font-size: 10px;">作用域</a> <a href="/tags/%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F/" style="font-size: 10px;">冒泡排序</a> <a href="/tags/%E5%8F%AF%E5%8F%98%E5%8F%82%E6%95%B0/" style="font-size: 10px;">可变参数</a> <a href="/tags/%E5%B0%81%E8%A3%85/" style="font-size: 10px;">封装</a> <a href="/tags/%E6%88%90%E5%91%98%E6%96%B9%E6%B3%95/" style="font-size: 10px;">成员方法</a> <a href="/tags/%E6%95%B0%E7%BB%84%E7%9A%84%E5%BA%94%E7%94%A8/" style="font-size: 15px;">数组的应用</a> <a href="/tags/%E6%96%B9%E6%B3%95%E9%87%8D%E8%BD%BD/" style="font-size: 10px;">方法重载</a> <a href="/tags/%E6%9E%84%E9%80%A0%E5%99%A8/" style="font-size: 10px;">构造器</a> <a href="/tags/%E6%B1%89%E8%AF%BA%E5%A1%94%E9%97%AE%E9%A2%98/" style="font-size: 10px;">汉诺塔问题</a> <a href="/tags/%E7%A8%8B%E5%BA%8F%E6%8E%A7%E5%88%B6%E7%BB%93%E6%9E%84/" style="font-size: 15px;">程序控制结构</a> <a href="/tags/%E7%A8%8B%E5%BA%8F%E7%9A%84%E5%81%A5%E5%A3%AE%E6%80%A7/" style="font-size: 10px;">程序的健壮性</a> <a href="/tags/%E7%A9%BA%E5%BF%83%E9%87%91%E5%AD%97%E5%A1%94%E9%97%AE%E9%A2%98/" style="font-size: 10px;">空心金字塔问题</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 10px;">算法</a> <a href="/tags/%E7%BB%A7%E6%89%BF/" style="font-size: 10px;">继承</a> <a href="/tags/%E8%BF%9B%E5%88%B6%E6%95%B0%E6%8D%A2%E7%AE%97/" style="font-size: 10px;">进制数换算</a> <a href="/tags/%E8%BF%B7%E5%AE%AB%E9%97%AE%E9%A2%98/" style="font-size: 10px;">迷宫问题</a> <a href="/tags/%E9%80%92%E5%BD%92/" style="font-size: 10px;">递归</a> <a href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-OOP/" style="font-size: 10px;">面向对象(OOP)</a> <a href="/tags/%E9%A1%BA%E5%BA%8F%E6%9F%A5%E6%89%BE/" style="font-size: 10px;">顺序查找</a>
     </div>
   </div>
 
@@ -1145,6 +1156,10 @@
       <ul>
         
           <li>
+            <a href="/2024/04/10/2024-4-10%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">2024-4-10学习笔记</a>
+          </li>
+        
+          <li>
             <a href="/2024/04/04/2024-4-03%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">2024-4-03学习笔记</a>
           </li>
         
@@ -1158,10 +1173,6 @@
         
           <li>
             <a href="/2024/03/16/2024-3-15%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">2024-3-15学习笔记</a>
-          </li>
-        
-          <li>
-            <a href="/2024/03/15/2024-3-14%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">2024-3-14学习笔记</a>
           </li>
         
       </ul>
