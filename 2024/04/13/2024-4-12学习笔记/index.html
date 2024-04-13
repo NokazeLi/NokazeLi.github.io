@@ -4,14 +4,24 @@
   <meta charset="utf-8">
   
   
-  <title>Tag: do..while循环 | 野風のブログ</title>
+  <title>2024-4-12学习笔记 | 野風のブログ</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="野風のブログ">
-<meta property="og:url" content="http://example.com/tags/do-while%E5%BE%AA%E7%8E%AF/index.html">
+  <meta name="description" content="super关键字 super代表父类的引用，用于访问父类的属性、方法和构造器。  访问属性和方法，但不能访问private的属性和方法。 访问父类的构造器，只能放在构造器的第一句且只能写一句。  super的好处和细节 好处:分工明确，父类属性由父类初始化，子类属性由子类初始化。 当子类中有和父类中的属性和方法重名重名的属性和方法时，为了访问父类成员(属性和方法)，必须使用super。若没有重名，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2024-4-12学习笔记">
+<meta property="og:url" content="http://example.com/2024/04/13/2024-4-12%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="野風のブログ">
+<meta property="og:description" content="super关键字 super代表父类的引用，用于访问父类的属性、方法和构造器。  访问属性和方法，但不能访问private的属性和方法。 访问父类的构造器，只能放在构造器的第一句且只能写一句。  super的好处和细节 好处:分工明确，父类属性由父类初始化，子类属性由子类初始化。 当子类中有和父类中的属性和方法重名重名的属性和方法时，为了访问父类成员(属性和方法)，必须使用super。若没有重名，">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-04-13T03:04:38.000Z">
+<meta property="article:modified_time" content="2024-04-13T07:02:08.261Z">
 <meta property="article:author" content="John Doe">
+<meta property="article:tag" content="IT学习">
+<meta property="article:tag" content="Java编程">
+<meta property="article:tag" content="JavaSE">
+<meta property="article:tag" content="super关键字">
+<meta property="article:tag" content="方法重写">
+<meta property="article:tag" content="多态">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="野風のブログ" type="application/atom+xml">
@@ -67,58 +77,116 @@
 </header>
 
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2024" class="archive-year">2024</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2024/03/12/2024-3-11%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="archive-article-date">
-  <time class="dt-published" datetime="2024-03-11T15:14:45.000Z" itemprop="datePublished">Mar 12</time>
+        <section id="main"><article id="post-2024-4-12学习笔记" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/04/13/2024-4-12%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="article-date">
+  <time class="dt-published" datetime="2024-04-13T03:04:38.000Z" itemprop="datePublished">2024-04-13</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2024/03/12/2024-3-11%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">2024-3-11学习笔记</a>
+    <h1 class="p-name article-title" itemprop="headline name">
+      2024-4-12学习笔记
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2024/03/11/2024-3-10%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="archive-article-date">
-  <time class="dt-published" datetime="2024-03-11T05:34:17.000Z" itemprop="datePublished">Mar 11</time>
-</a>
+    <div class="e-content article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2024/03/11/2024-3-10%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">2024-3-10学习笔记</a>
-    </h1>
-  
+        <h2 id="super关键字"><a href="#super关键字" class="headerlink" title="super关键字"></a>super关键字</h2><hr>
+<p>super代表父类的引用，用于访问父类的属性、方法和构造器。</p>
+<ol>
+<li>访问属性和方法，但不能访问private的属性和方法。</li>
+<li>访问父类的构造器，只能放在构造器的第一句且只能写一句。</li>
+</ol>
+<h3 id="super的好处和细节"><a href="#super的好处和细节" class="headerlink" title="super的好处和细节"></a>super的好处和细节</h3><ol>
+<li>好处:分工明确，父类属性由父类初始化，子类属性由子类初始化。</li>
+<li>当子类中有和父类中的属性和方法重名重名的属性和方法时，为了访问父类成员(属性和方法)，必须使用super。若没有重名，使用super、this和默认访问效果都相同。</li>
+<li>super的访问不限于直接父类，如果父类的父类和本类中有同名的成员，也可以使用super去访问其中的成员;若多级父类中都有同名成员，使用super访问则遵循就近原则。(调用最近的父类关系)</li>
+</ol>
+<hr>
+<h2 id="方法重写-覆盖-override"><a href="#方法重写-覆盖-override" class="headerlink" title="方法重写&#x2F;覆盖(override)"></a>方法重写&#x2F;覆盖(override)</h2><hr>
+<p>子类有一个方法和父类的某一个方法名称、返回类型、形参列表一样，则子类方法覆盖(重写)了父类方法。</p>
+<h3 id="注意事项和细节"><a href="#注意事项和细节" class="headerlink" title="注意事项和细节"></a>注意事项和细节</h3><ol>
+<li>子类方法的参数、方法名，要和父类方法完全一样。</li>
+<li>子类方法的返回类型和父类方法返回类型一样，或者是父类返回类型的子类，比如：父类返回类型时Object子类方法的返回类型是String。</li>
+<li>子类方法不能缩小父类的访问权限。</li>
+</ol>
+<hr>
+<h2 id="多态-polymorphism"><a href="#多态-polymorphism" class="headerlink" title="多态(polymorphism)"></a>多态(polymorphism)</h2><hr>
+<p>方法活对象具有多种形态。是面向对象的第三大特征，多态是建立在封装和继承基础之上的。</p>
+<h3 id="方法的重写和重载是方法多态的体现。"><a href="#方法的重写和重载是方法多态的体现。" class="headerlink" title="方法的重写和重载是方法多态的体现。"></a>方法的重写和重载是方法多态的体现。</h3><ol>
+<li><p>一个对象的编译类型和运行类型可以不一致。<br>例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Animal a1 = new Dog();</span><br><span class="line">a1 = new Cat(); //此时运行类型变成了Cat，编译类型仍然是Animal</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>编译类型在定义对象时就确定了，不能改变。</p>
+</li>
+<li><p>运行类型是可以变化的。</p>
+</li>
+<li><p>编译类看定义时”&#x3D;”的左边，运行类型看”&#x3D;”的右边。</p>
+</li>
+</ol>
+<h3 id="注意事项和细节-1"><a href="#注意事项和细节-1" class="headerlink" title="注意事项和细节"></a>注意事项和细节</h3><p>多态的前提是两个对象(类)存在继承关系</p>
+<h3 id="向上转型"><a href="#向上转型" class="headerlink" title="向上转型"></a>向上转型</h3><ol>
+<li>本质：父类的引用只想子类的对象。</li>
+<li>语法：父类类型 引用名 &#x3D; new 子类类型();</li>
+<li>特点：可以调用父类中的所有成员(需要遵守访问权限)，不能调用子类的特有成员；最终运行效果看子类的具体表现。</li>
+</ol>
+<p>线上转型的调用规则和继承的调用规则相同，先从当前运行类型开始查找，若运行类型中有调用的成员则调用。否则逐级向上查找，直到找到父类中相应的成员。</p>
+<h3 id="向下转型"><a href="#向下转型" class="headerlink" title="向下转型"></a>向下转型</h3><p>向上转型只能调用父类中的成员，而不能调用子类的特有成员。所以通过向下转型调用子类特有成员。</p>
+<ol>
+<li>语法：子类类型 引用名 &#x3D; (子类类型)父类引用； &#x2F;&#x2F;强转</li>
+<li>只能强转父类的引用，而不能强转父类的对象。 &#x2F;&#x2F;比如 Animal之于Cat，只能将Animal引用的Cat对象强转Cat，而不能将Animal对象转Cat。</li>
+<li>要求父类的引用必须只想当前目标类型的对象。&#x2F;&#x2F;如果运行类型是cat的对象，也只能强转cat而不能强转dog。</li>
+<li>可以调用子类类型中的所有成员。 &#x2F;&#x2F;完成了对向上转型的功能补充</li>
+</ol>
+<h3 id="属性重写"><a href="#属性重写" class="headerlink" title="属性重写"></a>属性重写</h3><p>属性没有重写之说，直接看编译类型。</p>
+<p>例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">class Base&#123;</span><br><span class="line">    int i = 20;</span><br><span class="line">&#125;</span><br><span class="line">class Sub extends base&#123;</span><br><span class="line">    int i = 10;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Base b1 = new Sub();</span><br><span class="line">Sub s1 = new Sub();</span><br><span class="line">b1.i // 20</span><br><span class="line">b2.i // 10 </span><br></pre></td></tr></table></figure>
 
-    </header>
+<h3 id="instanceof"><a href="#instanceof" class="headerlink" title="instanceof"></a>instanceof</h3><p>instanceof是比较操作符，用于判断运行类型是否是XX类型或者XX类型的子类。</p>
+<p>例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">//接上面的class</span><br><span class="line">Bolean bbb1 = b1 instanceof Sub;//返回true </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="动态绑定机制-非常重要"><a href="#动态绑定机制-非常重要" class="headerlink" title="动态绑定机制(非常重要)"></a>动态绑定机制(非常重要)</h3><ol>
+<li>当调用对象方法的时候，该方法和该对象的内存地址&#x2F;运行类型绑定。</li>
+<li>当调用对象属性时，没有动态绑定机制，那里声明就在哪里使用。</li>
+</ol>
+<h3 id="多态的应用"><a href="#多态的应用" class="headerlink" title="多态的应用"></a>多态的应用</h3><h4 id="多态数组"><a href="#多态数组" class="headerlink" title="多态数组"></a>多态数组</h4><p>数组的定义类型为父类类型，里面保存的实际元素类型为子类类型。</p>
+<h4 id="多态参数"><a href="#多态参数" class="headerlink" title="多态参数"></a>多态参数</h4><p>方法定义的形参类型为父类类型，实参类型为子类类型。</p>
+<hr>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2024/04/13/2024-4-12%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="cluxr30ki003xrswjf13a491z" data-title="2024-4-12学习笔记" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IT%E5%AD%A6%E4%B9%A0/" rel="tag">IT学习</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaSE/" rel="tag">JavaSE</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java%E7%BC%96%E7%A8%8B/" rel="tag">Java编程</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/super%E5%85%B3%E9%94%AE%E5%AD%97/" rel="tag">super关键字</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%A4%9A%E6%80%81/" rel="tag">多态</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%96%B9%E6%B3%95%E9%87%8D%E5%86%99/" rel="tag">方法重写</a></li></ul>
+
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2024/04/10/2024-4-10%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">2024-4-10学习笔记</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-  
-    </div></section>
-  
 
 
 </section>
