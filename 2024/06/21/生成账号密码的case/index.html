@@ -4,14 +4,20 @@
   <meta charset="utf-8">
   
   
-  <title>Tag: if-else | 野風のブログ</title>
+  <title>生成账号密码的case | 野風のブログ</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="野風のブログ">
-<meta property="og:url" content="http://example.com/tags/if-else/index.html">
+  <meta name="description" content="根据日期和计数器生成账号 计时器部分使用数据库而不使用成员属性，因为成员属性程序结束会重新初始化。新建counter表，字段：id count last_reset插入条目id&#x3D;1，cout&#x3D;0，lastrest&#x3D;今天日期 1234567891011121314151617181920212223242526272829303132333435363738394041">
+<meta property="og:type" content="article">
+<meta property="og:title" content="生成账号密码的case">
+<meta property="og:url" content="http://example.com/2024/06/21/%E7%94%9F%E6%88%90%E8%B4%A6%E5%8F%B7%E5%AF%86%E7%A0%81%E7%9A%84case/index.html">
 <meta property="og:site_name" content="野風のブログ">
+<meta property="og:description" content="根据日期和计数器生成账号 计时器部分使用数据库而不使用成员属性，因为成员属性程序结束会重新初始化。新建counter表，字段：id count last_reset插入条目id&#x3D;1，cout&#x3D;0，lastrest&#x3D;今天日期 1234567891011121314151617181920212223242526272829303132333435363738394041">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-06-21T00:35:58.000Z">
+<meta property="article:modified_time" content="2024-06-21T03:27:33.653Z">
 <meta property="article:author" content="John Doe">
+<meta property="article:tag" content="JavaSE">
+<meta property="article:tag" content="账号密码生成">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="野風のブログ" type="application/atom+xml">
@@ -67,39 +73,58 @@
 </header>
 
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2024" class="archive-year">2024</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2024/03/08/2024-3-07%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="archive-article-date">
-  <time class="dt-published" datetime="2024-03-08T02:35:58.000Z" itemprop="datePublished">Mar 8</time>
+        <section id="main"><article id="post-生成账号密码的case" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/06/21/%E7%94%9F%E6%88%90%E8%B4%A6%E5%8F%B7%E5%AF%86%E7%A0%81%E7%9A%84case/" class="article-date">
+  <time class="dt-published" datetime="2024-06-21T00:35:58.000Z" itemprop="datePublished">2024-06-21</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2024/03/08/2024-3-07%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">2024-3-07学习笔记</a>
+    <h1 class="p-name article-title" itemprop="headline name">
+      生成账号密码的case
     </h1>
   
 
-    </header>
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="根据日期和计数器生成账号"><a href="#根据日期和计数器生成账号" class="headerlink" title="根据日期和计数器生成账号"></a>根据日期和计数器生成账号</h2><hr>
+<p>计时器部分使用数据库而不使用成员属性，因为成员属性程序结束会重新初始化。<br>新建counter表，字段：id count last_reset<br>插入条目id&#x3D;1，cout&#x3D;0，lastrest&#x3D;今天日期</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line">/**账号:</span><br><span class="line"> *1. 前八位建档日期</span><br><span class="line"> *2. 第九位随机英文字母大写</span><br><span class="line"> *3. 三位数字001~999，每日清零</span><br><span class="line"> *密码：</span><br><span class="line"> *出生年月日，通过身份证号生成</span><br><span class="line"> */</span><br><span class="line"></span><br><span class="line">public String generateIdPwd(Order order)throws SQLException&#123;</span><br><span class="line">    Connection connection = null;</span><br><span class="line">    //获取今天时间</span><br><span class="line">    try&#123;</span><br><span class="line">        LocalDate today = LocalDate.now();</span><br><span class="line">        //计数器</span><br><span class="line">        //lastReset和today日期不同则重置count，并lastReset = today</span><br><span class="line">        PreparedStatement stmtCounter = connection.prepareStatement(&quot;select count,last_reset from counter where id = 1&quot;);</span><br><span class="line">        ResultSet rsCounter = stmtCounter.executeQuery();</span><br><span class="line">        if(rsCounter.next())&#123;</span><br><span class="line">            int currentCount = rsCounter.getInt(&quot;count&quot;);</span><br><span class="line">            LocalDate lastReset = rsCounter.getDate(&quot;last_reset&quot;).toLocalDate();</span><br><span class="line">            //检查是否重置count</span><br><span class="line">            if(!today.equals(lastRest))&#123;</span><br><span class="line">                currentCount = 0;</span><br><span class="line">                PreparedStatement resetStmt = connection.prepareStatement(&quot;update counter set count = 0,last_reset = ? where id = 1&quot;);</span><br><span class="line">                resetStmt.setDate(1,Date.valueOf(today));</span><br><span class="line">                resetStmt.excute;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        //计数器加1</span><br><span class="line">        PreparedStatement counterUpdateStmt = connection.prepareStatement(&quot;update counter set count = count + 1 where id = 1&quot;);</span><br><span class="line">        counterUpdateStmt.excute();</span><br><span class="line"></span><br><span class="line">        //前八位</span><br><span class="line">        String todayString = today.format(DateTimeFormatter.ofPattern(&quot;yyyyMMdd&quot;));</span><br><span class="line">        //第九位</span><br><span class="line">        char userNameChar = (char)(&#x27;A&#x27; + (Math.random()*26));</span><br><span class="line">        //后三位</span><br><span class="line">        PreparedStatement selectNewCountStmt = connection.prerpareStatement(&quot;select count from counter where id = 1&quot;);</span><br><span class="line">        ResultSet reSelectNewCount = selectNewCountStmt,executeQuery();</span><br><span class="line">        int count = 0；</span><br><span class="line">        if(reSelectNewCount.next())&#123;</span><br><span class="line">            count = reSelectNewCount.getInt(&quot;count&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        String lastThreeNum;</span><br><span class="line">        if(count &lt; 10)&#123;</span><br><span class="line">            lastThreeNum = &quot;00&quot; + count;</span><br><span class="line">        &#125;else if(count &lt; 100)&#123;</span><br><span class="line">            lastThreeNum = &quot;0&quot; + count;</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            lastThreeNum = &quot;&quot; + count;</span><br><span class="line">        &#125;</span><br><span class="line">        String getUserName = todayString + userNameChar + lastThreeNum;</span><br><span class="line">        order.setId(getUserName);</span><br><span class="line"></span><br><span class="line">        //生成密码</span><br><span class="line">        String password = order.getIdCard().substring(6,14);</span><br><span class="line">        retrun &quot;账号：&quot; + lastThreeNum + &quot;\n密码:&quot; + password ;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2024/06/21/%E7%94%9F%E6%88%90%E8%B4%A6%E5%8F%B7%E5%AF%86%E7%A0%81%E7%9A%84case/" data-id="clxnzdxqw0000xowjgt0c8kux" data-title="生成账号密码的case" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaSE/" rel="tag">JavaSE</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%B4%A6%E5%8F%B7%E5%AF%86%E7%A0%81%E7%94%9F%E6%88%90/" rel="tag">账号密码生成</a></li></ul>
+
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2024/06/18/%E5%85%B3%E4%BA%8Ejava%E6%96%87%E4%BB%B6%E5%8F%98%E5%92%96%E5%95%A1%E6%9D%AF/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">关于java文件变咖啡杯</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-  
-    </div></section>
-  
 
 
 </section>
