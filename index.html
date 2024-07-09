@@ -69,6 +69,151 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Mapper代理开发" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/07/09/Mapper%E4%BB%A3%E7%90%86%E5%BC%80%E5%8F%91/" class="article-date">
+  <time class="dt-published" datetime="2024-07-08T23:58:45.000Z" itemprop="datePublished">2024-07-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2024/07/09/Mapper%E4%BB%A3%E7%90%86%E5%BC%80%E5%8F%91/">Mapper代理开发</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="Mapper代理开发"><a href="#Mapper代理开发" class="headerlink" title="Mapper代理开发"></a>Mapper代理开发</h2><hr>
+<p>Mapper代理开发是企业级开发常用的开发手段，需要完全搞清楚。<br>代理开发是IOC的思想</p>
+<h3 id="Mapper代理开发的规则："><a href="#Mapper代理开发的规则：" class="headerlink" title="Mapper代理开发的规则："></a>Mapper代理开发的规则：</h3><ol>
+<li><p>定义与SQL映射文件同名的Mapper接口，并且将Mapper接口和SQL映射文件放在同一目录下。<br> &#x2F;&#x2F;方法要注意<br> 在resources里创建和mapper层相同的包结构，<code>/</code>代替<code>.</code>,用<code>.</code>实际不会生效(测试是否生效可以conpile整个maven项目，然后去target里找classes，成功则两个文件会在一个文件夹)</p>
+</li>
+<li><p>设置SQL映射文件的namespace属性为Mapper接口全限定名。<br>本次的示例：<code>&lt;mapper namespace=&quot;com.nokaze.pojo.mapper.UserMapper&quot;&gt;</code> (这个可以copy path&#x2F;Path From Source Root直接复制)</p>
+</li>
+<li><p>在Mapper接口中定义方法，方法名就是SQL映射文件中sql语句的id，并保持参数类型和返回值类型一致<br> 例：<code>List&lt;User&gt; selectAll();</code></p>
+</li>
+<li><p>编码：<br>   1. 通过SqlSession的getMapper方法获取Mapper接口的代理对象。&#x2F;&#x2F;要仔细再看<br>   <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">//实际执行sql的方式发生了改变</span><br><span class="line"></span><br><span class="line">        //3. 执行Sql</span><br><span class="line">//      List&lt;User&gt; users = sqlSession.selectList(&quot;test.selectAll&quot;);</span><br><span class="line">//      users.forEach(System.out::println);</span><br><span class="line"></span><br><span class="line">        //3.1 获取对应的UserMapper接口的代理对象</span><br><span class="line">        UserMapper userMapper = sqlSession.getMapper(UserMapper.class);</span><br><span class="line">        List&lt;User&gt; users = userMapper.selectAll();</span><br><span class="line">        users.forEach(System.out::println);</span><br><span class="line"></span><br></pre></td></tr></table></figure><br>   2. 调用对应方法完成sql的执行</p>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2024/07/09/Mapper%E4%BB%A3%E7%90%86%E5%BC%80%E5%8F%91/" data-id="clydpkeur001bicvm30dg86sx" data-title="Mapper代理开发" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaSE/" rel="tag">JavaSE</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MyBatis%E6%A1%86%E6%9E%B6/" rel="tag">MyBatis框架</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-MyBatis上手" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/07/08/MyBatis%E4%B8%8A%E6%89%8B/" class="article-date">
+  <time class="dt-published" datetime="2024-07-08T14:48:13.000Z" itemprop="datePublished">2024-07-08</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2024/07/08/MyBatis%E4%B8%8A%E6%89%8B/">MyBatis上手</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="MyBatis框架"><a href="#MyBatis框架" class="headerlink" title="MyBatis框架"></a>MyBatis框架</h2><hr>
+<p>MyBatis旨在将sql代码用xml配置文件管理，实现sql代码和java代码的分离。但是MyBatis设置配置文件较复杂</p>
+<h3 id="快速上手"><a href="#快速上手" class="headerlink" title="快速上手"></a>快速上手</h3><ol>
+<li><p>从mybatis-config.xml中创建SqlSessionFactory，官网上有代码可以copy。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;</span><br><span class="line">&lt;!DOCTYPE configuration</span><br><span class="line">        PUBLIC &quot;-//mybatis.org//DTD Config 3.0//EN&quot;</span><br><span class="line">        &quot;http://mybatis.org/dtd/mybatis-3-config.dtd&quot;&gt;</span><br><span class="line">&lt;configuration&gt;</span><br><span class="line">    &lt;environments default=&quot;development&quot;&gt;</span><br><span class="line">        &lt;environment id=&quot;development&quot;&gt;</span><br><span class="line">            &lt;transactionManager type=&quot;JDBC&quot;/&gt;</span><br><span class="line">            &lt;dataSource type=&quot;POOLED&quot;&gt;</span><br><span class="line">                &lt;property name=&quot;driver&quot; value=&quot;com.mysql.cj.jdbc.Driver&quot;/&gt;</span><br><span class="line">                &lt;property name=&quot;url&quot; value=&quot;jdbc:mysql://localhost:3306/mybatis?useSSL=false&quot;/&gt;</span><br><span class="line">                &lt;property name=&quot;username&quot; value=&quot;root&quot;/&gt;</span><br><span class="line">                &lt;property name=&quot;password&quot; value=&quot;123456&quot;/&gt;</span><br><span class="line">            &lt;/dataSource&gt;</span><br><span class="line">        &lt;/environment&gt;</span><br><span class="line">    &lt;/environments&gt;</span><br><span class="line">    &lt;mappers&gt;</span><br><span class="line">        &lt;!-- 加载Sql的映射文件 --&gt;</span><br><span class="line">        &lt;mapper resource=&quot;com/nokaze/pojo/mapper/UserMapper.xml&quot;/&gt;</span><br><span class="line">    &lt;/mappers&gt;</span><br><span class="line">&lt;/configuration&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>编写sql映射文件，本次以UserMapper为例，官网也有代码可以copy</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;</span><br><span class="line">&lt;!DOCTYPE mapper</span><br><span class="line">        PUBLIC &quot;-//mybatis.org//DTD Mapper 3.0//EN&quot;</span><br><span class="line">        &quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;&gt;</span><br><span class="line">        &lt;!-- namespace后续做代理开发时会有用 --&gt;</span><br><span class="line">&lt;mapper namespace=&quot;com.nokaze.pojo.mapper.UserMapper&quot;&gt;</span><br><span class="line">    &lt;!-- id是用来调用sql语句的，resultType则为返回值类 --&gt;</span><br><span class="line">    &lt;select id=&quot;selectAll&quot; resultType=&quot;com.nokaze.pojo.model.User&quot;&gt;</span><br><span class="line">        select * from tb_user;</span><br><span class="line">    &lt;/select&gt;</span><br><span class="line">&lt;/mapper&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>实际调用</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">public static void main(String[] args) throws IOException &#123;</span><br><span class="line">     //1.加载核心配置文件，获取SqlSessionFactory</span><br><span class="line">     //官网上可以直接copy的</span><br><span class="line">     String resource = &quot;mybatis-config.xml&quot;;</span><br><span class="line">     InputStream inputStream = Resources.getResourceAsStream(resource);</span><br><span class="line">     SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);</span><br><span class="line"></span><br><span class="line">     //2.获取SqlSession对象，用以执行Sql</span><br><span class="line">     SqlSession sqlSession = sqlSessionFactory.openSession();</span><br><span class="line"></span><br><span class="line">     //3. 执行Sql</span><br><span class="line">     //因为xml里的代码是select * 所以返回的是集合这里用List&lt;User&gt;接收，调用的方法也是selectList</span><br><span class="line">     //查一个的话则调用selectOne，用User对象接收 </span><br><span class="line">     List&lt;User&gt; users = sqlSession.selectList(&quot;test.selectAll&quot;);</span><br><span class="line">     users.forEach(System.out::println);</span><br><span class="line"></span><br><span class="line">     //4. 释放资源</span><br><span class="line">     sqlSession.close();</span><br><span class="line"> &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2024/07/08/MyBatis%E4%B8%8A%E6%89%8B/" data-id="clydpkeup0013icvm62y4f5wt" data-title="MyBatis上手" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaSE/" rel="tag">JavaSE</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MyBatis%E6%A1%86%E6%9E%B6/" rel="tag">MyBatis框架</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-上传文件到服务器case" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/06/21/%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6%E5%88%B0%E6%9C%8D%E5%8A%A1%E5%99%A8case/" class="article-date">
+  <time class="dt-published" datetime="2024-06-21T03:52:23.000Z" itemprop="datePublished">2024-06-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2024/06/21/%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6%E5%88%B0%E6%9C%8D%E5%8A%A1%E5%99%A8case/">上传文件到服务器case</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="PDF文件上传"><a href="#PDF文件上传" class="headerlink" title="PDF文件上传"></a>PDF文件上传</h2><hr>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">public class UserService&#123;</span><br><span class="line">    //服务器地址</span><br><span class="line">    private static final String UPLOAD_DIR = &quot;C:/Users/l1027/Desktop/暂存/&quot;;</span><br><span class="line"></span><br><span class="line">    public String userInfoUpload(@RequestParam(&quot;file&quot;)MultipartFile file) throws IOException&#123;</span><br><span class="line">        //先判断非空</span><br><span class="line">        if (file.isEmpty()) &#123;</span><br><span class="line">            return &quot;请上传文件&quot;;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        ////不是PDF则不允许上传</span><br><span class="line">        //获取原始文件名</span><br><span class="line">        String fileName = file.getOriginalFilename();</span><br><span class="line">        //获取后缀名</span><br><span class="line">        String fileExtension = FilenameUtils.getExtension(fileName);</span><br><span class="line">        //不是pdf则返回</span><br><span class="line">        if (!&quot;pdf&quot;.equals(fileExtension)) &#123;</span><br><span class="line">            return &quot;只能上传pdf文件&quot;;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        // 创建目标文件</span><br><span class="line">        File destFile = new File(UPLOAD_DIR + fileName);</span><br><span class="line">        //将上传文件保存到目标文件</span><br><span class="line">        file.transferTo(destFile);</span><br><span class="line">        return destFile.getPath();</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2024/06/21/%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6%E5%88%B0%E6%9C%8D%E5%8A%A1%E5%99%A8case/" data-id="clydpkev70067icvmh94d4kzc" data-title="上传文件到服务器case" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaSE/" rel="tag">JavaSE</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Spring-Boot/" rel="tag">Spring Boot</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/" rel="tag">文件上传</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-生成账号密码的case" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2024/06/21/%E7%94%9F%E6%88%90%E8%B4%A6%E5%8F%B7%E5%AF%86%E7%A0%81%E7%9A%84case/" class="article-date">
@@ -99,7 +244,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2024/06/21/%E7%94%9F%E6%88%90%E8%B4%A6%E5%8F%B7%E5%AF%86%E7%A0%81%E7%9A%84case/" data-id="clxnzdxqw0000xowjgt0c8kux" data-title="生成账号密码的case" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2024/06/21/%E7%94%9F%E6%88%90%E8%B4%A6%E5%8F%B7%E5%AF%86%E7%A0%81%E7%9A%84case/" data-id="clydpkev80069icvm4jtzevaj" data-title="生成账号密码的case" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -142,7 +287,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2024/06/18/%E5%85%B3%E4%BA%8Ejava%E6%96%87%E4%BB%B6%E5%8F%98%E5%92%96%E5%95%A1%E6%9D%AF/" data-id="clxjudg3m0001l0wje5en8d1z" data-title="关于java文件变咖啡杯" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2024/06/18/%E5%85%B3%E4%BA%8Ejava%E6%96%87%E4%BB%B6%E5%8F%98%E5%92%96%E5%95%A1%E6%9D%AF/" data-id="clydpkev9006aicvm2aov6duk" data-title="关于java文件变咖啡杯" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -185,7 +330,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2024/06/18/%E5%85%B3%E4%BA%8EMySQL%E5%AF%BC%E5%85%A5%E6%95%B0%E6%8D%AE%E5%BA%93%E6%8A%A5%E9%94%99/" data-id="clxjudg2z0000l0wj0nj3amc1" data-title="关于MySQL导入数据库报错" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2024/06/18/%E5%85%B3%E4%BA%8EMySQL%E5%AF%BC%E5%85%A5%E6%95%B0%E6%8D%AE%E5%BA%93%E6%8A%A5%E9%94%99/" data-id="clydpkev70066icvmcmmcfxm7" data-title="关于MySQL导入数据库报错" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -306,7 +451,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2024/06/11/(%E9%9D%99%E6%80%81%E6%88%90%E5%91%98%EF%BC%8Cmain%E6%96%B9%E6%B3%95%EF%BC%8C%E4%BB%A3%E7%A0%81%E5%9D%97%EF%BC%8C%E5%8D%95%E4%BE%8B%E8%AE%BE%E8%AE%A1)%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="clxbelpej0001vcwjgx159psa" data-title="(静态成员，main方法，代码块，单例设计)学习笔记" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2024/06/11/(%E9%9D%99%E6%80%81%E6%88%90%E5%91%98%EF%BC%8Cmain%E6%96%B9%E6%B3%95%EF%BC%8C%E4%BB%A3%E7%A0%81%E5%9D%97%EF%BC%8C%E5%8D%95%E4%BE%8B%E8%AE%BE%E8%AE%A1)%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="clydpkeu80001icvmgoow1kvf" data-title="(静态成员，main方法，代码块，单例设计)学习笔记" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -357,7 +502,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2024/06/07/Spring-Boot%E9%AA%8C%E8%AF%81%E7%99%BB%E5%BD%95case/" data-id="clxbelpfv004vvcwjg9pvbhgs" data-title="Spring Boot验证登录case" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2024/06/07/Spring-Boot%E9%AA%8C%E8%AF%81%E7%99%BB%E5%BD%95case/" data-id="clydpkeuq0018icvmei15853n" data-title="Spring Boot验证登录case" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -400,7 +545,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2024/06/07/Spring-Boot%E5%BC%95%E5%85%A5%E9%97%AE%E9%A2%98/" data-id="clxbelpfu004tvcwj2jf22mv5" data-title="Spring Boot引入问题" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2024/06/07/Spring-Boot%E5%BC%95%E5%85%A5%E9%97%AE%E9%A2%98/" data-id="clydpkeuq0016icvm82jyarl0" data-title="Spring Boot引入问题" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -496,369 +641,11 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2024/04/25/2024-4-24%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="clxbelpfw004wvcwjgz0r6t34" data-title="2024-4-24学习笔记" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2024/04/25/2024-4-24%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="clydpkeuo000yicvm92nm9w72" data-title="2024-4-24学习笔记" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IT%E5%AD%A6%E4%B9%A0/" rel="tag">IT学习</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaSE/" rel="tag">JavaSE</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java%E7%BC%96%E7%A8%8B/" rel="tag">Java编程</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Object%E7%B1%BB/" rel="tag">Object类</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%96%AD%E7%82%B9%E8%B0%83%E8%AF%95/" rel="tag">断点调试</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%A1%B9%E7%9B%AE%E7%BB%83%E4%B9%A0/" rel="tag">项目练习</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-2024-4-12学习笔记" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2024/04/13/2024-4-12%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="article-date">
-  <time class="dt-published" datetime="2024-04-13T03:04:38.000Z" itemprop="datePublished">2024-04-13</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2024/04/13/2024-4-12%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">2024-4-12学习笔记</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="super关键字"><a href="#super关键字" class="headerlink" title="super关键字"></a>super关键字</h2><hr>
-<p>super代表父类的引用，用于访问父类的属性、方法和构造器。</p>
-<ol>
-<li>访问属性和方法，但不能访问private的属性和方法。</li>
-<li>访问父类的构造器，只能放在构造器的第一句且只能写一句。</li>
-</ol>
-<h3 id="super的好处和细节"><a href="#super的好处和细节" class="headerlink" title="super的好处和细节"></a>super的好处和细节</h3><ol>
-<li>好处:分工明确，父类属性由父类初始化，子类属性由子类初始化。</li>
-<li>当子类中有和父类中的属性和方法重名重名的属性和方法时，为了访问父类成员(属性和方法)，必须使用super。若没有重名，使用super、this和默认访问效果都相同。</li>
-<li>super的访问不限于直接父类，如果父类的父类和本类中有同名的成员，也可以使用super去访问其中的成员;若多级父类中都有同名成员，使用super访问则遵循就近原则。(调用最近的父类关系)</li>
-</ol>
-<hr>
-<h2 id="方法重写-覆盖-override"><a href="#方法重写-覆盖-override" class="headerlink" title="方法重写&#x2F;覆盖(override)"></a>方法重写&#x2F;覆盖(override)</h2><hr>
-<p>子类有一个方法和父类的某一个方法名称、返回类型、形参列表一样，则子类方法覆盖(重写)了父类方法。</p>
-<h3 id="注意事项和细节"><a href="#注意事项和细节" class="headerlink" title="注意事项和细节"></a>注意事项和细节</h3><ol>
-<li>子类方法的参数、方法名，要和父类方法完全一样。</li>
-<li>子类方法的返回类型和父类方法返回类型一样，或者是父类返回类型的子类，比如：父类返回类型时Object子类方法的返回类型是String。</li>
-<li>子类方法不能缩小父类的访问权限。</li>
-</ol>
-<hr>
-<h2 id="多态-polymorphism"><a href="#多态-polymorphism" class="headerlink" title="多态(polymorphism)"></a>多态(polymorphism)</h2><hr>
-<p>方法活对象具有多种形态。是面向对象的第三大特征，多态是建立在封装和继承基础之上的。</p>
-<h3 id="方法的重写和重载是方法多态的体现。"><a href="#方法的重写和重载是方法多态的体现。" class="headerlink" title="方法的重写和重载是方法多态的体现。"></a>方法的重写和重载是方法多态的体现。</h3><ol>
-<li><p>一个对象的编译类型和运行类型可以不一致。<br>例：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Animal a1 = new Dog();</span><br><span class="line">a1 = new Cat(); //此时运行类型变成了Cat，编译类型仍然是Animal</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>编译类型在定义对象时就确定了，不能改变。</p>
-</li>
-<li><p>运行类型是可以变化的。</p>
-</li>
-<li><p>编译类看定义时”&#x3D;”的左边，运行类型看”&#x3D;”的右边。</p>
-</li>
-</ol>
-<h3 id="注意事项和细节-1"><a href="#注意事项和细节-1" class="headerlink" title="注意事项和细节"></a>注意事项和细节</h3><p>多态的前提是两个对象(类)存在继承关系</p>
-<h3 id="向上转型"><a href="#向上转型" class="headerlink" title="向上转型"></a>向上转型</h3><ol>
-<li>本质：父类的引用只想子类的对象。</li>
-<li>语法：父类类型 引用名 &#x3D; new 子类类型();</li>
-<li>特点：可以调用父类中的所有成员(需要遵守访问权限)，不能调用子类的特有成员；最终运行效果看子类的具体表现。</li>
-</ol>
-<p>线上转型的调用规则和继承的调用规则相同，先从当前运行类型开始查找，若运行类型中有调用的成员则调用。否则逐级向上查找，直到找到父类中相应的成员。</p>
-<h3 id="向下转型"><a href="#向下转型" class="headerlink" title="向下转型"></a>向下转型</h3><p>向上转型只能调用父类中的成员，而不能调用子类的特有成员。所以通过向下转型调用子类特有成员。</p>
-<ol>
-<li>语法：子类类型 引用名 &#x3D; (子类类型)父类引用； &#x2F;&#x2F;强转</li>
-<li>只能强转父类的引用，而不能强转父类的对象。 &#x2F;&#x2F;比如 Animal之于Cat，只能将Animal引用的Cat对象强转Cat，而不能将Animal对象转Cat。</li>
-<li>要求父类的引用必须只想当前目标类型的对象。&#x2F;&#x2F;如果运行类型是cat的对象，也只能强转cat而不能强转dog。</li>
-<li>可以调用子类类型中的所有成员。 &#x2F;&#x2F;完成了对向上转型的功能补充</li>
-</ol>
-<h3 id="属性重写"><a href="#属性重写" class="headerlink" title="属性重写"></a>属性重写</h3><p>属性没有重写之说，直接看编译类型。</p>
-<p>例：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">class Base&#123;</span><br><span class="line">    int i = 20;</span><br><span class="line">&#125;</span><br><span class="line">class Sub extends base&#123;</span><br><span class="line">    int i = 10;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Base b1 = new Sub();</span><br><span class="line">Sub s1 = new Sub();</span><br><span class="line">b1.i // 20</span><br><span class="line">b2.i // 10 </span><br></pre></td></tr></table></figure>
-
-<h3 id="instanceof"><a href="#instanceof" class="headerlink" title="instanceof"></a>instanceof</h3><p>instanceof是比较操作符，用于判断运行类型是否是XX类型或者XX类型的子类。</p>
-<p>例：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">//接上面的class</span><br><span class="line">Bolean bbb1 = b1 instanceof Sub;//返回true </span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h3 id="动态绑定机制-非常重要"><a href="#动态绑定机制-非常重要" class="headerlink" title="动态绑定机制(非常重要)"></a>动态绑定机制(非常重要)</h3><ol>
-<li>当调用对象方法的时候，该方法和该对象的内存地址&#x2F;运行类型绑定。</li>
-<li>当调用对象属性时，没有动态绑定机制，那里声明就在哪里使用。</li>
-</ol>
-<h3 id="多态的应用"><a href="#多态的应用" class="headerlink" title="多态的应用"></a>多态的应用</h3><h4 id="多态数组"><a href="#多态数组" class="headerlink" title="多态数组"></a>多态数组</h4><p>数组的定义类型为父类类型，里面保存的实际元素类型为子类类型。</p>
-<h4 id="多态参数"><a href="#多态参数" class="headerlink" title="多态参数"></a>多态参数</h4><p>方法定义的形参类型为父类类型，实参类型为子类类型。</p>
-<hr>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2024/04/13/2024-4-12%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="clxbelpf8000wvcwjbetqd8rg" data-title="2024-4-12学习笔记" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IT%E5%AD%A6%E4%B9%A0/" rel="tag">IT学习</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaSE/" rel="tag">JavaSE</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java%E7%BC%96%E7%A8%8B/" rel="tag">Java编程</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/super%E5%85%B3%E9%94%AE%E5%AD%97/" rel="tag">super关键字</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%A4%9A%E6%80%81/" rel="tag">多态</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%96%B9%E6%B3%95%E9%87%8D%E5%86%99/" rel="tag">方法重写</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-2024-4-10学习笔记" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2024/04/10/2024-4-10%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="article-date">
-  <time class="dt-published" datetime="2024-04-10T10:06:22.000Z" itemprop="datePublished">2024-04-10</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2024/04/10/2024-4-10%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">2024-4-10学习笔记</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="hashcode"><a href="#hashcode" class="headerlink" title="hashcode"></a>hashcode</h2><hr>
-<h3 id="因为以下有应用，插入一些hashcode相关的内容"><a href="#因为以下有应用，插入一些hashcode相关的内容" class="headerlink" title="因为以下有应用，插入一些hashcode相关的内容"></a>因为以下有应用，插入一些hashcode相关的内容</h3><p>可以对比两个Object的hashcode，若不同则是不同的对象。<br><code>xxx.hashCode();</code></p>
-<hr>
-<h2 id="this关键字"><a href="#this关键字" class="headerlink" title="this关键字"></a>this关键字</h2><hr>
-<p>java虚拟机给每个对象分配this，代表当前对象。(this指向它们本身)</p>
-<h3 id="注意事项和细节"><a href="#注意事项和细节" class="headerlink" title="注意事项和细节"></a>注意事项和细节</h3><ol>
-<li>this关键字可以用来访问本类的属性、方法和构造器。</li>
-<li>this用于区分当前类的属性和局部变量。</li>
-<li>访问成员方法的语法：<code>this.方法名(参数列表);</code></li>
-<li>访问构造器的语法：<code>this(参数列表);</code>，注意，只能在构造器中使用，用于在构造器中调用另一个构造器，且必须放在第一条语句。</li>
-<li>this不能在类定义的外部使用，只能在类定义的方法中使用。</li>
-</ol>
-<hr>
-<h2 id="程序的健壮性"><a href="#程序的健壮性" class="headerlink" title="程序的健壮性"></a>程序的健壮性</h2><hr>
-<h3 id="由作业引出了一些影响程序健壮性的细节"><a href="#由作业引出了一些影响程序健壮性的细节" class="headerlink" title="由作业引出了一些影响程序健壮性的细节"></a>由作业引出了一些影响程序健壮性的细节</h3><p>题目：编写类A01。定义方法max，实现求某个double数组的最大值。<br>除了实现主要功能以外，还有两个问题需要考虑，若传入空数组如何处理，若传入null如何处理。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">//在功能主体外加一个if循环</span><br><span class="line">if(arr1 != null &amp;&amp; arr1.length &gt; 0)&#123;</span><br><span class="line"></span><br><span class="line">&#125;else&#123;</span><br><span class="line">    return null;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>返回类型用包装类Double的话，可以返回null，然后主程序调用的时候判断接受的是否是null就可以做成可视化输出了。</p>
-<hr>
-<h2 id="IDEA相关"><a href="#IDEA相关" class="headerlink" title="IDEA相关"></a>IDEA相关</h2><hr>
-<p>IDEA是业界公认最好的java开发工具，除了支持java开发还支持HTML,还支持HTML、CSS、PHP、MySQL、Python等。IDEA是以项目概念来管理java源码的。</p>
-<h3 id="设置及快捷键"><a href="#设置及快捷键" class="headerlink" title="设置及快捷键"></a>设置及快捷键</h3><p>Setting → Font 调节代码字体大小<br>Setting → Appearance 可以调节菜单栏字体大小<br>双击工作区选项卡，可以工作区全屏<br>导入该行代码需要的类(自动导包) setting → genneral → auto import 里面有相关设置</p>
-<h4 id="常用快捷键"><a href="#常用快捷键" class="headerlink" title="常用快捷键"></a>常用快捷键</h4><p>快捷键都可以在Setting → Key Map里修改</p>
-<ol>
-<li>删除当前行 ctrl + y</li>
-<li>赋值当前行并另起一行粘贴 ctrl + d</li>
-<li>代码补全 alt + &#x2F;</li>
-<li>自动格式化代码 ctrl + alt + L</li>
-<li>快速运行程序 ctrl+shift + f10</li>
-<li>生成构造器 alt + insert(右键generate)</li>
-<li>查看类的层级关系 ctrl + h</li>
-<li>定位一个方法 ctrl + b</li>
-<li>自动分配变量名 .var</li>
-</ol>
-<h4 id="模板-sout-var就是模板"><a href="#模板-sout-var就是模板" class="headerlink" title="模板(.sout,.var就是模板)"></a>模板(.sout,.var就是模板)</h4><p>file → setting → editor → live templates 可以查看和修改</p>
-<h3 id="包"><a href="#包" class="headerlink" title="包"></a>包</h3><h4 id="包的作用"><a href="#包的作用" class="headerlink" title="包的作用"></a>包的作用</h4><ol>
-<li>区分相同名字的类</li>
-<li>当类很多时，可以更好的管理类</li>
-<li>控制访问范围</li>
-</ol>
-<h4 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h4><p>package com.xxxx；</p>
-<p>package关键字表示打包，com.xxxx表示包名。</p>
-<p>包的本质就是创建不痛的文件夹保存文件。</p>
-<p>调用包里和开头包中的类相同名字的类时，要开头加包名<br>例：<br><code>com.xiaoming.Dog dog1 = new com.xiaoming.Dog();</code></p>
-<h4 id="命名规则"><a href="#命名规则" class="headerlink" title="命名规则"></a>命名规则</h4><p>只能包含数字、字母、下划线和小圆点，但不能以数字开头，名字不可以是关键字和保留字。</p>
-<h4 id="命名规范"><a href="#命名规范" class="headerlink" title="命名规范"></a>命名规范</h4><p>一般是小写字母+小圆点<br>com.公司名.项目名.业务模块名<br>例:<br>com.sina.crm.user &#x2F;&#x2F;用户模块<br>com.sina.crm.order &#x2F;&#x2F;订单模块<br>com.sina.crm.utils &#x2F;&#x2F;工具类</p>
-<h4 id="一些常用的包"><a href="#一些常用的包" class="headerlink" title="一些常用的包"></a>一些常用的包</h4><p>java.lang.* &#x2F;&#x2F;lang包时基本饱，默认引入，使用lang包里的类不需要额外引入<br>java.util.* &#x2F;&#x2F;util包，系统提供的工具包工具类<br>java.net.*  &#x2F;&#x2F;网络包，网络开发<br>java.awt.* &#x2F;&#x2F; 做java界面的开发,GUI</p>
-<p>虽然*可以引入对应包下的所有类，但是还是建议需要哪个类就用具体类名引入。</p>
-<h4 id="注意事项和使用细节"><a href="#注意事项和使用细节" class="headerlink" title="注意事项和使用细节"></a>注意事项和使用细节</h4><ol>
-<li>package的作用是声明当前类所在的包，需要放在类的最上面，一个类中只能有一句package。</li>
-<li>import指令位置在package下面，在类定义的前面可以有多句且没有顺序要求。</li>
-</ol>
-<h3 id="访问修饰符"><a href="#访问修饰符" class="headerlink" title="访问修饰符"></a>访问修饰符</h3><p>java共提供了四种访问修饰符，用于控制方法和属性（成员变量）的访问权限。</p>
-<ol>
-<li>公开级别:public 对外公开。</li>
-<li>受保护级别:protected，对子类和同一个包中的类公开。</li>
-<li>默认：啥都不写的，向同一个包的类公开。</li>
-<li>私有级别：private，只有类本身可以访问，不对外公开</li>
-</ol>
-<h4 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h4><ol>
-<li>修饰符可以用来修饰类中的属性、成员方法以及类。</li>
-<li>只有默认的和public才可以修饰类。</li>
-</ol>
-<hr>
-<h2 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h2><hr>
-<p>封装(encapsulation)就是把抽象出的数据(属性)和对数据的操作(方法)封装在一起,数据被保护在内部。程序的其他部分只有通过被授权的操作(方法)才能对数据进行操作。</p>
-<h3 id="封装的好处"><a href="#封装的好处" class="headerlink" title="封装的好处"></a>封装的好处</h3><ol>
-<li>隐藏实现细节</li>
-<li>可以对数据进行验证,保证安全合理</li>
-</ol>
-<h3 id="实现步骤"><a href="#实现步骤" class="headerlink" title="实现步骤"></a>实现步骤</h3><ol>
-<li>先将属性私有化 private。</li>
-<li>提供一个public的set方法用于对属性判断和赋值。</li>
-<li>提供一个public的get方法用于获取属性的值。</li>
-</ol>
-<hr>
-<h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><hr>
-<p>继承可以解决代码复用，让编程更接近人类思维。当多个类存在相同的属性和方法时，可以从这些类中抽象出父类，在父类中定义这些相同的属性和方法，所有的子类不需要重新定义这些属性和方法，只需要通过extends来声明继承父类即可。</p>
-<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">class 子类名 extends 父类名&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>子类会自动拥有父类的属性和方法<br>父类也叫超类、基类。<br>子类也叫派生类。<br>使用继承提高了代码的复用性，同时也提高了代码的扩展性和维护性。</p>
-<h3 id="注意事项和细节-1"><a href="#注意事项和细节-1" class="headerlink" title="注意事项和细节"></a>注意事项和细节</h3><ol>
-<li>private的属性和方法不能在直接访问，只能通过父类提供的public方法访问（比如get方法）。</li>
-<li>子类必须调用父类的构造器，完成父类的初始化。</li>
-<li>当创建子类对象时，不管使用子类的哪个构造器，默认情况下总会去调用父类的无参构造器，如果父类没有提供无参构造器，则必须在子类的构造器中用super去指定使用父类的哪个构造器完成对父类的初始化工作，否则编译不通过。</li>
-<li>如果希望指定去调用父类的某个构造器，则显式调用一下super(参数列表)。</li>
-<li>super在使用时，需要放在构造器第一行。(super只能在构造器里调用)</li>
-<li>super()和this()都只能放在构造器第一行，因此这两个方法不能共存在同一个构造器中。</li>
-<li>Object类是所有类的基类</li>
-<li>父类构造器的调用不限于直接父类，将一直向上追溯至Object类。</li>
-<li>子类最多技能一个父类(指直接继承)，即java是单继承机制。</li>
-<li>继承不可滥用，子类和父类之间关系必须满足is-a的逻辑关系(子类is a 父类)</li>
-</ol>
-<h3 id="继承的本质"><a href="#继承的本质" class="headerlink" title="继承的本质"></a>继承的本质</h3><p><img src="/images/14.png" alt="继承的底层逻辑图"></p>
-<h4 id="调用的返回信息"><a href="#调用的返回信息" class="headerlink" title="调用的返回信息"></a>调用的返回信息</h4><p><code>Son son = new Son();</code></p>
-<ol>
-<li>首先看子类是否有该属性。</li>
-<li>如果子类有，并且可以访问，则返回子类的信息。</li>
-<li>如果子类没有，则向父类查找有没有这个属性(如果父类有，且可以访问则返回父类信息)。</li>
-<li>如果父类没有则向更上级父类以3的逻辑向上查找，直到Object类。</li>
-</ol>
-<hr>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2024/04/10/2024-4-10%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="clxbelpft004svcwj09tna6fx" data-title="2024-4-10学习笔记" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IDEA%E7%9B%B8%E5%85%B3/" rel="tag">IDEA相关</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IT%E5%AD%A6%E4%B9%A0/" rel="tag">IT学习</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaSE/" rel="tag">JavaSE</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java%E7%BC%96%E7%A8%8B/" rel="tag">Java编程</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hashcode/" rel="tag">hashcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/this%E5%85%B3%E9%94%AE%E5%AD%97/" rel="tag">this关键字</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%B0%81%E8%A3%85/" rel="tag">封装</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%A8%8B%E5%BA%8F%E7%9A%84%E5%81%A5%E5%A3%AE%E6%80%A7/" rel="tag">程序的健壮性</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%BB%A7%E6%89%BF/" rel="tag">继承</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-2024-4-03学习笔记" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2024/04/04/2024-4-03%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="article-date">
-  <time class="dt-published" datetime="2024-04-04T03:44:13.000Z" itemprop="datePublished">2024-04-04</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2024/04/04/2024-4-03%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">2024-4-03学习笔记</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="方法重载-overload"><a href="#方法重载-overload" class="headerlink" title="方法重载(overload)"></a>方法重载(overload)</h2><hr>
-<p>java中允许同一个类中，多个同名方法的存在，但是要求形参列表不同。</p>
-<p>重载减轻了起名记名的麻烦</p>
-<h3 id="注意事项和细节"><a href="#注意事项和细节" class="headerlink" title="注意事项和细节"></a>注意事项和细节</h3><ol>
-<li><p>方法名必须相同</p>
-</li>
-<li><p>形参列表必须不同</p>
-</li>
-<li><p>返回类型无要求</p>
-</li>
-</ol>
-<hr>
-<h2 id="可变参数"><a href="#可变参数" class="headerlink" title="可变参数"></a>可变参数</h2><hr>
-<p>java允许将同一个类中多个同名同功能但参数个数不同的方法，封装成一个方法。可以通过可变参数实现</p>
-<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><p>例：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">//n个int求和的方法</span><br><span class="line">public int sum(int... nums)&#123;</span><br><span class="line">    int sum = 0;</span><br><span class="line">    for(int i = 0;int &lt; nums.length;i++)&#123;</span><br><span class="line">        sum += nums[i];</span><br><span class="line">    &#125;</span><br><span class="line">    return sum;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h3 id="注意事项和细节-1"><a href="#注意事项和细节-1" class="headerlink" title="注意事项和细节"></a>注意事项和细节</h3><ol>
-<li><p>可变参数的实参可以有任意个(包含0个)</p>
-</li>
-<li><p>可变参数的实参可以是数组</p>
-</li>
-<li><p>可变参数的本质是数组</p>
-</li>
-<li><p>可变参数可以和普通类型的参数一起放在形参列表，但必须保证可变参数在最后。</p>
-</li>
-<li><p>一个形参列表中只能出现一个可变参数</p>
-</li>
-</ol>
-<hr>
-<h2 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h2><hr>
-<ol>
-<li><p>在java编程中，主要的变量就是属性(成员变量)和局部变量</p>
-</li>
-<li><p>通常说的局部变量一般是指在成员方法中定义的变量。</p>
-</li>
-<li><p>java中作用域的分类<br>全局变量：也就是属性，作用域为整个类体。<br>局部变量:除了属性之外的其他变量，作用域为定义它的代码块。</p>
-</li>
-<li><p>全局变量可以不赋值直接使用，因为有默认值；儿局部变量没有默认值，所以必须赋值后使用。</p>
-</li>
-</ol>
-<h3 id="注意事项和细节-2"><a href="#注意事项和细节-2" class="headerlink" title="注意事项和细节"></a>注意事项和细节</h3><ol>
-<li><p>属性和局部变量可以重名，访问时遵循就近原则。</p>
-</li>
-<li><p>在同一个作用域中，比如在同一个成员方法中，两个局部变量不能重名。</p>
-</li>
-<li><p>属性声明周期酒厂，伴随着对象的创建而创建，伴随着对象的死亡而死亡；局部变量的生命周期较短，伴随着它的代码块执行而创建，代码块执行结束则死亡，即在一次方法的调用过程中。</p>
-</li>
-<li><p>作用域范围不同<br>全局变量；可以被本类使用，也可以被其他类使用。<br>局部变量：只能在本类的对应方法中使用。</p>
-</li>
-<li><p>修饰符不同<br>全局变量可以加修饰符<br>局部变量不可以加修饰符</p>
-</li>
-</ol>
-<hr>
-<h2 id="构造方法-构造器"><a href="#构造方法-构造器" class="headerlink" title="构造方法&#x2F;构造器"></a>构造方法&#x2F;构造器</h2><hr>
-<h3 id="注意事项和细节-3"><a href="#注意事项和细节-3" class="headerlink" title="注意事项和细节"></a>注意事项和细节</h3><ol>
-<li><p>一个类可以定义多个不同的构造器，即构造器重载。比如可以初始化不同的属性，还有默认的无参构造。</p>
-</li>
-<li><p>构造器名必须与类名相同。</p>
-</li>
-<li><p>构造器没有返回值。</p>
-</li>
-<li><p>构造方法是完成对象初始化，而不是创建对象</p>
-</li>
-<li><p>在创建对象时，系统自动的调用该类的构造器。</p>
-</li>
-<li><p>如果没有定义构造器，系统会自动给类生成一个默认午餐构造器。<br>无参构造器实例：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Person()&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>一旦定义了构造器，默认的无参构造器就无法使用了，除非显式定义一下。</p>
-</li>
-</ol>
-<p><strong>一个反编译代码 javap.Xxxxx.class(.class可以省略)</strong></p>
-<h3 id="对象创建的流程分析"><a href="#对象创建的流程分析" class="headerlink" title="对象创建的流程分析"></a>对象创建的流程分析</h3><p><img src="/images/13.png" alt="对象创建的流程分析"></p>
-<hr>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2024/04/04/2024-4-03%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="clxbelpf4000uvcwjc3xsh1wh" data-title="2024-4-03学习笔记" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IT%E5%AD%A6%E4%B9%A0/" rel="tag">IT学习</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaSE/" rel="tag">JavaSE</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java%E7%BC%96%E7%A8%8B/" rel="tag">Java编程</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E4%BD%9C%E7%94%A8%E5%9F%9F/" rel="tag">作用域</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%8F%AF%E5%8F%98%E5%8F%82%E6%95%B0/" rel="tag">可变参数</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%96%B9%E6%B3%95%E9%87%8D%E8%BD%BD/" rel="tag">方法重载</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%9E%84%E9%80%A0%E5%99%A8/" rel="tag">构造器</a></li></ul>
 
     </footer>
   </div>
@@ -886,7 +673,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Case/" rel="tag">Case</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Dos/" rel="tag">Dos</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDEA/" rel="tag">IDEA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDEA%E7%9B%B8%E5%85%B3/" rel="tag">IDEA相关</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IT%E5%AD%A6%E4%B9%A0/" rel="tag">IT学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaSE/" rel="tag">JavaSE</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java%E7%BC%96%E7%A8%8B/" rel="tag">Java编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Object%E7%B1%BB/" rel="tag">Object类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring-Boot/" rel="tag">Spring Boot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/continue%E8%AF%AD%E5%8F%A5/" rel="tag">continue语句</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/do-while%E5%BE%AA%E7%8E%AF/" rel="tag">do..while循环</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/for%E5%BE%AA%E7%8E%AF/" rel="tag">for循环</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hashcode/" rel="tag">hashcode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/if-else/" rel="tag">if-else</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/main%E6%96%B9%E6%B3%95%E8%AF%A6%E8%A7%A3/" rel="tag">main方法详解</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/return%E8%AF%AD%E5%8F%A5/" rel="tag">return语句</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/super%E5%85%B3%E9%94%AE%E5%AD%97/" rel="tag">super关键字</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/switch/" rel="tag">switch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/this%E5%85%B3%E9%94%AE%E5%AD%97/" rel="tag">this关键字</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/while%E5%BE%AA%E7%8E%AF/" rel="tag">while循环</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84/" rel="tag">二维数组</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BB%A3%E7%A0%81%E5%9D%97/" rel="tag">代码块</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/" rel="tag">位运算</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BD%9C%E7%94%A8%E5%9F%9F/" rel="tag">作用域</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F/" rel="tag">冒泡排序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%95%E4%BE%8B%E8%AE%BE%E8%AE%A1/" rel="tag">单例设计</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8F%AF%E5%8F%98%E5%8F%82%E6%95%B0/" rel="tag">可变参数</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A4%9A%E6%80%81/" rel="tag">多态</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%81%E8%A3%85/" rel="tag">封装</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BC%95%E5%85%A5%E4%BE%9D%E8%B5%96/" rel="tag">引入依赖</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%88%90%E5%91%98%E6%96%B9%E6%B3%95/" rel="tag">成员方法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8A%A5%E9%94%99%E8%A7%A3%E5%86%B3/" rel="tag">报错解决</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E7%BB%84%E7%9A%84%E5%BA%94%E7%94%A8/" rel="tag">数组的应用</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%AD%E7%82%B9%E8%B0%83%E8%AF%95/" rel="tag">断点调试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%B9%E6%B3%95%E9%87%8D%E5%86%99/" rel="tag">方法重写</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%B9%E6%B3%95%E9%87%8D%E8%BD%BD/" rel="tag">方法重载</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9E%84%E9%80%A0%E5%99%A8/" rel="tag">构造器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B1%89%E8%AF%BA%E5%A1%94%E9%97%AE%E9%A2%98/" rel="tag">汉诺塔问题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A8%8B%E5%BA%8F%E6%8E%A7%E5%88%B6%E7%BB%93%E6%9E%84/" rel="tag">程序控制结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A8%8B%E5%BA%8F%E7%9A%84%E5%81%A5%E5%A3%AE%E6%80%A7/" rel="tag">程序的健壮性</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A9%BA%E5%BF%83%E9%87%91%E5%AD%97%E5%A1%94%E9%97%AE%E9%A2%98/" rel="tag">空心金字塔问题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%A7%E6%89%BF/" rel="tag">继承</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B4%A6%E5%8F%B7%E5%AF%86%E7%A0%81%E7%94%9F%E6%88%90/" rel="tag">账号密码生成</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BF%9B%E5%88%B6%E6%95%B0%E6%8D%A2%E7%AE%97/" rel="tag">进制数换算</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BF%B7%E5%AE%AB%E9%97%AE%E9%A2%98/" rel="tag">迷宫问题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%80%92%E5%BD%92/" rel="tag">递归</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%99%E6%80%81%E6%88%90%E5%91%98/" rel="tag">静态成员</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-OOP/" rel="tag">面向对象(OOP)</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A1%B9%E7%9B%AE%E7%BB%83%E4%B9%A0/" rel="tag">项目练习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A1%BA%E5%BA%8F%E6%9F%A5%E6%89%BE/" rel="tag">顺序查找</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%AA%8C%E8%AF%81%E7%99%BB%E5%BD%95/" rel="tag">验证登录</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Case/" rel="tag">Case</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Dos/" rel="tag">Dos</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDEA/" rel="tag">IDEA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDEA%E7%9B%B8%E5%85%B3/" rel="tag">IDEA相关</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IT%E5%AD%A6%E4%B9%A0/" rel="tag">IT学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaSE/" rel="tag">JavaSE</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java%E7%BC%96%E7%A8%8B/" rel="tag">Java编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MyBatis%E6%A1%86%E6%9E%B6/" rel="tag">MyBatis框架</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Object%E7%B1%BB/" rel="tag">Object类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring-Boot/" rel="tag">Spring Boot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/continue%E8%AF%AD%E5%8F%A5/" rel="tag">continue语句</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/do-while%E5%BE%AA%E7%8E%AF/" rel="tag">do..while循环</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/for%E5%BE%AA%E7%8E%AF/" rel="tag">for循环</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hashcode/" rel="tag">hashcode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/if-else/" rel="tag">if-else</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/main%E6%96%B9%E6%B3%95%E8%AF%A6%E8%A7%A3/" rel="tag">main方法详解</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/return%E8%AF%AD%E5%8F%A5/" rel="tag">return语句</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/super%E5%85%B3%E9%94%AE%E5%AD%97/" rel="tag">super关键字</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/switch/" rel="tag">switch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/this%E5%85%B3%E9%94%AE%E5%AD%97/" rel="tag">this关键字</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/while%E5%BE%AA%E7%8E%AF/" rel="tag">while循环</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84/" rel="tag">二维数组</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BB%A3%E7%A0%81%E5%9D%97/" rel="tag">代码块</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/" rel="tag">位运算</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BD%9C%E7%94%A8%E5%9F%9F/" rel="tag">作用域</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F/" rel="tag">冒泡排序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%95%E4%BE%8B%E8%AE%BE%E8%AE%A1/" rel="tag">单例设计</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8F%AF%E5%8F%98%E5%8F%82%E6%95%B0/" rel="tag">可变参数</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A4%9A%E6%80%81/" rel="tag">多态</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%81%E8%A3%85/" rel="tag">封装</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BC%95%E5%85%A5%E4%BE%9D%E8%B5%96/" rel="tag">引入依赖</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%88%90%E5%91%98%E6%96%B9%E6%B3%95/" rel="tag">成员方法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8A%A5%E9%94%99%E8%A7%A3%E5%86%B3/" rel="tag">报错解决</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E7%BB%84%E7%9A%84%E5%BA%94%E7%94%A8/" rel="tag">数组的应用</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/" rel="tag">文件上传</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%AD%E7%82%B9%E8%B0%83%E8%AF%95/" rel="tag">断点调试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%B9%E6%B3%95%E9%87%8D%E5%86%99/" rel="tag">方法重写</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%B9%E6%B3%95%E9%87%8D%E8%BD%BD/" rel="tag">方法重载</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9E%84%E9%80%A0%E5%99%A8/" rel="tag">构造器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B1%89%E8%AF%BA%E5%A1%94%E9%97%AE%E9%A2%98/" rel="tag">汉诺塔问题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A8%8B%E5%BA%8F%E6%8E%A7%E5%88%B6%E7%BB%93%E6%9E%84/" rel="tag">程序控制结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A8%8B%E5%BA%8F%E7%9A%84%E5%81%A5%E5%A3%AE%E6%80%A7/" rel="tag">程序的健壮性</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A9%BA%E5%BF%83%E9%87%91%E5%AD%97%E5%A1%94%E9%97%AE%E9%A2%98/" rel="tag">空心金字塔问题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%A7%E6%89%BF/" rel="tag">继承</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B4%A6%E5%8F%B7%E5%AF%86%E7%A0%81%E7%94%9F%E6%88%90/" rel="tag">账号密码生成</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BF%9B%E5%88%B6%E6%95%B0%E6%8D%A2%E7%AE%97/" rel="tag">进制数换算</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BF%B7%E5%AE%AB%E9%97%AE%E9%A2%98/" rel="tag">迷宫问题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%80%92%E5%BD%92/" rel="tag">递归</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%99%E6%80%81%E6%88%90%E5%91%98/" rel="tag">静态成员</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-OOP/" rel="tag">面向对象(OOP)</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A1%B9%E7%9B%AE%E7%BB%83%E4%B9%A0/" rel="tag">项目练习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A1%BA%E5%BA%8F%E6%9F%A5%E6%89%BE/" rel="tag">顺序查找</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%AA%8C%E8%AF%81%E7%99%BB%E5%BD%95/" rel="tag">验证登录</a></li></ul>
     </div>
   </div>
 
@@ -896,7 +683,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Case/" style="font-size: 10px;">Case</a> <a href="/tags/Dos/" style="font-size: 10px;">Dos</a> <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="/tags/IDEA%E7%9B%B8%E5%85%B3/" style="font-size: 10px;">IDEA相关</a> <a href="/tags/IT%E5%AD%A6%E4%B9%A0/" style="font-size: 16.67px;">IT学习</a> <a href="/tags/JavaSE/" style="font-size: 20px;">JavaSE</a> <a href="/tags/Java%E7%BC%96%E7%A8%8B/" style="font-size: 16.67px;">Java编程</a> <a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/tags/Object%E7%B1%BB/" style="font-size: 10px;">Object类</a> <a href="/tags/Spring-Boot/" style="font-size: 13.33px;">Spring Boot</a> <a href="/tags/continue%E8%AF%AD%E5%8F%A5/" style="font-size: 10px;">continue语句</a> <a href="/tags/do-while%E5%BE%AA%E7%8E%AF/" style="font-size: 13.33px;">do..while循环</a> <a href="/tags/for%E5%BE%AA%E7%8E%AF/" style="font-size: 13.33px;">for循环</a> <a href="/tags/hashcode/" style="font-size: 10px;">hashcode</a> <a href="/tags/if-else/" style="font-size: 10px;">if-else</a> <a href="/tags/main%E6%96%B9%E6%B3%95%E8%AF%A6%E8%A7%A3/" style="font-size: 10px;">main方法详解</a> <a href="/tags/return%E8%AF%AD%E5%8F%A5/" style="font-size: 10px;">return语句</a> <a href="/tags/super%E5%85%B3%E9%94%AE%E5%AD%97/" style="font-size: 10px;">super关键字</a> <a href="/tags/switch/" style="font-size: 10px;">switch</a> <a href="/tags/this%E5%85%B3%E9%94%AE%E5%AD%97/" style="font-size: 10px;">this关键字</a> <a href="/tags/while%E5%BE%AA%E7%8E%AF/" style="font-size: 13.33px;">while循环</a> <a href="/tags/%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84/" style="font-size: 13.33px;">二维数组</a> <a href="/tags/%E4%BB%A3%E7%A0%81%E5%9D%97/" style="font-size: 10px;">代码块</a> <a href="/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/" style="font-size: 10px;">位运算</a> <a href="/tags/%E4%BD%9C%E7%94%A8%E5%9F%9F/" style="font-size: 10px;">作用域</a> <a href="/tags/%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F/" style="font-size: 10px;">冒泡排序</a> <a href="/tags/%E5%8D%95%E4%BE%8B%E8%AE%BE%E8%AE%A1/" style="font-size: 10px;">单例设计</a> <a href="/tags/%E5%8F%AF%E5%8F%98%E5%8F%82%E6%95%B0/" style="font-size: 10px;">可变参数</a> <a href="/tags/%E5%A4%9A%E6%80%81/" style="font-size: 10px;">多态</a> <a href="/tags/%E5%B0%81%E8%A3%85/" style="font-size: 10px;">封装</a> <a href="/tags/%E5%BC%95%E5%85%A5%E4%BE%9D%E8%B5%96/" style="font-size: 10px;">引入依赖</a> <a href="/tags/%E6%88%90%E5%91%98%E6%96%B9%E6%B3%95/" style="font-size: 10px;">成员方法</a> <a href="/tags/%E6%8A%A5%E9%94%99%E8%A7%A3%E5%86%B3/" style="font-size: 13.33px;">报错解决</a> <a href="/tags/%E6%95%B0%E7%BB%84%E7%9A%84%E5%BA%94%E7%94%A8/" style="font-size: 13.33px;">数组的应用</a> <a href="/tags/%E6%96%AD%E7%82%B9%E8%B0%83%E8%AF%95/" style="font-size: 10px;">断点调试</a> <a href="/tags/%E6%96%B9%E6%B3%95%E9%87%8D%E5%86%99/" style="font-size: 10px;">方法重写</a> <a href="/tags/%E6%96%B9%E6%B3%95%E9%87%8D%E8%BD%BD/" style="font-size: 10px;">方法重载</a> <a href="/tags/%E6%9E%84%E9%80%A0%E5%99%A8/" style="font-size: 10px;">构造器</a> <a href="/tags/%E6%B1%89%E8%AF%BA%E5%A1%94%E9%97%AE%E9%A2%98/" style="font-size: 10px;">汉诺塔问题</a> <a href="/tags/%E7%A8%8B%E5%BA%8F%E6%8E%A7%E5%88%B6%E7%BB%93%E6%9E%84/" style="font-size: 13.33px;">程序控制结构</a> <a href="/tags/%E7%A8%8B%E5%BA%8F%E7%9A%84%E5%81%A5%E5%A3%AE%E6%80%A7/" style="font-size: 10px;">程序的健壮性</a> <a href="/tags/%E7%A9%BA%E5%BF%83%E9%87%91%E5%AD%97%E5%A1%94%E9%97%AE%E9%A2%98/" style="font-size: 10px;">空心金字塔问题</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 10px;">算法</a> <a href="/tags/%E7%BB%A7%E6%89%BF/" style="font-size: 10px;">继承</a> <a href="/tags/%E8%B4%A6%E5%8F%B7%E5%AF%86%E7%A0%81%E7%94%9F%E6%88%90/" style="font-size: 10px;">账号密码生成</a> <a href="/tags/%E8%BF%9B%E5%88%B6%E6%95%B0%E6%8D%A2%E7%AE%97/" style="font-size: 10px;">进制数换算</a> <a href="/tags/%E8%BF%B7%E5%AE%AB%E9%97%AE%E9%A2%98/" style="font-size: 10px;">迷宫问题</a> <a href="/tags/%E9%80%92%E5%BD%92/" style="font-size: 10px;">递归</a> <a href="/tags/%E9%9D%99%E6%80%81%E6%88%90%E5%91%98/" style="font-size: 10px;">静态成员</a> <a href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-OOP/" style="font-size: 10px;">面向对象(OOP)</a> <a href="/tags/%E9%A1%B9%E7%9B%AE%E7%BB%83%E4%B9%A0/" style="font-size: 10px;">项目练习</a> <a href="/tags/%E9%A1%BA%E5%BA%8F%E6%9F%A5%E6%89%BE/" style="font-size: 10px;">顺序查找</a> <a href="/tags/%E9%AA%8C%E8%AF%81%E7%99%BB%E5%BD%95/" style="font-size: 10px;">验证登录</a>
+      <a href="/tags/Case/" style="font-size: 10px;">Case</a> <a href="/tags/Dos/" style="font-size: 10px;">Dos</a> <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="/tags/IDEA%E7%9B%B8%E5%85%B3/" style="font-size: 10px;">IDEA相关</a> <a href="/tags/IT%E5%AD%A6%E4%B9%A0/" style="font-size: 17.5px;">IT学习</a> <a href="/tags/JavaSE/" style="font-size: 20px;">JavaSE</a> <a href="/tags/Java%E7%BC%96%E7%A8%8B/" style="font-size: 17.5px;">Java编程</a> <a href="/tags/MyBatis%E6%A1%86%E6%9E%B6/" style="font-size: 12.5px;">MyBatis框架</a> <a href="/tags/MySQL/" style="font-size: 15px;">MySQL</a> <a href="/tags/Object%E7%B1%BB/" style="font-size: 10px;">Object类</a> <a href="/tags/Spring-Boot/" style="font-size: 15px;">Spring Boot</a> <a href="/tags/continue%E8%AF%AD%E5%8F%A5/" style="font-size: 10px;">continue语句</a> <a href="/tags/do-while%E5%BE%AA%E7%8E%AF/" style="font-size: 12.5px;">do..while循环</a> <a href="/tags/for%E5%BE%AA%E7%8E%AF/" style="font-size: 12.5px;">for循环</a> <a href="/tags/hashcode/" style="font-size: 10px;">hashcode</a> <a href="/tags/if-else/" style="font-size: 10px;">if-else</a> <a href="/tags/main%E6%96%B9%E6%B3%95%E8%AF%A6%E8%A7%A3/" style="font-size: 10px;">main方法详解</a> <a href="/tags/return%E8%AF%AD%E5%8F%A5/" style="font-size: 10px;">return语句</a> <a href="/tags/super%E5%85%B3%E9%94%AE%E5%AD%97/" style="font-size: 10px;">super关键字</a> <a href="/tags/switch/" style="font-size: 10px;">switch</a> <a href="/tags/this%E5%85%B3%E9%94%AE%E5%AD%97/" style="font-size: 10px;">this关键字</a> <a href="/tags/while%E5%BE%AA%E7%8E%AF/" style="font-size: 12.5px;">while循环</a> <a href="/tags/%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84/" style="font-size: 12.5px;">二维数组</a> <a href="/tags/%E4%BB%A3%E7%A0%81%E5%9D%97/" style="font-size: 10px;">代码块</a> <a href="/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/" style="font-size: 10px;">位运算</a> <a href="/tags/%E4%BD%9C%E7%94%A8%E5%9F%9F/" style="font-size: 10px;">作用域</a> <a href="/tags/%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F/" style="font-size: 10px;">冒泡排序</a> <a href="/tags/%E5%8D%95%E4%BE%8B%E8%AE%BE%E8%AE%A1/" style="font-size: 10px;">单例设计</a> <a href="/tags/%E5%8F%AF%E5%8F%98%E5%8F%82%E6%95%B0/" style="font-size: 10px;">可变参数</a> <a href="/tags/%E5%A4%9A%E6%80%81/" style="font-size: 10px;">多态</a> <a href="/tags/%E5%B0%81%E8%A3%85/" style="font-size: 10px;">封装</a> <a href="/tags/%E5%BC%95%E5%85%A5%E4%BE%9D%E8%B5%96/" style="font-size: 10px;">引入依赖</a> <a href="/tags/%E6%88%90%E5%91%98%E6%96%B9%E6%B3%95/" style="font-size: 10px;">成员方法</a> <a href="/tags/%E6%8A%A5%E9%94%99%E8%A7%A3%E5%86%B3/" style="font-size: 12.5px;">报错解决</a> <a href="/tags/%E6%95%B0%E7%BB%84%E7%9A%84%E5%BA%94%E7%94%A8/" style="font-size: 12.5px;">数组的应用</a> <a href="/tags/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/" style="font-size: 10px;">文件上传</a> <a href="/tags/%E6%96%AD%E7%82%B9%E8%B0%83%E8%AF%95/" style="font-size: 10px;">断点调试</a> <a href="/tags/%E6%96%B9%E6%B3%95%E9%87%8D%E5%86%99/" style="font-size: 10px;">方法重写</a> <a href="/tags/%E6%96%B9%E6%B3%95%E9%87%8D%E8%BD%BD/" style="font-size: 10px;">方法重载</a> <a href="/tags/%E6%9E%84%E9%80%A0%E5%99%A8/" style="font-size: 10px;">构造器</a> <a href="/tags/%E6%B1%89%E8%AF%BA%E5%A1%94%E9%97%AE%E9%A2%98/" style="font-size: 10px;">汉诺塔问题</a> <a href="/tags/%E7%A8%8B%E5%BA%8F%E6%8E%A7%E5%88%B6%E7%BB%93%E6%9E%84/" style="font-size: 12.5px;">程序控制结构</a> <a href="/tags/%E7%A8%8B%E5%BA%8F%E7%9A%84%E5%81%A5%E5%A3%AE%E6%80%A7/" style="font-size: 10px;">程序的健壮性</a> <a href="/tags/%E7%A9%BA%E5%BF%83%E9%87%91%E5%AD%97%E5%A1%94%E9%97%AE%E9%A2%98/" style="font-size: 10px;">空心金字塔问题</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 10px;">算法</a> <a href="/tags/%E7%BB%A7%E6%89%BF/" style="font-size: 10px;">继承</a> <a href="/tags/%E8%B4%A6%E5%8F%B7%E5%AF%86%E7%A0%81%E7%94%9F%E6%88%90/" style="font-size: 10px;">账号密码生成</a> <a href="/tags/%E8%BF%9B%E5%88%B6%E6%95%B0%E6%8D%A2%E7%AE%97/" style="font-size: 10px;">进制数换算</a> <a href="/tags/%E8%BF%B7%E5%AE%AB%E9%97%AE%E9%A2%98/" style="font-size: 10px;">迷宫问题</a> <a href="/tags/%E9%80%92%E5%BD%92/" style="font-size: 10px;">递归</a> <a href="/tags/%E9%9D%99%E6%80%81%E6%88%90%E5%91%98/" style="font-size: 10px;">静态成员</a> <a href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-OOP/" style="font-size: 10px;">面向对象(OOP)</a> <a href="/tags/%E9%A1%B9%E7%9B%AE%E7%BB%83%E4%B9%A0/" style="font-size: 10px;">项目练习</a> <a href="/tags/%E9%A1%BA%E5%BA%8F%E6%9F%A5%E6%89%BE/" style="font-size: 10px;">顺序查找</a> <a href="/tags/%E9%AA%8C%E8%AF%81%E7%99%BB%E5%BD%95/" style="font-size: 10px;">验证登录</a>
     </div>
   </div>
 
@@ -905,7 +692,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/06/">June 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/04/">April 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/03/">March 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/02/">February 2024</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/07/">July 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/06/">June 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/04/">April 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/03/">March 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/02/">February 2024</a></li></ul>
     </div>
   </div>
 
@@ -918,23 +705,23 @@
       <ul>
         
           <li>
+            <a href="/2024/07/09/Mapper%E4%BB%A3%E7%90%86%E5%BC%80%E5%8F%91/">Mapper代理开发</a>
+          </li>
+        
+          <li>
+            <a href="/2024/07/08/MyBatis%E4%B8%8A%E6%89%8B/">MyBatis上手</a>
+          </li>
+        
+          <li>
+            <a href="/2024/06/21/%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6%E5%88%B0%E6%9C%8D%E5%8A%A1%E5%99%A8case/">上传文件到服务器case</a>
+          </li>
+        
+          <li>
             <a href="/2024/06/21/%E7%94%9F%E6%88%90%E8%B4%A6%E5%8F%B7%E5%AF%86%E7%A0%81%E7%9A%84case/">生成账号密码的case</a>
           </li>
         
           <li>
             <a href="/2024/06/18/%E5%85%B3%E4%BA%8Ejava%E6%96%87%E4%BB%B6%E5%8F%98%E5%92%96%E5%95%A1%E6%9D%AF/">关于java文件变咖啡杯</a>
-          </li>
-        
-          <li>
-            <a href="/2024/06/18/%E5%85%B3%E4%BA%8EMySQL%E5%AF%BC%E5%85%A5%E6%95%B0%E6%8D%AE%E5%BA%93%E6%8A%A5%E9%94%99/">关于MySQL导入数据库报错</a>
-          </li>
-        
-          <li>
-            <a href="/2024/06/11/(%E9%9D%99%E6%80%81%E6%88%90%E5%91%98%EF%BC%8Cmain%E6%96%B9%E6%B3%95%EF%BC%8C%E4%BB%A3%E7%A0%81%E5%9D%97%EF%BC%8C%E5%8D%95%E4%BE%8B%E8%AE%BE%E8%AE%A1)%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">(静态成员，main方法，代码块，单例设计)学习笔记</a>
-          </li>
-        
-          <li>
-            <a href="/2024/06/07/Spring-Boot%E9%AA%8C%E8%AF%81%E7%99%BB%E5%BD%95case/">Spring Boot验证登录case</a>
           </li>
         
       </ul>
