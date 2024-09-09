@@ -69,6 +69,48 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-SpringBoot项目中的Mybatis" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/09/09/SpringBoot%E9%A1%B9%E7%9B%AE%E4%B8%AD%E7%9A%84Mybatis/" class="article-date">
+  <time class="dt-published" datetime="2024-09-09T03:01:35.000Z" itemprop="datePublished">2024-09-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2024/09/09/SpringBoot%E9%A1%B9%E7%9B%AE%E4%B8%AD%E7%9A%84Mybatis/">SpringBoot项目中的Mybatis</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><hr>
+<p>SpringBoot项目中不需要使用专门的mybatis-config.xml。而是将相关的配置信息放在application.properties中配置代码如下。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"># MyBatis</span><br><span class="line"># 这里依项目路径而定</span><br><span class="line">mybatis.type-aliases-package=org.jdsystem.jdsc.model</span><br><span class="line"># 下划线命名和小驼峰命名的转换</span><br><span class="line">mybatis.configuration.map-underscore-to-camel-case=true</span><br><span class="line">mybatis.mapper-locations=classpath:*.xml</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2024/09/09/SpringBoot%E9%A1%B9%E7%9B%AE%E4%B8%AD%E7%9A%84Mybatis/" data-id="cm0ufzq0d001becvm4rlpazc9" data-title="SpringBoot项目中的Mybatis" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaSE/" rel="tag">JavaSE</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MyBatis%E6%A1%86%E6%9E%B6/" rel="tag">MyBatis框架</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Spring-Boot/" rel="tag">Spring Boot</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-Mapper代理开发" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2024/07/09/Mapper%E4%BB%A3%E7%90%86%E5%BC%80%E5%8F%91/" class="article-date">
@@ -94,7 +136,9 @@
         <h2 id="Mapper代理开发"><a href="#Mapper代理开发" class="headerlink" title="Mapper代理开发"></a>Mapper代理开发</h2><hr>
 <p>Mapper代理开发是企业级开发常用的开发手段，需要完全搞清楚。<br>代理开发是IOC的思想</p>
 <h3 id="Mapper代理开发的规则："><a href="#Mapper代理开发的规则：" class="headerlink" title="Mapper代理开发的规则："></a>Mapper代理开发的规则：</h3><ol>
-<li><p>定义与SQL映射文件同名的Mapper接口，并且将Mapper接口和SQL映射文件放在同一目录下。<br> &#x2F;&#x2F;方法要注意<br> 在resources里创建和mapper层相同的包结构，<code>/</code>代替<code>.</code>,用<code>.</code>实际不会生效(测试是否生效可以conpile整个maven项目，然后去target里找classes，成功则两个文件会在一个文件夹)</p>
+<li><p>定义与SQL映射文件同名的Mapper接口，并且将Mapper接口和SQL映射文件放在同一目录下，mybatis-config中的mapper resource需要一并修改。<br> &#x2F;&#x2F;方法要注意<br> 在resources里创建和mapper层相同的包结构，<code>/</code>代替<code>.</code>,用<code>.</code>实际不会生效(测试是否生效可以conpile整个maven项目，然后去target里找classes，成功则两个文件会在一个文件夹)</p>
+<h4 id="如果Mapper接口名称和SQL映射文件名称相同，并在同一目录下，则可以使用包扫描的方式简化SQL映射文件的加载"><a href="#如果Mapper接口名称和SQL映射文件名称相同，并在同一目录下，则可以使用包扫描的方式简化SQL映射文件的加载" class="headerlink" title="如果Mapper接口名称和SQL映射文件名称相同，并在同一目录下，则可以使用包扫描的方式简化SQL映射文件的加载"></a>如果Mapper接口名称和SQL映射文件名称相同，并在同一目录下，则可以使用包扫描的方式简化SQL映射文件的加载</h4><p> 如此做的话多个表的mapper就不需要写多个语句加载映射文件了。</p>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 示例如下 --&gt;</span><br><span class="line">    &lt;mappers&gt;</span><br><span class="line">        &lt;!-- 加载Sql的映射文件 --&gt;</span><br><span class="line">&lt;!--    &lt;mapper resource=&quot;com/nokaze/pojo/mapper/UserMapper.xml&quot;/&gt;--&gt;</span><br><span class="line">        &lt;package name=&quot;com.nokaze.pojo.mapper&quot;/&gt;</span><br><span class="line">    &lt;/mappers&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>设置SQL映射文件的namespace属性为Mapper接口全限定名。<br>本次的示例：<code>&lt;mapper namespace=&quot;com.nokaze.pojo.mapper.UserMapper&quot;&gt;</code> (这个可以copy path&#x2F;Path From Source Root直接复制)</p>
 </li>
@@ -107,7 +151,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2024/07/09/Mapper%E4%BB%A3%E7%90%86%E5%BC%80%E5%8F%91/" data-id="clydpkeur001bicvm30dg86sx" data-title="Mapper代理开发" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2024/07/09/Mapper%E4%BB%A3%E7%90%86%E5%BC%80%E5%8F%91/" data-id="cm0ufzq10006jecvm80ld75my" data-title="Mapper代理开发" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -159,7 +203,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2024/07/08/MyBatis%E4%B8%8A%E6%89%8B/" data-id="clydpkeup0013icvm62y4f5wt" data-title="MyBatis上手" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2024/07/08/MyBatis%E4%B8%8A%E6%89%8B/" data-id="cm0ufzq0b0013ecvmeyu970rk" data-title="MyBatis上手" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -200,7 +244,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2024/06/21/%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6%E5%88%B0%E6%9C%8D%E5%8A%A1%E5%99%A8case/" data-id="clydpkev70067icvmh94d4kzc" data-title="上传文件到服务器case" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2024/06/21/%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6%E5%88%B0%E6%9C%8D%E5%8A%A1%E5%99%A8case/" data-id="cm0ufzq0z006gecvm1ywy0o7m" data-title="上传文件到服务器case" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -244,7 +288,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2024/06/21/%E7%94%9F%E6%88%90%E8%B4%A6%E5%8F%B7%E5%AF%86%E7%A0%81%E7%9A%84case/" data-id="clydpkev80069icvm4jtzevaj" data-title="生成账号密码的case" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2024/06/21/%E7%94%9F%E6%88%90%E8%B4%A6%E5%8F%B7%E5%AF%86%E7%A0%81%E7%9A%84case/" data-id="cm0ufzq11006lecvmcjj3g2br" data-title="生成账号密码的case" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -282,12 +326,13 @@
       
         <h2 id="java文件图标变咖啡杯"><a href="#java文件图标变咖啡杯" class="headerlink" title="java文件图标变咖啡杯"></a>java文件图标变咖啡杯</h2><hr>
 <p>最外层的包未被IDEA识别成java项目时所发生的错误，重新选择open poject选择更下级的目录可解决。</p>
+<p><em><strong>20240909 可以直接右键咖啡杯图标的pom文件，XX as maven project恢复</strong></em></p>
 <hr>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2024/06/18/%E5%85%B3%E4%BA%8Ejava%E6%96%87%E4%BB%B6%E5%8F%98%E5%92%96%E5%95%A1%E6%9D%AF/" data-id="clydpkev9006aicvm2aov6duk" data-title="关于java文件变咖啡杯" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2024/06/18/%E5%85%B3%E4%BA%8Ejava%E6%96%87%E4%BB%B6%E5%8F%98%E5%92%96%E5%95%A1%E6%9D%AF/" data-id="cm0ufzq0e001decvm93tz5whm" data-title="关于java文件变咖啡杯" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -330,7 +375,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2024/06/18/%E5%85%B3%E4%BA%8EMySQL%E5%AF%BC%E5%85%A5%E6%95%B0%E6%8D%AE%E5%BA%93%E6%8A%A5%E9%94%99/" data-id="clydpkev70066icvmcmmcfxm7" data-title="关于MySQL导入数据库报错" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2024/06/18/%E5%85%B3%E4%BA%8EMySQL%E5%AF%BC%E5%85%A5%E6%95%B0%E6%8D%AE%E5%BA%93%E6%8A%A5%E9%94%99/" data-id="cm0ufzq10006hecvmgfptfwbb" data-title="关于MySQL导入数据库报错" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -451,7 +496,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2024/06/11/(%E9%9D%99%E6%80%81%E6%88%90%E5%91%98%EF%BC%8Cmain%E6%96%B9%E6%B3%95%EF%BC%8C%E4%BB%A3%E7%A0%81%E5%9D%97%EF%BC%8C%E5%8D%95%E4%BE%8B%E8%AE%BE%E8%AE%A1)%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="clydpkeu80001icvmgoow1kvf" data-title="(静态成员，main方法，代码块，单例设计)学习笔记" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2024/06/11/(%E9%9D%99%E6%80%81%E6%88%90%E5%91%98%EF%BC%8Cmain%E6%96%B9%E6%B3%95%EF%BC%8C%E4%BB%A3%E7%A0%81%E5%9D%97%EF%BC%8C%E5%8D%95%E4%BE%8B%E8%AE%BE%E8%AE%A1)%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="cm0ufzpzr0001ecvm9p9sbff1" data-title="(静态成员，main方法，代码块，单例设计)学习笔记" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -498,15 +543,20 @@
 <li><p>最后关闭连接</p>
 </li>
 </ol>
+<hr>
+<h4 id="2024-7-22"><a href="#2024-7-22" class="headerlink" title="2024.7.22"></a>2024.7.22</h4><h4 id="完成了前后端互联后的信息交互和网页跳转，发现修改了一些问题"><a href="#完成了前后端互联后的信息交互和网页跳转，发现修改了一些问题" class="headerlink" title="完成了前后端互联后的信息交互和网页跳转，发现修改了一些问题"></a>完成了前后端互联后的信息交互和网页跳转，发现修改了一些问题</h4><ol>
+<li>前端和后端数据交互均应为json格式，所以后端参数应为实体类</li>
+<li></li>
+</ol>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">//代码实现例：</span><br><span class="line">public String userLogin(String userId, String password) throws SQLException&#123;</span><br><span class="line">    //1.连数据库</span><br><span class="line">    Connection connection = null;</span><br><span class="line">    try&#123;</span><br><span class="line">        connection = DriverManager.getConnection(&quot;jdbc:mysql://localhost:3306/test&quot;, &quot;root&quot;, &quot;root&quot;);</span><br><span class="line">        //2.用userId查具体行</span><br><span class="line">        PreparedStatement stmt = connection.prepareStatement(&quot;select * from user where user_id = ?&quot;);</span><br><span class="line">        stmt.setString(1,userId);</span><br><span class="line">        ResultSet rs = stmt.executeQuery;</span><br><span class="line">        //先验证账号</span><br><span class="line">        if(!rs.next())&#123;</span><br><span class="line">            return&quot;账号密码错误&quot;;</span><br><span class="line">        &#125;</span><br><span class="line">        //3.用实体类保存行数据</span><br><span class="line">        User user = new User(rs.getString(&quot;user_id&quot;),rs.getString(user_pwd));</span><br><span class="line">        //验证密码</span><br><span class="line">        if(!(user.getPassword()).equals(password))&#123;</span><br><span class="line">            return&quot;账号密码错误&quot;；</span><br><span class="line">        &#125;</span><br><span class="line">        return&quot;登陆成功&quot;;</span><br><span class="line">    &#125;catch(Exception e)&#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">        return null;</span><br><span class="line">    &#125;finally&#123;</span><br><span class="line">        //4.关闭连接</span><br><span class="line">        connection.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2024/06/07/Spring-Boot%E9%AA%8C%E8%AF%81%E7%99%BB%E5%BD%95case/" data-id="clydpkeuq0018icvmei15853n" data-title="Spring Boot验证登录case" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2024/06/07/Spring-Boot%E9%AA%8C%E8%AF%81%E7%99%BB%E5%BD%95case/" data-id="cm0ufzq0d0018ecvm0r6m9o86" data-title="Spring Boot验证登录case" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Case/" rel="tag">Case</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Spring-Boot/" rel="tag">Spring Boot</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%AA%8C%E8%AF%81%E7%99%BB%E5%BD%95/" rel="tag">验证登录</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Case/" rel="tag">Case</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Spring-Boot/" rel="tag">Spring Boot</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%AA%8C%E8%AF%81%E7%99%BB%E5%BD%95/" rel="tag">验证登录</a></li></ul>
 
     </footer>
   </div>
@@ -545,107 +595,11 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2024/06/07/Spring-Boot%E5%BC%95%E5%85%A5%E9%97%AE%E9%A2%98/" data-id="clydpkeuq0016icvm82jyarl0" data-title="Spring Boot引入问题" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2024/06/07/Spring-Boot%E5%BC%95%E5%85%A5%E9%97%AE%E9%A2%98/" data-id="cm0ufzq0c0016ecvm32911t51" data-title="Spring Boot引入问题" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Spring-Boot/" rel="tag">Spring Boot</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%BC%95%E5%85%A5%E4%BE%9D%E8%B5%96/" rel="tag">引入依赖</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-2024-4-24学习笔记" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2024/04/25/2024-4-24%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="article-date">
-  <time class="dt-published" datetime="2024-04-25T08:14:02.000Z" itemprop="datePublished">2024-04-25</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2024/04/25/2024-4-24%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">2024-4-24学习笔记</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="Object类"><a href="#Object类" class="headerlink" title="Object类"></a>Object类</h2><hr>
-<h3 id="jdk源码查看"><a href="#jdk源码查看" class="headerlink" title="jdk源码查看"></a>jdk源码查看</h3><p>一般IDEA配置好jdk以后，jdk的源码也就自动配置好了。如果没有的话，File → Project Structure → SDKs  → Sourcepath 然后点绿色加号，然后选javafx-src.zip和src.zip</p>
-<h3 id="equals-方法"><a href="#equals-方法" class="headerlink" title="equals()方法"></a>equals()方法</h3><p>&#x3D;&#x3D;和equals（）的对比</p>
-<ol>
-<li>&#x3D;&#x3D;既可以判断基本类型，又可以判断引用类型。</li>
-<li>&#x3D;&#x3D;如果判断基本类型，判断的是值是否相等。</li>
-<li>&#x3D;&#x3D;如果判断引用类型，判断的是地址是否相等，即判断是不是同一个对象。</li>
-<li>equals()是Object类的方法，只能用于判断引用类型。</li>
-</ol>
-<p>没有重写的Object类的equals()方法是判断两个对象是否相同 和&#x3D;&#x3D;是一回事儿。</p>
-<h3 id="hashCode-方法"><a href="#hashCode-方法" class="headerlink" title="hashCode()方法"></a>hashCode()方法</h3><ol>
-<li>提高具有hash结构的容器的效率。</li>
-<li>两个引用如果指向同一个对象，则hashcode肯定是一样的。 （地址copy的场景）</li>
-<li>两个引用如果指向的是不同的对象，则hashcode一定是不同的。</li>
-<li>hashcode主要是根据地址号来的，但是不能完全将hashcode等价于地址。</li>
-<li>后面学习集合，hashCode()方法如果需要的话，也会重写。</li>
-</ol>
-<h3 id="toString-方法"><a href="#toString-方法" class="headerlink" title="toString()方法"></a>toString()方法</h3><p>默认返回：全类名(包名+类名)+hashcode的十六进制。子类往往重写toString方法，用于返回对象的属性信息。</p>
-<p>当直接输出一个对象时，toString方法会被默认调用。<br>例：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Person p = new Person();</span><br><span class="line">System.out.println(p); //默认调用p.toString()；</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h3 id="finalize-方法"><a href="#finalize-方法" class="headerlink" title="finalize()方法"></a>finalize()方法</h3><ol>
-<li>当对象被垃圾回收时，系统自动调用该对象的finalize()方法。子类可以重写该方法，做一些释放资源的操作(比如数据库连接，打开的文件流)。</li>
-<li>当某个对象没有任何引用时，jvm就认为这个对象是一个垃圾对象，会使用垃圾回收机制来销毁该对象，销毁前会先调用finalize()方法.</li>
-<li>垃圾回收机制的调用，由系统决定，也可以通过System.gc()主动触发垃圾回收机制。<br>不触发的话，垃圾回收并不会每产生一个垃圾就回收一次。</li>
-</ol>
-<h3 id="查看方法"><a href="#查看方法" class="headerlink" title="查看方法"></a>查看方法</h3><p>右键选中方法 → Go to  → Declaration or Usages</p>
-<hr>
-<h2 id="断点调试"><a href="#断点调试" class="headerlink" title="断点调试"></a>断点调试</h2><hr>
-<ol>
-<li>断点调试是指在程序的某一行设置一个断点，调试时程序运行到断点行就会停住，然后可以逐步的向下调试，调试过程中可以看各个变量当前值，出错的话调试到出错的代码行即显示错误，停下。进行分析从而找到bug。</li>
-<li>断点调试是程序员必须掌握的技能</li>
-<li>断点调试也能帮助我们查看java地才能源代码的执行过程，提高程序员的java水平。</li>
-<li>在断点调试过程中，是运行状态，所以是以对象的运行类型来执行的。</li>
-</ol>
-<p>快捷键<br>F7(跳入) F8(跳过) shift + F8(跳出) F9(resume，执行到下一个断点)<br>F7：跳入方法内(可以用来查看底层代码)<br>F8：逐行执行代码<br>shift + F8:跳出方法</p>
-<p>查看jdk源码需要的设置<br>Setting → Build,Execution,Deployment → Debugger → Stepping → 把Do not step into the classes中的java.*,javax.*取消勾选即可。</p>
-<hr>
-<h2 id="Date类"><a href="#Date类" class="headerlink" title="Date类"></a>Date类</h2><hr>
-<p>调用方法</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">java.util.Date</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Date date = new Date();</span><br><span class="line">SimpleDateFormat类，用于日期格式化。</span><br><span class="line">SimpleDateFormat sdf = new SimpleDateFormat(&quot;yyyy-MM-dd HH:mm;ss&quot;);</span><br><span class="line">sdf.format(date);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<hr>
-<h2 id="项目练习"><a href="#项目练习" class="headerlink" title="项目练习"></a>项目练习</h2><hr>
-<h3 id="零钱通项目"><a href="#零钱通项目" class="headerlink" title="零钱通项目"></a>零钱通项目</h3><p>思路分解：</p>
-<ol>
-<li>先完成显示菜单，并可以做选择</li>
-<li>完成零钱通明细<br>  1）可以把收益入账和消费保存到数组（数组有固定个数限制）<br>  2）可以使用对象<br>  3）还可以使用String拼接</li>
-<li>完成收益入账<br>   需求：每笔收益 记录金额，入账的时间，入账后的余额</li>
-<li>完成消费<br>   需求：消费名目需要说明</li>
-<li>完善退出功能 需要确认y&#x2F;n</li>
-<li>收入和消费加判断，若不合法则给出提示<br> 1）收入不可以为负<br> 2）消费不能大于余额<br> 3）消费金额也不能为负数<br> 写校验的话if的条件表达式里放失败条件，失败了直接就break！</li>
-</ol>
-<p>代码实现(采用字符串连接的手段)</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br></pre></td><td class="code"><pre><span class="line">//变量部分</span><br><span class="line">//终止循环条件</span><br><span class="line">boolean loop = true;</span><br><span class="line">//输入</span><br><span class="line">Scanner myScanner = new Scanner(System.in);</span><br><span class="line">String imput = null;</span><br><span class="line">//零钱通明细</span><br><span class="line">String detail = (&quot;==========零钱通明细==========&quot;);</span><br><span class="line">//收益入账</span><br><span class="line">double income = 0;</span><br><span class="line">double balance = 0;</span><br><span class="line">Date date = new Date();</span><br><span class="line">SimpleDateFormat sdf = new SimpleDateFormat(&quot;yyyy-MM-dd HH:mm:ss&quot;);</span><br><span class="line">//消费</span><br><span class="line">String instruction = null;</span><br><span class="line">//退出</span><br><span class="line">char ifExit;</span><br><span class="line"></span><br><span class="line">//显示菜单，并可以做选择</span><br><span class="line"> </span><br><span class="line">do&#123;</span><br><span class="line">    //显示菜单</span><br><span class="line">    System.out.println(&quot;\n----------零钱通菜单----------&quot;);</span><br><span class="line">    System.out.println(&quot;\t\t1 零钱通明细&quot;);</span><br><span class="line">    System.out.println(&quot;\t\t2 收益入账&quot;);</span><br><span class="line">    System.out.println(&quot;\t\t3 消费&quot;);</span><br><span class="line">    System.out.println(&quot;\t\t4 退      出&quot;);</span><br><span class="line"></span><br><span class="line">    //选项部分</span><br><span class="line">    System.out.println(&quot;请选择1~4:&quot;);</span><br><span class="line">    imput = myScanner.next();</span><br><span class="line">    switch(imput)&#123;</span><br><span class="line">        case &quot;1&quot;:</span><br><span class="line">            System.out.println(detail);</span><br><span class="line">            break;</span><br><span class="line">        case &quot;2&quot;:</span><br><span class="line">            //收益入账</span><br><span class="line">            System.out.println(&quot;收益入账:&quot;);</span><br><span class="line">            income = myScanner.nextDouble();</span><br><span class="line">            //校验：若收益小于0则无法入账</span><br><span class="line">            if (income &lt;= 0) &#123;</span><br><span class="line">                System.out.println(&quot;收益入账需要大于0&quot;);</span><br><span class="line">                break;</span><br><span class="line">            &#125;</span><br><span class="line">            balance += income;</span><br><span class="line">            //修改detail的信息</span><br><span class="line">            detail += &quot;\n收益入账 +&quot; + income + &quot;\t&quot; + sdf.format(date) + &quot;\t余额： &quot; + balance;</span><br><span class="line">            break;</span><br><span class="line">        case &quot;3&quot;:</span><br><span class="line">            //消费</span><br><span class="line">            System.out.println(&quot;消费金额：&quot;);</span><br><span class="line">            income = myScanner.nextDouble();</span><br><span class="line">            //校验：若消费金额大于余额，则消费失败</span><br><span class="line">            if (income &gt; balance) &#123;</span><br><span class="line">                System.out.println(&quot;余额不足！&quot;);</span><br><span class="line">                break;</span><br><span class="line">            &#125;</span><br><span class="line">            //校验：若消费金额小于0，则消费失败</span><br><span class="line">            if (income &lt;= 0) &#123;</span><br><span class="line">                System.out.println(&quot;消费金额必须大于0！&quot;);</span><br><span class="line">                break;</span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println(&quot;消费明细：&quot;);</span><br><span class="line">            instruction = myScanner.next();</span><br><span class="line">            //余额变化</span><br><span class="line">            balance -= income;</span><br><span class="line">            //消费的时间</span><br><span class="line">            date = new Date();</span><br><span class="line">            //零钱通明细</span><br><span class="line">            detail += &quot;\n&quot; + instruction + &quot; -&quot; + income + &quot;\t&quot; + sdf.format(date) + &quot;\t余额： &quot; + balance;</span><br><span class="line">            break;</span><br><span class="line">        case &quot;4&quot;:</span><br><span class="line">            //输入不是y或者n的话，要求重新输入</span><br><span class="line">            while (true) &#123;</span><br><span class="line">                System.out.println(&quot;确认要退出吗? y/n&quot;);</span><br><span class="line">                ifExit = myScanner.next().charAt(0);</span><br><span class="line">                if (ifExit == &#x27;y&#x27; || ifExit == &#x27;n&#x27;) &#123;</span><br><span class="line">                    break;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            //输入y则退出</span><br><span class="line">            if (ifExit == &#x27;y&#x27;) &#123;</span><br><span class="line">                loop = false;</span><br><span class="line">            &#125;</span><br><span class="line">            break;</span><br><span class="line">        //选项如果不是1~4时，则报错    </span><br><span class="line">        default:</span><br><span class="line">            System.out.println(&quot;输入错误！&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;while(loop);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2024/04/25/2024-4-24%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="clydpkeuo000yicvm92nm9w72" data-title="2024-4-24学习笔记" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IT%E5%AD%A6%E4%B9%A0/" rel="tag">IT学习</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaSE/" rel="tag">JavaSE</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java%E7%BC%96%E7%A8%8B/" rel="tag">Java编程</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Object%E7%B1%BB/" rel="tag">Object类</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%96%AD%E7%82%B9%E8%B0%83%E8%AF%95/" rel="tag">断点调试</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%A1%B9%E7%9B%AE%E7%BB%83%E4%B9%A0/" rel="tag">项目练习</a></li></ul>
 
     </footer>
   </div>
@@ -673,7 +627,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Case/" rel="tag">Case</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Dos/" rel="tag">Dos</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDEA/" rel="tag">IDEA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDEA%E7%9B%B8%E5%85%B3/" rel="tag">IDEA相关</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IT%E5%AD%A6%E4%B9%A0/" rel="tag">IT学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaSE/" rel="tag">JavaSE</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java%E7%BC%96%E7%A8%8B/" rel="tag">Java编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MyBatis%E6%A1%86%E6%9E%B6/" rel="tag">MyBatis框架</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Object%E7%B1%BB/" rel="tag">Object类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring-Boot/" rel="tag">Spring Boot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/continue%E8%AF%AD%E5%8F%A5/" rel="tag">continue语句</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/do-while%E5%BE%AA%E7%8E%AF/" rel="tag">do..while循环</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/for%E5%BE%AA%E7%8E%AF/" rel="tag">for循环</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hashcode/" rel="tag">hashcode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/if-else/" rel="tag">if-else</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/main%E6%96%B9%E6%B3%95%E8%AF%A6%E8%A7%A3/" rel="tag">main方法详解</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/return%E8%AF%AD%E5%8F%A5/" rel="tag">return语句</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/super%E5%85%B3%E9%94%AE%E5%AD%97/" rel="tag">super关键字</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/switch/" rel="tag">switch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/this%E5%85%B3%E9%94%AE%E5%AD%97/" rel="tag">this关键字</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/while%E5%BE%AA%E7%8E%AF/" rel="tag">while循环</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84/" rel="tag">二维数组</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BB%A3%E7%A0%81%E5%9D%97/" rel="tag">代码块</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/" rel="tag">位运算</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BD%9C%E7%94%A8%E5%9F%9F/" rel="tag">作用域</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F/" rel="tag">冒泡排序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%95%E4%BE%8B%E8%AE%BE%E8%AE%A1/" rel="tag">单例设计</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8F%AF%E5%8F%98%E5%8F%82%E6%95%B0/" rel="tag">可变参数</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A4%9A%E6%80%81/" rel="tag">多态</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%81%E8%A3%85/" rel="tag">封装</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BC%95%E5%85%A5%E4%BE%9D%E8%B5%96/" rel="tag">引入依赖</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%88%90%E5%91%98%E6%96%B9%E6%B3%95/" rel="tag">成员方法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8A%A5%E9%94%99%E8%A7%A3%E5%86%B3/" rel="tag">报错解决</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E7%BB%84%E7%9A%84%E5%BA%94%E7%94%A8/" rel="tag">数组的应用</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/" rel="tag">文件上传</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%AD%E7%82%B9%E8%B0%83%E8%AF%95/" rel="tag">断点调试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%B9%E6%B3%95%E9%87%8D%E5%86%99/" rel="tag">方法重写</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%B9%E6%B3%95%E9%87%8D%E8%BD%BD/" rel="tag">方法重载</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9E%84%E9%80%A0%E5%99%A8/" rel="tag">构造器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B1%89%E8%AF%BA%E5%A1%94%E9%97%AE%E9%A2%98/" rel="tag">汉诺塔问题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A8%8B%E5%BA%8F%E6%8E%A7%E5%88%B6%E7%BB%93%E6%9E%84/" rel="tag">程序控制结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A8%8B%E5%BA%8F%E7%9A%84%E5%81%A5%E5%A3%AE%E6%80%A7/" rel="tag">程序的健壮性</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A9%BA%E5%BF%83%E9%87%91%E5%AD%97%E5%A1%94%E9%97%AE%E9%A2%98/" rel="tag">空心金字塔问题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%A7%E6%89%BF/" rel="tag">继承</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B4%A6%E5%8F%B7%E5%AF%86%E7%A0%81%E7%94%9F%E6%88%90/" rel="tag">账号密码生成</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BF%9B%E5%88%B6%E6%95%B0%E6%8D%A2%E7%AE%97/" rel="tag">进制数换算</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BF%B7%E5%AE%AB%E9%97%AE%E9%A2%98/" rel="tag">迷宫问题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%80%92%E5%BD%92/" rel="tag">递归</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%99%E6%80%81%E6%88%90%E5%91%98/" rel="tag">静态成员</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-OOP/" rel="tag">面向对象(OOP)</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A1%B9%E7%9B%AE%E7%BB%83%E4%B9%A0/" rel="tag">项目练习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A1%BA%E5%BA%8F%E6%9F%A5%E6%89%BE/" rel="tag">顺序查找</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%AA%8C%E8%AF%81%E7%99%BB%E5%BD%95/" rel="tag">验证登录</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Case/" rel="tag">Case</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Dos/" rel="tag">Dos</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDEA/" rel="tag">IDEA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDEA%E7%9B%B8%E5%85%B3/" rel="tag">IDEA相关</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IT%E5%AD%A6%E4%B9%A0/" rel="tag">IT学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaSE/" rel="tag">JavaSE</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java%E7%BC%96%E7%A8%8B/" rel="tag">Java编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MyBatis%E6%A1%86%E6%9E%B6/" rel="tag">MyBatis框架</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Object%E7%B1%BB/" rel="tag">Object类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring-Boot/" rel="tag">Spring Boot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/continue%E8%AF%AD%E5%8F%A5/" rel="tag">continue语句</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/do-while%E5%BE%AA%E7%8E%AF/" rel="tag">do..while循环</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/for%E5%BE%AA%E7%8E%AF/" rel="tag">for循环</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hashcode/" rel="tag">hashcode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/if-else/" rel="tag">if-else</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/main%E6%96%B9%E6%B3%95%E8%AF%A6%E8%A7%A3/" rel="tag">main方法详解</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/return%E8%AF%AD%E5%8F%A5/" rel="tag">return语句</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/super%E5%85%B3%E9%94%AE%E5%AD%97/" rel="tag">super关键字</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/switch/" rel="tag">switch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/this%E5%85%B3%E9%94%AE%E5%AD%97/" rel="tag">this关键字</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/while%E5%BE%AA%E7%8E%AF/" rel="tag">while循环</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84/" rel="tag">二维数组</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BB%A3%E7%A0%81%E5%9D%97/" rel="tag">代码块</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/" rel="tag">位运算</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BD%9C%E7%94%A8%E5%9F%9F/" rel="tag">作用域</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F/" rel="tag">冒泡排序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%95%E4%BE%8B%E8%AE%BE%E8%AE%A1/" rel="tag">单例设计</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8F%AF%E5%8F%98%E5%8F%82%E6%95%B0/" rel="tag">可变参数</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A4%9A%E6%80%81/" rel="tag">多态</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%81%E8%A3%85/" rel="tag">封装</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BC%95%E5%85%A5%E4%BE%9D%E8%B5%96/" rel="tag">引入依赖</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%88%90%E5%91%98%E6%96%B9%E6%B3%95/" rel="tag">成员方法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8A%A5%E9%94%99%E8%A7%A3%E5%86%B3/" rel="tag">报错解决</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E7%BB%84%E7%9A%84%E5%BA%94%E7%94%A8/" rel="tag">数组的应用</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/" rel="tag">文件上传</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%AD%E7%82%B9%E8%B0%83%E8%AF%95/" rel="tag">断点调试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%B9%E6%B3%95%E9%87%8D%E5%86%99/" rel="tag">方法重写</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%B9%E6%B3%95%E9%87%8D%E8%BD%BD/" rel="tag">方法重载</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9E%84%E9%80%A0%E5%99%A8/" rel="tag">构造器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B1%89%E8%AF%BA%E5%A1%94%E9%97%AE%E9%A2%98/" rel="tag">汉诺塔问题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A8%8B%E5%BA%8F%E6%8E%A7%E5%88%B6%E7%BB%93%E6%9E%84/" rel="tag">程序控制结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A8%8B%E5%BA%8F%E7%9A%84%E5%81%A5%E5%A3%AE%E6%80%A7/" rel="tag">程序的健壮性</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A9%BA%E5%BF%83%E9%87%91%E5%AD%97%E5%A1%94%E9%97%AE%E9%A2%98/" rel="tag">空心金字塔问题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%A7%E6%89%BF/" rel="tag">继承</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B4%A6%E5%8F%B7%E5%AF%86%E7%A0%81%E7%94%9F%E6%88%90/" rel="tag">账号密码生成</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BF%9B%E5%88%B6%E6%95%B0%E6%8D%A2%E7%AE%97/" rel="tag">进制数换算</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BF%B7%E5%AE%AB%E9%97%AE%E9%A2%98/" rel="tag">迷宫问题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%80%92%E5%BD%92/" rel="tag">递归</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%99%E6%80%81%E6%88%90%E5%91%98/" rel="tag">静态成员</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-OOP/" rel="tag">面向对象(OOP)</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A1%B9%E7%9B%AE%E7%BB%83%E4%B9%A0/" rel="tag">项目练习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A1%BA%E5%BA%8F%E6%9F%A5%E6%89%BE/" rel="tag">顺序查找</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%AA%8C%E8%AF%81%E7%99%BB%E5%BD%95/" rel="tag">验证登录</a></li></ul>
     </div>
   </div>
 
@@ -683,7 +637,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Case/" style="font-size: 10px;">Case</a> <a href="/tags/Dos/" style="font-size: 10px;">Dos</a> <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="/tags/IDEA%E7%9B%B8%E5%85%B3/" style="font-size: 10px;">IDEA相关</a> <a href="/tags/IT%E5%AD%A6%E4%B9%A0/" style="font-size: 17.5px;">IT学习</a> <a href="/tags/JavaSE/" style="font-size: 20px;">JavaSE</a> <a href="/tags/Java%E7%BC%96%E7%A8%8B/" style="font-size: 17.5px;">Java编程</a> <a href="/tags/MyBatis%E6%A1%86%E6%9E%B6/" style="font-size: 12.5px;">MyBatis框架</a> <a href="/tags/MySQL/" style="font-size: 15px;">MySQL</a> <a href="/tags/Object%E7%B1%BB/" style="font-size: 10px;">Object类</a> <a href="/tags/Spring-Boot/" style="font-size: 15px;">Spring Boot</a> <a href="/tags/continue%E8%AF%AD%E5%8F%A5/" style="font-size: 10px;">continue语句</a> <a href="/tags/do-while%E5%BE%AA%E7%8E%AF/" style="font-size: 12.5px;">do..while循环</a> <a href="/tags/for%E5%BE%AA%E7%8E%AF/" style="font-size: 12.5px;">for循环</a> <a href="/tags/hashcode/" style="font-size: 10px;">hashcode</a> <a href="/tags/if-else/" style="font-size: 10px;">if-else</a> <a href="/tags/main%E6%96%B9%E6%B3%95%E8%AF%A6%E8%A7%A3/" style="font-size: 10px;">main方法详解</a> <a href="/tags/return%E8%AF%AD%E5%8F%A5/" style="font-size: 10px;">return语句</a> <a href="/tags/super%E5%85%B3%E9%94%AE%E5%AD%97/" style="font-size: 10px;">super关键字</a> <a href="/tags/switch/" style="font-size: 10px;">switch</a> <a href="/tags/this%E5%85%B3%E9%94%AE%E5%AD%97/" style="font-size: 10px;">this关键字</a> <a href="/tags/while%E5%BE%AA%E7%8E%AF/" style="font-size: 12.5px;">while循环</a> <a href="/tags/%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84/" style="font-size: 12.5px;">二维数组</a> <a href="/tags/%E4%BB%A3%E7%A0%81%E5%9D%97/" style="font-size: 10px;">代码块</a> <a href="/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/" style="font-size: 10px;">位运算</a> <a href="/tags/%E4%BD%9C%E7%94%A8%E5%9F%9F/" style="font-size: 10px;">作用域</a> <a href="/tags/%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F/" style="font-size: 10px;">冒泡排序</a> <a href="/tags/%E5%8D%95%E4%BE%8B%E8%AE%BE%E8%AE%A1/" style="font-size: 10px;">单例设计</a> <a href="/tags/%E5%8F%AF%E5%8F%98%E5%8F%82%E6%95%B0/" style="font-size: 10px;">可变参数</a> <a href="/tags/%E5%A4%9A%E6%80%81/" style="font-size: 10px;">多态</a> <a href="/tags/%E5%B0%81%E8%A3%85/" style="font-size: 10px;">封装</a> <a href="/tags/%E5%BC%95%E5%85%A5%E4%BE%9D%E8%B5%96/" style="font-size: 10px;">引入依赖</a> <a href="/tags/%E6%88%90%E5%91%98%E6%96%B9%E6%B3%95/" style="font-size: 10px;">成员方法</a> <a href="/tags/%E6%8A%A5%E9%94%99%E8%A7%A3%E5%86%B3/" style="font-size: 12.5px;">报错解决</a> <a href="/tags/%E6%95%B0%E7%BB%84%E7%9A%84%E5%BA%94%E7%94%A8/" style="font-size: 12.5px;">数组的应用</a> <a href="/tags/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/" style="font-size: 10px;">文件上传</a> <a href="/tags/%E6%96%AD%E7%82%B9%E8%B0%83%E8%AF%95/" style="font-size: 10px;">断点调试</a> <a href="/tags/%E6%96%B9%E6%B3%95%E9%87%8D%E5%86%99/" style="font-size: 10px;">方法重写</a> <a href="/tags/%E6%96%B9%E6%B3%95%E9%87%8D%E8%BD%BD/" style="font-size: 10px;">方法重载</a> <a href="/tags/%E6%9E%84%E9%80%A0%E5%99%A8/" style="font-size: 10px;">构造器</a> <a href="/tags/%E6%B1%89%E8%AF%BA%E5%A1%94%E9%97%AE%E9%A2%98/" style="font-size: 10px;">汉诺塔问题</a> <a href="/tags/%E7%A8%8B%E5%BA%8F%E6%8E%A7%E5%88%B6%E7%BB%93%E6%9E%84/" style="font-size: 12.5px;">程序控制结构</a> <a href="/tags/%E7%A8%8B%E5%BA%8F%E7%9A%84%E5%81%A5%E5%A3%AE%E6%80%A7/" style="font-size: 10px;">程序的健壮性</a> <a href="/tags/%E7%A9%BA%E5%BF%83%E9%87%91%E5%AD%97%E5%A1%94%E9%97%AE%E9%A2%98/" style="font-size: 10px;">空心金字塔问题</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 10px;">算法</a> <a href="/tags/%E7%BB%A7%E6%89%BF/" style="font-size: 10px;">继承</a> <a href="/tags/%E8%B4%A6%E5%8F%B7%E5%AF%86%E7%A0%81%E7%94%9F%E6%88%90/" style="font-size: 10px;">账号密码生成</a> <a href="/tags/%E8%BF%9B%E5%88%B6%E6%95%B0%E6%8D%A2%E7%AE%97/" style="font-size: 10px;">进制数换算</a> <a href="/tags/%E8%BF%B7%E5%AE%AB%E9%97%AE%E9%A2%98/" style="font-size: 10px;">迷宫问题</a> <a href="/tags/%E9%80%92%E5%BD%92/" style="font-size: 10px;">递归</a> <a href="/tags/%E9%9D%99%E6%80%81%E6%88%90%E5%91%98/" style="font-size: 10px;">静态成员</a> <a href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-OOP/" style="font-size: 10px;">面向对象(OOP)</a> <a href="/tags/%E9%A1%B9%E7%9B%AE%E7%BB%83%E4%B9%A0/" style="font-size: 10px;">项目练习</a> <a href="/tags/%E9%A1%BA%E5%BA%8F%E6%9F%A5%E6%89%BE/" style="font-size: 10px;">顺序查找</a> <a href="/tags/%E9%AA%8C%E8%AF%81%E7%99%BB%E5%BD%95/" style="font-size: 10px;">验证登录</a>
+      <a href="/tags/Case/" style="font-size: 10px;">Case</a> <a href="/tags/Dos/" style="font-size: 10px;">Dos</a> <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="/tags/IDEA%E7%9B%B8%E5%85%B3/" style="font-size: 10px;">IDEA相关</a> <a href="/tags/IT%E5%AD%A6%E4%B9%A0/" style="font-size: 18px;">IT学习</a> <a href="/tags/JavaSE/" style="font-size: 20px;">JavaSE</a> <a href="/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/tags/Java%E7%BC%96%E7%A8%8B/" style="font-size: 18px;">Java编程</a> <a href="/tags/MyBatis%E6%A1%86%E6%9E%B6/" style="font-size: 14px;">MyBatis框架</a> <a href="/tags/MySQL/" style="font-size: 16px;">MySQL</a> <a href="/tags/Object%E7%B1%BB/" style="font-size: 10px;">Object类</a> <a href="/tags/Spring-Boot/" style="font-size: 16px;">Spring Boot</a> <a href="/tags/continue%E8%AF%AD%E5%8F%A5/" style="font-size: 10px;">continue语句</a> <a href="/tags/do-while%E5%BE%AA%E7%8E%AF/" style="font-size: 12px;">do..while循环</a> <a href="/tags/for%E5%BE%AA%E7%8E%AF/" style="font-size: 12px;">for循环</a> <a href="/tags/hashcode/" style="font-size: 10px;">hashcode</a> <a href="/tags/if-else/" style="font-size: 10px;">if-else</a> <a href="/tags/main%E6%96%B9%E6%B3%95%E8%AF%A6%E8%A7%A3/" style="font-size: 10px;">main方法详解</a> <a href="/tags/return%E8%AF%AD%E5%8F%A5/" style="font-size: 10px;">return语句</a> <a href="/tags/super%E5%85%B3%E9%94%AE%E5%AD%97/" style="font-size: 10px;">super关键字</a> <a href="/tags/switch/" style="font-size: 10px;">switch</a> <a href="/tags/this%E5%85%B3%E9%94%AE%E5%AD%97/" style="font-size: 10px;">this关键字</a> <a href="/tags/while%E5%BE%AA%E7%8E%AF/" style="font-size: 12px;">while循环</a> <a href="/tags/%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84/" style="font-size: 12px;">二维数组</a> <a href="/tags/%E4%BB%A3%E7%A0%81%E5%9D%97/" style="font-size: 10px;">代码块</a> <a href="/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/" style="font-size: 10px;">位运算</a> <a href="/tags/%E4%BD%9C%E7%94%A8%E5%9F%9F/" style="font-size: 10px;">作用域</a> <a href="/tags/%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F/" style="font-size: 10px;">冒泡排序</a> <a href="/tags/%E5%8D%95%E4%BE%8B%E8%AE%BE%E8%AE%A1/" style="font-size: 10px;">单例设计</a> <a href="/tags/%E5%8F%AF%E5%8F%98%E5%8F%82%E6%95%B0/" style="font-size: 10px;">可变参数</a> <a href="/tags/%E5%A4%9A%E6%80%81/" style="font-size: 10px;">多态</a> <a href="/tags/%E5%B0%81%E8%A3%85/" style="font-size: 10px;">封装</a> <a href="/tags/%E5%BC%95%E5%85%A5%E4%BE%9D%E8%B5%96/" style="font-size: 10px;">引入依赖</a> <a href="/tags/%E6%88%90%E5%91%98%E6%96%B9%E6%B3%95/" style="font-size: 10px;">成员方法</a> <a href="/tags/%E6%8A%A5%E9%94%99%E8%A7%A3%E5%86%B3/" style="font-size: 12px;">报错解决</a> <a href="/tags/%E6%95%B0%E7%BB%84%E7%9A%84%E5%BA%94%E7%94%A8/" style="font-size: 12px;">数组的应用</a> <a href="/tags/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/" style="font-size: 10px;">文件上传</a> <a href="/tags/%E6%96%AD%E7%82%B9%E8%B0%83%E8%AF%95/" style="font-size: 10px;">断点调试</a> <a href="/tags/%E6%96%B9%E6%B3%95%E9%87%8D%E5%86%99/" style="font-size: 10px;">方法重写</a> <a href="/tags/%E6%96%B9%E6%B3%95%E9%87%8D%E8%BD%BD/" style="font-size: 10px;">方法重载</a> <a href="/tags/%E6%9E%84%E9%80%A0%E5%99%A8/" style="font-size: 10px;">构造器</a> <a href="/tags/%E6%B1%89%E8%AF%BA%E5%A1%94%E9%97%AE%E9%A2%98/" style="font-size: 10px;">汉诺塔问题</a> <a href="/tags/%E7%A8%8B%E5%BA%8F%E6%8E%A7%E5%88%B6%E7%BB%93%E6%9E%84/" style="font-size: 12px;">程序控制结构</a> <a href="/tags/%E7%A8%8B%E5%BA%8F%E7%9A%84%E5%81%A5%E5%A3%AE%E6%80%A7/" style="font-size: 10px;">程序的健壮性</a> <a href="/tags/%E7%A9%BA%E5%BF%83%E9%87%91%E5%AD%97%E5%A1%94%E9%97%AE%E9%A2%98/" style="font-size: 10px;">空心金字塔问题</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 10px;">算法</a> <a href="/tags/%E7%BB%A7%E6%89%BF/" style="font-size: 10px;">继承</a> <a href="/tags/%E8%B4%A6%E5%8F%B7%E5%AF%86%E7%A0%81%E7%94%9F%E6%88%90/" style="font-size: 10px;">账号密码生成</a> <a href="/tags/%E8%BF%9B%E5%88%B6%E6%95%B0%E6%8D%A2%E7%AE%97/" style="font-size: 10px;">进制数换算</a> <a href="/tags/%E8%BF%B7%E5%AE%AB%E9%97%AE%E9%A2%98/" style="font-size: 10px;">迷宫问题</a> <a href="/tags/%E9%80%92%E5%BD%92/" style="font-size: 10px;">递归</a> <a href="/tags/%E9%9D%99%E6%80%81%E6%88%90%E5%91%98/" style="font-size: 10px;">静态成员</a> <a href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-OOP/" style="font-size: 10px;">面向对象(OOP)</a> <a href="/tags/%E9%A1%B9%E7%9B%AE%E7%BB%83%E4%B9%A0/" style="font-size: 10px;">项目练习</a> <a href="/tags/%E9%A1%BA%E5%BA%8F%E6%9F%A5%E6%89%BE/" style="font-size: 10px;">顺序查找</a> <a href="/tags/%E9%AA%8C%E8%AF%81%E7%99%BB%E5%BD%95/" style="font-size: 10px;">验证登录</a>
     </div>
   </div>
 
@@ -692,7 +646,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/07/">July 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/06/">June 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/04/">April 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/03/">March 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/02/">February 2024</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/09/">September 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/07/">July 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/06/">June 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/04/">April 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/03/">March 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/02/">February 2024</a></li></ul>
     </div>
   </div>
 
@@ -703,6 +657,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2024/09/09/SpringBoot%E9%A1%B9%E7%9B%AE%E4%B8%AD%E7%9A%84Mybatis/">SpringBoot项目中的Mybatis</a>
+          </li>
         
           <li>
             <a href="/2024/07/09/Mapper%E4%BB%A3%E7%90%86%E5%BC%80%E5%8F%91/">Mapper代理开发</a>
@@ -718,10 +676,6 @@
         
           <li>
             <a href="/2024/06/21/%E7%94%9F%E6%88%90%E8%B4%A6%E5%8F%B7%E5%AF%86%E7%A0%81%E7%9A%84case/">生成账号密码的case</a>
-          </li>
-        
-          <li>
-            <a href="/2024/06/18/%E5%85%B3%E4%BA%8Ejava%E6%96%87%E4%BB%B6%E5%8F%98%E5%92%96%E5%95%A1%E6%9D%AF/">关于java文件变咖啡杯</a>
           </li>
         
       </ul>
